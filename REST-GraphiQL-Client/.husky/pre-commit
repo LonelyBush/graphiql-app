@@ -1,3 +1,0 @@
-cd REST-GraphiQL-Client
-npm run lint:fix
-npm run lint
