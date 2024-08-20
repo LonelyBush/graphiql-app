@@ -15,6 +15,7 @@ module.exports = {
     'vite.config.ts',
     'vite.config.d.ts',
     'vite.config.js',
+    'build/',
   ],
   parserOptions: {
     ecmaVersion: 'latest',

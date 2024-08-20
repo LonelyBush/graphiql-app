@@ -10,9 +10,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>Hello world!</h1>
         <Outlet />
-
         <Scripts />
       </body>
     </html>
