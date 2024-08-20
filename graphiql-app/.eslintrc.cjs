@@ -9,11 +9,17 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'vite.config.d.ts','vite.config.js' ],
+  ignorePatterns: [
+    'dist',
+    '.eslintrc.cjs',
+    'vite.config.ts',
+    'vite.config.d.ts',
+    'vite.config.js',
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json']
+    project: ['./tsconfig.json', './tsconfig.node.json'],
   },
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'prettier', 'react-compiler'],
@@ -30,10 +36,10 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    "react-compiler/react-compiler": "error",
-    "react/prefer-stateless-function": 0,
-    "@typescript-eslint/naming-convention": 0,
-    "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/no-static-element-interactions": 0,
+    'react-compiler/react-compiler': 'error',
+    'react/prefer-stateless-function': 0,
+    '@typescript-eslint/naming-convention': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
   },
-}
+};

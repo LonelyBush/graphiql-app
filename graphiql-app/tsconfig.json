@@ -20,9 +20,17 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
-    "types": ["vite/client"],
+    "types": ["vite/client"]
   },
 
-  "include": [".eslintrc.cjs", "src", "vite.config.d.ts", "vite.config.ts", "app", "setupTests.ts"],
+  "include": [
+    ".eslintrc.cjs",
+    "src",
+    "vite.config.d.ts",
+    "vite.config.ts",
+    "src/app",
+    "setupTests.ts",
+    "src/app"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
