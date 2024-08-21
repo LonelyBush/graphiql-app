@@ -1,4 +1,5 @@
 import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
+import Footer from '../components/footer/footer';
 import '../index.scss';
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
       </head>
       <body>
         <Outlet />
+        <Footer />
         <Scripts />
       </body>
     </html>
