@@ -1,0 +1,165 @@
+._footer_9dj0p_1 {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #cea0aa;
+}
+._iconGitHub_9dj0p_10 {
+  min-width: 3rem;
+  height: 3rem;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: #535878;
+  -webkit-mask-image: url(/svg-icons/icon-github.svg);
+  mask-image: url(/svg-icons/icon-github.svg);
+}
+._teamBlock_9dj0p_20,
+._footerNav_9dj0p_25 {
+  display: flex;
+  gap: 1rem;
+}
+._footerNav_9dj0p_25 > * {
+  font-size: 1.5rem;
+}
+._logoRS_9dj0p_34 {
+  min-width: 8rem;
+  height: 4rem;
+  background-image: url(/logo/logo-rss.svg);
+  background-repeat: no-repeat;
+  background-size: 6rem;
+}
+@media (max-width: 920px) {
+  ._footerNav_9dj0p_25 {
+    flex-direction: column;
+  }
+}
+@media (max-width: 420px) {
+  ._logoRS_9dj0p_34 {
+    min-width: 6rem;
+    height: 2rem;
+    background-size: 6rem;
+  }
+  ._year_9dj0p_53 {
+    font-size: 1.5rem;
+  }
+  ._iconGitHub_9dj0p_10 {
+    min-width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+:root {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+}
+ul li {
+  list-style-type: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button,
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+@font-face {
+  font-family: salina trial;
+  src:
+    url(/fonts/Salina-Trial-Regular.woff2) format('woff2'),
+    url(/fonts/Salina-Trial-Regular.woff) format('woff');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: oswald;
+  src:
+    url(/fonts/Oswald-Medium.woff2) format('woff2'),
+    url(/fonts/Oswald-Medium.woff) format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: salina trial;
+  src:
+    url(/fonts/Salina-Trial-Regular.woff2) format('woff2'),
+    url(/fonts/Salina-Trial-Regular.woff) format('woff');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: oswald;
+  src:
+    url(/fonts/Oswald-Medium.woff2) format('woff2'),
+    url(/fonts/Oswald-Medium.woff) format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+html {
+  scroll-behavior: smooth;
+  font-size: 10px;
+}
+body {
+  margin: 0 auto;
+  font-family: satina trial;
+  font-size: 2.5rem;
+  font-weight: 400;
+  -webkit-font-smoothing: auto;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #535878;
+  background-color: #b8d8e3;
+  overflow-x: hidden;
+}
+#root {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+@media (max-width: 580px) {
+  body {
+    font-size: 1.5rem;
+  }
+}
