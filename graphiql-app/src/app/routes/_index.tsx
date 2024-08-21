@@ -1,4 +1,4 @@
-function MainPage() {
+function WelcomePage() {
   return <div>hi</div>;
 }
-export default MainPage;
+export default WelcomePage;

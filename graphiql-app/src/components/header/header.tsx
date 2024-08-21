@@ -1,5 +1,5 @@
 import { Link } from '@remix-run/react';
-
+import ToggleLanguages from '../toggle-languages/toggle-languages';
 import styles from './header.module.scss';
 
 function Header() {
@@ -8,6 +8,7 @@ function Header() {
       <Link to="/" className={styles.logoLink}>
         <div className={styles.logo} />
       </Link>
+      <ToggleLanguages />
     </header>
   );
 }
