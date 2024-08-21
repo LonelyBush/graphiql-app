@@ -1,0 +1,25 @@
+@import '../../styles/colors.scss';
+.header {
+  height: 10vh;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  background-color: $c-pink-500;
+}
+
+.logoLink {
+  display: inline-block;
+}
+
+.logo {
+  min-width: 6rem;
+  height: 5rem;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+  background-color: $c-blue-500;
+  cursor: pointer;
+  mask-image: url('../../assets/logo/logo-react.png');
+}
