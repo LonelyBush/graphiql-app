@@ -1,4 +1,12 @@
+import AboutComponent from '../../components/about/about-component';
+import WelcomeComponent from '../../components/welcome/welcome';
+
 function WelcomePage() {
-  return <div>hi</div>;
+  return (
+    <div>
+      <WelcomeComponent />
+      <AboutComponent />
+    </div>
+  );
 }
 export default WelcomePage;
