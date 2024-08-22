@@ -1,0 +1,86 @@
+@import '../../styles/colors.scss';
+.header {
+  width: 100%;
+  height: 10vh;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  transition:
+    background-color 0.5s ease-in-out,
+    padding 0.5s ease-in-out;
+  background-color: $c-pink-500;
+}
+
+.header.sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $c-blue-300;
+  z-index: 1000;
+}
+
+.navHeader {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+@mixin icon($w, $h, $c) {
+  min-width: $w;
+  height: $h;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+  background-color: $c;
+  cursor: pointer;
+}
+
+.logo {
+  @include icon(6rem, 5rem, $c-blue-500);
+  mask-image: url('../../assets/logo/logo-react.png');
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.logoActive {
+  @include icon(6rem, 5rem, $c-white);
+  mask-image: url('../../assets/logo/logo-react.png');
+}
+
+.iconSignIn {
+  @include icon(3rem, 3rem, $c-blue-500);
+  mask-image: url('../../assets/svg-icons/login.svg');
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.iconSignInActive {
+  @include icon(3rem, 3rem, $c-white);
+  mask-image: url('../../assets/svg-icons/login.svg');
+}
+
+.iconSignUp {
+  @include icon(3rem, 3rem, $c-blue-500);
+  mask-image: url('../../assets/svg-icons/signup.svg');
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.iconSignUpActive {
+  @include icon(3rem, 3rem, $c-white);
+  mask-image: url('../../assets/svg-icons/signup.svg');
+}
+
+.iconLogOut {
+  @include icon(3rem, 3rem, $c-blue-500);
+  mask-image: url('../../assets/svg-icons/logout.svg');
+  &:hover {
+    transform: scale(1.1);
+  }
+}

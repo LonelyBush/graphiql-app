@@ -1,4 +1,5 @@
-import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
+import { Links, Meta, Scripts } from '@remix-run/react';
+import Layout from '../components/layout/layout';
 import Footer from '../components/footer/footer';
 import '../index.scss';
 
@@ -11,7 +12,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <Layout />
         <Footer />
         <Scripts />
       </body>
