@@ -1,40 +1,41 @@
 @import '../../styles/colors.scss';
 
-.signInFormSection{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 80vh;
-    gap: 1rem;
+.signInFormSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 80vh;
+  padding: 1rem;
+  gap: 1rem;
 }
 
-.signInFormSection > h2{
-    font-size: 3.5rem;
+.signInFormSection > h2 {
+  font-size: 3.5rem;
 }
 
-.formWrapper{
-    width: 45rem;
-    margin: 0 5rem;
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.5rem;
-    border: 0.2rem solid transparent;
-    box-shadow: $c-box-shadow;
-    border-radius: 0.4rem;
-    padding: 3rem 2.5rem;
-    background-color: $c-blue-300;
+.formWrapper {
+  width: 45rem;
+  margin: 0 5rem;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0.2rem solid transparent;
+  box-shadow: $c-box-shadow;
+  border-radius: 0.4rem;
+  padding: 3rem 2.5rem;
+  background-color: $c-blue-300;
 }
 
-.formWrapper > button{
-    width: 15rem;
-    align-self: center;
+.formWrapper > button {
+  width: 15rem;
+  align-self: center;
 }
 
 @media (max-width: 580px) {
-    .formWrapper{
-        width: 80%;
-    }
+  .formWrapper {
+    width: 80%;
   }
+}
