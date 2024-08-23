@@ -16,19 +16,32 @@ function WelcomeComponent() {
         possibilities, streamline your workflow, and unlock the full potential
         of your data. Happy exploring!
       </p>
-
-      {userName.length > 0 ? (
-        ''
-      ) : (
-        <div className={styles.buttonBlock}>
-          <Button btnType="button" to="/login">
-            Sig In
-          </Button>
-          <Button btnType="button" to="/registration">
-            Sig Up
-          </Button>
-        </div>
-      )}
+      <div className={styles.buttonBlock}>
+        {userName.length > 0 ? (
+          <>
+            {' '}
+            <Button btnType="button" to="/">
+              REST Client
+            </Button>
+            <Button btnType="button" to="/">
+              GraphiQL Client
+            </Button>
+            <Button btnType="button" to="/">
+              History
+            </Button>
+          </>
+        ) : (
+          <>
+            {' '}
+            <Button btnType="button" to="/login">
+              Sig In
+            </Button>
+            <Button btnType="button" to="/registration">
+              Sig Up
+            </Button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
