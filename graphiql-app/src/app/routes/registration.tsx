@@ -1,7 +1,7 @@
 import SignUpForm from '../../components/sign-up-form/sign-up-form';
 
-function SignUpPage() {
+function RegistrationPage() {
   return <SignUpForm />;
 }
 
-export default SignUpPage;
+export default RegistrationPage;

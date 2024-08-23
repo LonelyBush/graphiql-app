@@ -1,4 +1,6 @@
+import Welcome from "../../components/welcome-page/welcome-page";
+
 function WelcomePage() {
-  return <div>hi</div>;
+  return <Welcome />;
 }
 export default WelcomePage;
