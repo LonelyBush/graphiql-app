@@ -8,6 +8,7 @@
     font-size: 2rem;
     font-weight: 500;
     color: $c-blue-500;
+    position: relative;
 }
 
 .errorMessage{
@@ -37,4 +38,12 @@ transition: all 0.1s ease 0s;
 }
 }
 
+.faEyePosition {
+    display: inline-block;
+    position: absolute;
+    right: 3%;
+    top: 43%;
+    z-index: 1;
+
+}
 
