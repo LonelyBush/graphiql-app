@@ -6,9 +6,10 @@
   font-weight: 400;
   line-height: 1;
   color: $c-blue-500;
-  background-color: $c-pink-500;
+  background-color: $c-pink-300;
   filter: drop-shadow(0.1rem 0.1rem 0.1rem $c-white);
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 
   &:active,
   &:focus {

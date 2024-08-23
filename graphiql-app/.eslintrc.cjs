@@ -42,6 +42,8 @@ module.exports = {
     '@typescript-eslint/naming-convention': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-static-element-interactions': 0,
+    "react/jsx-props-no-spreading": 0,
     'no-nested-ternary': 'off',
+
   },
 };
