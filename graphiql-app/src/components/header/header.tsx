@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from 'react';
 import { NavLink } from '@remix-run/react';
 import ToggleLanguages from '../toggle-languages/toggle-languages';
@@ -52,7 +51,7 @@ function Header() {
           ) : (
             <>
               <NavLink
-                to="/login"
+                to="/registration"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? styles.iconSignUp
@@ -62,7 +61,7 @@ function Header() {
                 }
               />
               <NavLink
-                to="/registration"
+                to="/login"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? styles.iconSignIn
