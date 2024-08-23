@@ -2,23 +2,23 @@ import Button from '../ui/button/button';
 import styles from './welcome-component.module.scss';
 
 function WelcomeComponent() {
-  const user = false;
+  const userName = '';
   return (
     <div className={styles.contentInner}>
-      <h1 className={styles.title}>Welcome to Undefineds GraphQl</h1>
+      <h1 className={styles.title}>
+        {userName.length === 0 ? 'Welcome!' : `Welcome Back, ${userName}!`}
+      </h1>
       <p className={styles.description}>
-        Welcome to our API Playground! Here, you can seamlessly explore both
-        REST and GraphQL APIs in one powerful and intuitive interface. Whether
-        you are sending HTTP requests or crafting complex GraphQL queries, our
-        platform gives you the tools to interact with APIs effortlessly. Dive
-        into the world of endless possibilities, streamline your workflow, and
-        unlock the full potential of your data. Happy exploring!
+        Here, you can seamlessly explore both REST and GraphQL APIs in one
+        powerful and intuitive interface. Whether you are sending HTTP requests
+        or crafting complex GraphQL queries, our platform gives you the tools to
+        interact with APIs effortlessly. Dive into the world of endless
+        possibilities, streamline your workflow, and unlock the full potential
+        of your data. Happy exploring!
       </p>
 
-      {user ? (
-        <Button btnType="button" to="/main">
-          Main Page
-        </Button>
+      {userName.length > 0 ? (
+        ''
       ) : (
         <div className={styles.buttonBlock}>
           <Button btnType="button" to="/login">
