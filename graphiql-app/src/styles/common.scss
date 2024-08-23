@@ -23,6 +23,12 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width: 980px) {
+  body {
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 580px) {
   body {
     font-size: 1.5rem;

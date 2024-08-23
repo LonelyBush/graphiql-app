@@ -1,11 +1,13 @@
 import { Link } from '@remix-run/react';
+import { FaGithub } from 'react-icons/fa';
+
 import styles from './footer.module.scss';
 
 function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.teamBlock}>
-        <div className={styles.iconGitHub} />
+        <FaGithub className={styles.iconGitHub} />
         <nav className={styles.footerNav}>
           {' '}
           <Link to="https://github.com/rs0048" className={styles.link}>
