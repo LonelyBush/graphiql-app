@@ -1,6 +1,8 @@
 import Button from '../../components/ui/button/button';
 import styles from '../../components/not-found.module.scss';
 
+/* eslint-disable react-refresh/only-export-components */
+export const handle = { hideHeader: true };
 function CatchAll() {
   return (
     <div className={styles.errorBlock}>

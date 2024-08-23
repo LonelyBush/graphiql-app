@@ -4,10 +4,6 @@ import styles from './footer.module.scss';
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <Link to="https://rs.school/" className={styles.linkBlock}>
-        <div className={styles.logoRS} />
-      </Link>
-      <p>2024</p>
       <div className={styles.teamBlock}>
         <div className={styles.iconGitHub} />
         <nav className={styles.footerNav}>
@@ -23,6 +19,10 @@ function Footer() {
           </Link>
         </nav>
       </div>
+      <p>2024</p>
+      <Link to="https://rs.school/" className={styles.linkBlock}>
+        <div className={styles.logoRS} />
+      </Link>
     </footer>
   );
 }
