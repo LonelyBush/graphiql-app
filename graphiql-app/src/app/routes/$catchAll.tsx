@@ -1,5 +1,5 @@
 import Button from '../../components/ui/button/button';
-import styles from '../../components/not-found.module.scss';
+import styles from '../../styles/page-styles/not-found.module.scss';
 
 /* eslint-disable react-refresh/only-export-components */
 export const handle = { hideHeader: true };

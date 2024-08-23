@@ -52,7 +52,7 @@ function Header() {
           ) : (
             <>
               <NavLink
-                to="/"
+                to="/login"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? styles.iconSignUp
@@ -62,7 +62,7 @@ function Header() {
                 }
               />
               <NavLink
-                to="/"
+                to="/registration"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? styles.iconSignIn
