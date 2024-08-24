@@ -35,6 +35,20 @@ const resources = {
       Submit: 'Submit',
       NotFound: 'Ooops... Page not found',
       BackToMain: 'Back to main',
+      RemoveSpecialCharacters: 'Remove special characters from nickname',
+      NicknameRequired: 'Nickname is required',
+      InvalidEmail: 'Invalid email format',
+      EmailRequired: 'Email is required',
+      PasswordRequired: 'Password is required',
+      PasswordContainsNumber: 'Password should contain 1 number',
+      PasswordContainsUppercase:
+        'Password should contain 1 uppercase letter [A-Z]',
+      PasswordContainsLowercase:
+        'Password should contain 1 lowercase letter [a-z]',
+      PasswordContainsSpecialCharacter:
+        'Password should contain 1 special character [!,@,#,$,% ..etc]',
+      PasswordMinLength: 'Password must be at least 6 characters long',
+      PasswordMustMatch: 'Password must match',
     },
   },
   ru: {
@@ -73,6 +87,20 @@ const resources = {
       Submit: 'Отправить',
       NotFound: 'Упс... Страница не найдена',
       BackToMain: 'Вернуться на главную',
+      RemoveSpecialCharacters: 'Удалите специальные символы из псевдонима',
+      NicknameRequired: 'Псевдоним обязателен',
+      InvalidEmail: 'Неверный формат электронной почты',
+      EmailRequired: 'Электронная почта обязательна',
+      PasswordRequired: 'Пароль обязателен',
+      PasswordContainsNumber: 'Пароль должен содержать 1 цифру',
+      PasswordContainsUppercase:
+        'Пароль должен содержать 1 заглавную букву [A-Z]',
+      PasswordContainsLowercase:
+        'Пароль должен содержать 1 строчную букву [a-z]',
+      PasswordContainsSpecialCharacter:
+        'Пароль должен содержать 1 специальный символ [!,@,#,$,% ..и др.]',
+      PasswordMinLength: 'Пароль должен содержать не менее 6 символов',
+      PasswordMustMatch: 'Пароль должен совпадать',
     },
   },
 };

@@ -1,10 +1,9 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import resources from './launguages-text';
-// import store from '../../lib/store';
+import store from '../../lib/store';
 
-// const savedLanguage = store.getState().language.language  || 'ru';
-const savedLanguage = 'en';
+const savedLanguage = store.getState().language.language || 'en';
 
 i18n.use(initReactI18next).init({
   resources,
@@ -14,11 +13,11 @@ i18n.use(initReactI18next).init({
   },
 });
 
-// store.subscribe(() => {
-//   const newLanguage = store.getState().language.language;
-//   if (newLanguage && i18n.language !== newLanguage) {
-//     i18n.changeLanguage(newLanguage);
-//   }
-// });
+store.subscribe(() => {
+  const newLanguage = store.getState().language.language;
+  if (newLanguage && i18n.language !== newLanguage) {
+    i18n.changeLanguage(newLanguage);
+  }
+});
 
 export default i18n;
