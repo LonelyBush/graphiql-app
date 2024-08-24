@@ -26,7 +26,7 @@ function ToggleLanguages() {
       <button type="button" className={styles.toggle} onClick={handleClick}>
         <div
           className={`${styles.indicator} ${
-            isLanguageToggled ? styles.indicatorActive : ''
+            isLanguageToggled === 'ru' ? styles.indicatorActive : ''
           }`}
         />
       </button>

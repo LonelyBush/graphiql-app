@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './sign-up-form-style.module.scss';
@@ -6,6 +7,7 @@ import FormControl from '../ui/form-input/form-control';
 import Button from '../ui/button/button';
 
 function SignUpForm() {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -20,11 +22,11 @@ function SignUpForm() {
   };
   return (
     <div className={styles.signInFormSection}>
-      <h2>Registration</h2>
+      <h2>{t('Registration')}</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>
         <FormControl
           type="text"
-          label="Nickname"
+          label={t('Nickname')}
           name="nickname"
           placeholder="John_Doe"
           register={register}
@@ -32,7 +34,7 @@ function SignUpForm() {
         />
         <FormControl
           type="email"
-          label="Email"
+          label={t('Email')}
           name="email"
           placeholder="example@gmai.com"
           register={register}
@@ -40,7 +42,7 @@ function SignUpForm() {
         />
         <FormControl
           type="password"
-          label="Password"
+          label={t('Password')}
           name="password"
           placeholder={undefined}
           register={register}
@@ -48,7 +50,7 @@ function SignUpForm() {
         />
         <FormControl
           type="password"
-          label="Confirm password"
+          label={t('ConfirmPassword')}
           name="confirmPassword"
           placeholder={undefined}
           register={register}
@@ -58,7 +60,7 @@ function SignUpForm() {
               : errors.confirmPassword.message
           }
         />
-        <Button btnType="submit">Submit</Button>
+        <Button btnType="submit">{t('Submit')}</Button>
       </form>
     </div>
   );

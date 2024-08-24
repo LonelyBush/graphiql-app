@@ -1,12 +1,14 @@
+import { useTranslation } from 'react-i18next';
 import Button from '../../components/ui/button/button';
 import styles from '../../styles/page-styles/not-found.module.scss';
 
 /* eslint-disable react-refresh/only-export-components */
 export const handle = { hideHeader: true };
 function CatchAll() {
+  const { t } = useTranslation();
   return (
     <div className={styles.errorBlock}>
-      <h1 className={styles.title}> Ooops... Page not found</h1>
+      <h1 className={styles.title}>{t('NotFound')}</h1>
       <section className={styles.errorContainer}>
         <span className={styles.spanError}>
           <span className={styles.digitFirst}>4</span>
@@ -17,7 +19,7 @@ function CatchAll() {
         </span>
       </section>
       <Button btnType="button" to="/">
-        Back to main
+        {t('BackToMain')}
       </Button>
     </div>
   );

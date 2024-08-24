@@ -26,6 +26,15 @@ const resources = {
       YanaDyachok: 'Yana Dyachok',
       YanaText:
         'I love the latest technologies and constant development I want to succeed in my future profession, because it is much better to develop in the field that you like.',
+      Registration: 'Registration',
+      Login: 'Login',
+      Email: ' Email',
+      Nickname: 'Nickname',
+      Password: 'Password',
+      ConfirmPassword: 'Confirm password',
+      Submit: 'Submit',
+      NotFound: 'Ooops... Page not found',
+      BackToMain: 'Back to main',
     },
   },
   ru: {
@@ -55,6 +64,15 @@ const resources = {
       YanaDyachok: 'Яна Дячок',
       YanaText:
         'Я люблю новейшие технологии и постоянное развитие. Хочу добиться успеха в своей будущей профессии, потому что гораздо лучше развиваться в той сфере, которая тебе нравится.',
+      Registration: 'Регистрация',
+      Login: 'Войти',
+      Email: 'Электронная почта',
+      Nickname: 'Прозвище',
+      Password: 'Пароль',
+      ConfirmPassword: 'Подтвердите пароль',
+      Submit: 'Отправить',
+      NotFound: 'Упс... Страница не найдена',
+      BackToMain: 'Вернуться на главную',
     },
   },
 };
