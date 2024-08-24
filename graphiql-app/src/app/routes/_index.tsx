@@ -1,8 +1,8 @@
 import AboutComponent from '../../components/about/about-component';
 import WelcomeComponent from '../../components/welcome/welcome';
-import styles from '../../styles/page-styles/main-page.module.scss';
+import styles from '../../styles/page-styles/welcome-page.module.scss';
 
-function MainPage() {
+function WelcomePage() {
   return (
     <div className={styles.container}>
       <WelcomeComponent />
@@ -10,4 +10,4 @@ function MainPage() {
     </div>
   );
 }
-export default MainPage;
+export default WelcomePage;
