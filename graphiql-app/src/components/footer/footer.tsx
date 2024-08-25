@@ -1,9 +1,10 @@
 import { Link } from '@remix-run/react';
 import { FaGithub } from 'react-icons/fa';
-
+import { useTranslation } from 'react-i18next';
 import styles from './footer.module.scss';
 
 function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className={styles.footer}>
       <div className={styles.teamBlock}>
@@ -11,13 +12,13 @@ function Footer() {
         <nav className={styles.footerNav}>
           {' '}
           <Link to="https://github.com/rs0048" className={styles.link}>
-            Roman Sokolov
+            {t('RomanSokolov')}
           </Link>
           <Link to="https://github.com/Yana-Dyachok" className={styles.link}>
-            Yana Dyachok
+            {t('YanaDyachok')}
           </Link>
           <Link to="https://github.com/lonelybush" className={styles.link}>
-            Nikita Radevich
+            {t('NikitaRadevich')}
           </Link>
         </nav>
       </div>

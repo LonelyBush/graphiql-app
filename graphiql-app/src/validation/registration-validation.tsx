@@ -1,28 +1,28 @@
 import * as yup from 'yup';
+import i18n from '../utils/launguages/i18n';
+
+const t = (key: string) => i18n.t(key);
 
 const schema = yup.object().shape({
   nickname: yup
     .string()
-    .matches(/^[a-zA-Z0-9]*$/, 'Remove special charecters from nickname')
-    .required('Nickname is required'),
-  email: yup
-    .string()
-    .email('Invalid email format')
-    .required('Email is required'),
+    .matches(/^[a-zA-Z0-9]*$/, t('RemoveSpecialCharacters'))
+    .required(t('NicknameRequired')),
+  email: yup.string().email(t('InvalidEmail')).required(t('EmailRequired')),
   password: yup
     .string()
-    .required('Password is required')
-    .matches(/.*\d.*/, 'Password should contain 1 number')
-    .matches(/.*[A-Z].*/, 'Password should contain 1 uppercase letter [A-Z]')
-    .matches(/.*[a-z].*/, 'Password should contain 1 lowercase letter [a-z]')
+    .required(t('PasswordRequired'))
+    .matches(/.*\d.*/, t('PasswordContainsNumber'))
+    .matches(/.*[A-Z].*/, t('PasswordContainsUppercase'))
+    .matches(/.*[a-z].*/, t('PasswordContainsLowercase'))
     .matches(
       /.*[!@#$%^&*(),.?":{}|<>].*/,
-      'Password should contain 1 special charecters [!,@,#,$,% ..etc]',
+      t('PasswordContainsSpecialCharacter'),
     )
-    .min(6),
+    .min(6, t('PasswordMinLength')),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('password')], 'Password must match'),
+    .oneOf([yup.ref('password')], t('PasswordMustMatch')),
 });
 
 export type RegistrationData = yup.InferType<typeof schema>;
