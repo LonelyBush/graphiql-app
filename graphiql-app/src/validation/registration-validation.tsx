@@ -25,6 +25,6 @@ const schema = yup.object().shape({
     .oneOf([yup.ref('password')], 'Password must match'),
 });
 
-export type FormData = yup.InferType<typeof schema>;
+export type RegistrationData = yup.InferType<typeof schema>;
 
 export default schema;

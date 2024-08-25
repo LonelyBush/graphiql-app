@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './login-form-style.module.scss';
-import schema, { FormData } from '../../validation/yup-validation';
+import schema, { LoginData } from '../../validation/login-validation';
 import FormControl from '../ui/form-input/form-control';
 import Button from '../ui/button/button';
 
@@ -15,7 +15,7 @@ function LoginForm() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const onSubmit: SubmitHandler<LoginData> = async (data) => {
     console.log(data);
   };
   return (
