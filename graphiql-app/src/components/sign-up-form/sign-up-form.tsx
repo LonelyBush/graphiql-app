@@ -1,15 +1,16 @@
 import { useTranslation } from 'react-i18next';
+import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './sign-up-form-style.module.scss';
-import schema, {
-  RegistrationData,
-} from '../../validation/registration-validation';
+import getRegistrationSchema from '../../validation/registration-validation';
 import FormControl from '../ui/form-input/form-control';
 import Button from '../ui/button/button';
 
 function SignUpForm() {
   const { t } = useTranslation();
+  const schema = getRegistrationSchema(t);
+  type RegistrationData = yup.InferType<typeof schema>;
   const {
     register,
     handleSubmit,
@@ -22,6 +23,7 @@ function SignUpForm() {
   const onSubmit: SubmitHandler<RegistrationData> = async (data) => {
     console.log(data);
   };
+
   return (
     <div className={styles.signInFormSection}>
       <h2>{t('Registration')}</h2>
