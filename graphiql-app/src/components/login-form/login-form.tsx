@@ -1,10 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import { useNavigate } from '@remix-run/react';
 import styles from './login-form-style.module.scss';
 import schema, { LoginData } from '../../validation/login-validation';
 import FormControl from '../ui/form-input/form-control';
 import Button from '../ui/button/button';
+import { logInWithEmailAndPassword } from '../../firebase-auth/firebase';
+import Loading from '../ui/loading/loading';
+import useAuth from '../../hooks/useAuth-hook';
 
 function LoginForm() {
   const { t } = useTranslation();
@@ -16,11 +21,19 @@ function LoginForm() {
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) navigate('/');
+    console.log(user);
+  }, [user, navigate, loading]);
 
   const onSubmit: SubmitHandler<LoginData> = async (data) => {
-    console.log(data);
+    await logInWithEmailAndPassword(data.email, data.password);
   };
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <div className={styles.signInFormSection}>
       <h2>{t('Login')}</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>
