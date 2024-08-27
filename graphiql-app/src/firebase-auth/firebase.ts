@@ -6,7 +6,6 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -21,7 +20,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
 
 const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
@@ -57,7 +55,6 @@ const logout = () => {
 
 export {
   auth,
-  db,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   logout,

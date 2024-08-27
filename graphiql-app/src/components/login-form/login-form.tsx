@@ -24,8 +24,10 @@ function LoginForm() {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) navigate('/');
-    console.log(user);
+    if (user) {
+      console.log(user.displayName);
+      navigate('/');
+    }
   }, [user, navigate, loading]);
 
   const onSubmit: SubmitHandler<LoginData> = async (data) => {

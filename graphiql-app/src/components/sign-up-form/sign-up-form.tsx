@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from '@remix-run/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './sign-up-form-style.module.scss';
 import schema, {
   RegistrationData,
@@ -24,10 +24,17 @@ function SignUpForm() {
     resolver: yupResolver(schema),
   });
   const { user, loading } = useAuth();
+  const [loader, setLoader] = useState<boolean>(false);
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) navigate('/');
-  }, [user, navigate, loading]);
+    if (user) {
+      setLoader(true);
+      setTimeout(() => {
+        navigate('/');
+        setLoader(false);
+      }, 500);
+    }
+  }, [user, loading, navigate]);
   const onSubmit: SubmitHandler<RegistrationData> = async (data) => {
     await registerWithEmailAndPassword(
       data.nickname,
@@ -35,7 +42,7 @@ function SignUpForm() {
       data.password,
     );
   };
-  return loading ? (
+  return loading || loader ? (
     <Loading />
   ) : (
     <div className={styles.signInFormSection}>

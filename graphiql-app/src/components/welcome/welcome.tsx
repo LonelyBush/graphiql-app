@@ -1,24 +1,23 @@
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from '../ui/button/button';
 import styles from './welcome-component.module.scss';
-import { auth } from '../../firebase-auth/firebase';
 import Loading from '../ui/loading/loading';
 import AboutComponent from '../about/about-component';
+import useAuth from '../../hooks/useAuth-hook';
 
 function WelcomeComponent() {
   const { t } = useTranslation();
-  const [user, loading] = useAuthState(auth);
+  const { user, loading } = useAuth();
   const [userName, setUserName] = useState('');
+
   useEffect(() => {
     if (user?.displayName) {
       setUserName(user.displayName);
     } else {
       setUserName('');
     }
-  }, [user, loading]);
-  console.log(user);
+  }, [loading, user]);
   return loading ? (
     <Loading />
   ) : (
