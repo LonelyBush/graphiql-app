@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from '@remix-run/react';
 import styles from './login-form-style.module.scss';
 import schema, { LoginData } from '../../validation/login-validation';
@@ -22,16 +22,27 @@ function LoginForm() {
     resolver: yupResolver(schema),
   });
   const { user, loading } = useAuth();
+  const [authError, setAuthError] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
-      console.log(user.displayName);
       navigate('/');
     }
   }, [user, navigate, loading]);
 
   const onSubmit: SubmitHandler<LoginData> = async (data) => {
-    await logInWithEmailAndPassword(data.email, data.password);
+    try {
+      setAuthError({});
+      await logInWithEmailAndPassword(data.email, data.password);
+    } catch (err) {
+      if (err instanceof Error) {
+        if (err.message === 'Firebase: Error (auth/invalid-credential).') {
+          setAuthError({
+            message: 'Invalid user credentials! Try again.',
+          });
+        }
+      }
+    }
   };
   return loading ? (
     <Loading />
@@ -56,6 +67,9 @@ function LoginForm() {
           error={!errors.password?.message ? '' : errors.password.message}
         />
         <Button btnType="submit">{t('Submit')}</Button>
+        {Object.keys(authError).length > 0 && (
+          <span className={styles.errorMessage}>{authError.message}</span>
+        )}
       </form>
     </div>
   );

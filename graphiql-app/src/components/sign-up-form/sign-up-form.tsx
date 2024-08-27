@@ -25,6 +25,7 @@ function SignUpForm() {
   });
   const { user, loading } = useAuth();
   const [loader, setLoader] = useState<boolean>(false);
+  const [authError, setAuthError] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
@@ -36,11 +37,22 @@ function SignUpForm() {
     }
   }, [user, loading, navigate]);
   const onSubmit: SubmitHandler<RegistrationData> = async (data) => {
-    await registerWithEmailAndPassword(
-      data.nickname,
-      data.email,
-      data.password,
-    );
+    try {
+      setAuthError({});
+      await registerWithEmailAndPassword(
+        data.nickname,
+        data.email,
+        data.password,
+      );
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+          setAuthError({
+            message: 'Your email is already in use ! Try another one.',
+          });
+        }
+      }
+    }
   };
   return loading || loader ? (
     <Loading />
@@ -85,6 +97,9 @@ function SignUpForm() {
           }
         />
         <Button btnType="submit">{t('Submit')}</Button>
+        {Object.keys(authError).length > 0 && (
+          <span className={styles.errorMessage}>{authError.message}</span>
+        )}
       </form>
     </div>
   );

@@ -22,12 +22,18 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const logInWithEmailAndPassword = async (email: string, password: string) => {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch (err: unknown) {
-    console.error(err);
-    console.log(err);
-  }
+  return new Promise((resolve, reject) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        const { user } = result;
+        if (user) {
+          resolve(user);
+        } else {
+          reject(new Error('Auth is failed'));
+        }
+      })
+      .catch((error) => reject(error));
+  });
 };
 
 const registerWithEmailAndPassword = async (
@@ -35,18 +41,19 @@ const registerWithEmailAndPassword = async (
   email: string,
   password: string,
 ) => {
-  try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    const { user } = res;
-    if (user && auth.currentUser) {
-      await updateProfile(auth.currentUser, {
-        displayName: nickname,
-      });
-    }
-  } catch (err) {
-    console.error(err);
-    console.log(err);
-  }
+  return new Promise((resolve, reject) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        const { user } = result;
+        if (user && auth.currentUser) {
+          updateProfile(auth.currentUser, {
+            displayName: nickname,
+          });
+          resolve(user);
+        }
+      })
+      .catch((error) => reject(error));
+  });
 };
 
 const logout = () => {
