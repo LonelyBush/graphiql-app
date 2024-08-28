@@ -18,7 +18,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     onAuthStateChanged(auth, (stateUser) => {
       if (!stateUser) {
-        navigate('/login');
+        navigate('/');
       }
     });
   }, [user, navigate]);
