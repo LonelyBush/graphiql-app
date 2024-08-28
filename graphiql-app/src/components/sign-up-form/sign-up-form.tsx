@@ -56,7 +56,6 @@ function SignUpForm() {
     }
   };
 
-  return (
   return loading || loader ? (
     <Loading />
   ) : (
