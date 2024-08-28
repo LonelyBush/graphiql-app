@@ -4,6 +4,7 @@ import i18n from '../utils/launguages/i18n';
 import Layout from '../components/layout/layout';
 import Footer from '../components/footer/footer';
 import StoreProvider from '../lib/StoreProvider';
+import ErrorBoundaryComponent from '../components/error-boundary/error-boundary';
 import '../index.scss';
 
 export default function App() {
@@ -15,13 +16,15 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <StoreProvider>
-          <I18nextProvider i18n={i18n}>
-            <Layout />
-            <Footer />
-          </I18nextProvider>
-          <Scripts />
-        </StoreProvider>
+        <ErrorBoundaryComponent>
+          <StoreProvider>
+            <I18nextProvider i18n={i18n}>
+              <Layout />
+              <Footer />
+            </I18nextProvider>
+            <Scripts />
+          </StoreProvider>
+        </ErrorBoundaryComponent>
       </body>
     </html>
   );

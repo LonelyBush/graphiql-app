@@ -1,0 +1,24 @@
+@import '../../styles/colors.scss';
+.container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+  background-color: $c-blue-500;
+  color: $c-white;
+}
+
+.methodBlock {
+  display: flex;
+}
+
+.response {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

@@ -1,0 +1,83 @@
+._cardBlock_1y4gj_1 {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #fee1dd;
+  border-radius: 0.2rem;
+  transition: all 0.4s ease-out;
+  box-shadow: 0 0.3rem 0.6rem #000;
+}
+._imgBlock_1y4gj_14 {
+  width: 28rem;
+  height: 30rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-size: 28rem;
+}
+._img_1y4gj_14 {
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  width: 28rem;
+  height: 30rem;
+}
+._cardInfoBlock_1y4gj_30 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.2rem 0.5rem;
+}
+._cardName_1y4gj_37 {
+  font-family: oswald;
+  text-align: center;
+  font-weight: 600;
+}
+._info_1y4gj_43 {
+  font-weight: 600;
+}
+._contentInner_q30k9_1 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+._aboutUsBlock_q30k9_10 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+._description_q30k9_17 {
+  max-width: 100rem;
+}
+._contentInner_8piex_1 {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+}
+._description_8piex_9 {
+  max-width: 100rem;
+}
+._buttonBlock_8piex_13 {
+  display: flex;
+  gap: 2rem;
+}
+._title_8piex_18 {
+  text-align: center;
+}
+._container_10gft_1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  overflow-x: hidden;
+  background-color: #b8d8e3;
+}
