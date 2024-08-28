@@ -10,7 +10,6 @@ function WelcomeComponent() {
   const { t } = useTranslation();
   const { user, loading } = useAuth();
   const [userName, setUserName] = useState('');
-
   useEffect(() => {
     if (user?.displayName) {
       setUserName(user.displayName);

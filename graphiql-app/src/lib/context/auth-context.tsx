@@ -1,6 +1,7 @@
-import { createContext, ReactNode, useMemo } from 'react';
+import { createContext, ReactNode, useEffect, useMemo } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { User } from 'firebase/auth';
+import { useNavigate } from '@remix-run/react';
+import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../../firebase-auth/firebase';
 
 interface ContextType {
@@ -13,7 +14,14 @@ export const AuthContext = createContext<ContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, loading, error] = useAuthState(auth);
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    onAuthStateChanged(auth, (stateUser) => {
+      if (!stateUser) {
+        navigate('/login');
+      }
+    });
+  }, [user, navigate]);
   const value = useMemo(
     () => ({ user, loading, error }),
     [user, loading, error],
