@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
+import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from '@remix-run/react';
 import { useEffect, useState } from 'react';
 import styles from './sign-up-form-style.module.scss';
-import schema, {
-  RegistrationData,
-} from '../../validation/registration-validation';
+import getRegistrationSchema from '../../validation/registration-validation';
 import FormControl from '../ui/form-input/form-control';
 import Button from '../ui/button/button';
 import { registerWithEmailAndPassword } from '../../firebase-auth/firebase';
@@ -15,6 +14,8 @@ import useAuth from '../../hooks/useAuth-hook';
 
 function SignUpForm() {
   const { t } = useTranslation();
+  const schema = getRegistrationSchema(t);
+  type RegistrationData = yup.InferType<typeof schema>;
   const {
     register,
     handleSubmit,
@@ -54,6 +55,8 @@ function SignUpForm() {
       }
     }
   };
+
+  return (
   return loading || loader ? (
     <Loading />
   ) : (

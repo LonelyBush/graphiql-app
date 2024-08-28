@@ -81,7 +81,7 @@ const resources = {
       Registration: 'Регистрация',
       Login: 'Войти',
       Email: 'Электронная почта',
-      Nickname: 'Прозвище',
+      Nickname: 'Псевдоним',
       Password: 'Пароль',
       ConfirmPassword: 'Подтвердите пароль',
       Submit: 'Отправить',

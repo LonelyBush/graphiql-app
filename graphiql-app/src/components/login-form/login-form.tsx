@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
+import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { useNavigate } from '@remix-run/react';
 import styles from './login-form-style.module.scss';
-import schema, { LoginData } from '../../validation/login-validation';
+import getLoginSchema from '../../validation/login-validation';
 import FormControl from '../ui/form-input/form-control';
 import Button from '../ui/button/button';
 import { logInWithEmailAndPassword } from '../../firebase-auth/firebase';
@@ -13,6 +14,8 @@ import useAuth from '../../hooks/useAuth-hook';
 
 function LoginForm() {
   const { t } = useTranslation();
+  const schema = getLoginSchema(t);
+  type LoginData = yup.InferType<typeof schema>;
   const {
     register,
     handleSubmit,
