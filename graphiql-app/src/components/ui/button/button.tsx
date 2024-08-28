@@ -1,3 +1,4 @@
+import { useNavigate } from '@remix-run/react';
 import { ButtonProps } from '../../../types/types';
 import styles from './button.module.scss';
 
@@ -8,9 +9,10 @@ function Button({
   to,
   disabled = false,
 }: ButtonProps) {
+  const navigate = useNavigate();
   const handleClick = () => {
     if (to) {
-      window.location.href = to;
+      navigate(to);
     }
     if (onClick) {
       onClick();

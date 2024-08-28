@@ -4,8 +4,8 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
-import { getFirestore, addDoc, collection } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -20,15 +20,20 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
 
 const logInWithEmailAndPassword = async (email: string, password: string) => {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch (err: unknown) {
-    console.error(err);
-    console.log(err);
-  }
+  return new Promise((resolve, reject) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        const { user } = result;
+        if (user) {
+          resolve(user);
+        } else {
+          reject(new Error('Auth is failed'));
+        }
+      })
+      .catch((error) => reject(error));
+  });
 };
 
 const registerWithEmailAndPassword = async (
@@ -36,19 +41,19 @@ const registerWithEmailAndPassword = async (
   email: string,
   password: string,
 ) => {
-  try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    const { user } = res;
-    await addDoc(collection(db, 'users'), {
-      uid: user.uid,
-      displayName: nickname,
-      authProvider: 'local',
-      email,
-    });
-  } catch (err) {
-    console.error(err);
-    console.log(err);
-  }
+  return new Promise((resolve, reject) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        const { user } = result;
+        if (user && auth.currentUser) {
+          updateProfile(auth.currentUser, {
+            displayName: nickname,
+          });
+          resolve(user);
+        }
+      })
+      .catch((error) => reject(error));
+  });
 };
 
 const logout = () => {
@@ -57,7 +62,6 @@ const logout = () => {
 
 export {
   auth,
-  db,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   logout,
