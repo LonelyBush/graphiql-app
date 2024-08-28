@@ -23,9 +23,18 @@ function WelcomeComponent() {
       <p className={styles.description}>{t('ProjectDescription')}</p>
       <div className={styles.buttonBlock}>
         {userName.length > 0 ? (
-          <Button btnType="button" to="/main">
-            {t('MainPage')}
-          </Button>
+          <>
+            {' '}
+            <Button btnType="button" to="/rest-full">
+              {t('RESTClient')}
+            </Button>
+            <Button btnType="button" to="/graphiql">
+              {t('GraphiQLClient')}
+            </Button>
+            <Button btnType="button" to="/history">
+              {t('History')}
+            </Button>
+          </>
         ) : (
           <>
             {' '}
