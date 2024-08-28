@@ -1,13 +1,16 @@
 import { useEffect, useState, useRef } from 'react';
 import { NavLink } from '@remix-run/react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import ToggleLanguages from '../toggle-languages/toggle-languages';
 import styles from './header.module.scss';
+import { auth, logout } from '../../firebase-auth/firebase';
 
 function Header() {
-  const user = false;
+  // const user = false;
 
   const [isSticky, setIsSticky] = useState(false);
   const headerRef = useRef<HTMLDivElement | null>(null);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,6 +50,9 @@ function Header() {
               type="button"
               className={styles.iconLogOut}
               aria-label="Log out"
+              onClick={() => {
+                logout();
+              }}
             />
           ) : (
             <>

@@ -23,6 +23,7 @@
     "@remix-run/react": "^2.11.2",
     "@remix-run/serve": "^2.11.2",
     "firebase": "^10.13.0",
+    "firebase-admin": "^12.4.0",
     "i18next": "^23.14.0",
     "isbot": "^4",
     "react": "^18.3.1",
