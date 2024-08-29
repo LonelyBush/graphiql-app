@@ -2,8 +2,9 @@ import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from '@remix-run/react';
+import { toast } from 'react-toastify';
 import styles from './login-form-style.module.scss';
 import getLoginSchema from '../../validation/login-validation';
 import FormControl from '../ui/form-input/form-control';
@@ -25,7 +26,6 @@ function LoginForm() {
     resolver: yupResolver(schema),
   });
   const { user, loading } = useAuth();
-  const [authError, setAuthError] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
@@ -33,19 +33,28 @@ function LoginForm() {
     }
   }, [user, navigate, loading]);
 
-  const onSubmit: SubmitHandler<LoginData> = async (data) => {
-    try {
-      setAuthError({});
-      await logInWithEmailAndPassword(data.email, data.password);
-    } catch (err) {
-      if (err instanceof Error) {
-        if (err.message === 'Firebase: Error (auth/invalid-credential).') {
-          setAuthError({
-            message: 'Invalid user credentials! Try again.',
-          });
-        }
-      }
-    }
+  const onSubmit: SubmitHandler<LoginData> = async (FormData) => {
+    const promise = logInWithEmailAndPassword(
+      FormData.email,
+      FormData.password,
+    );
+    toast.promise(promise, {
+      pending: {
+        render() {
+          return 'Loading...';
+        },
+      },
+      success: {
+        render() {
+          return `${t('accessGranted')}`;
+        },
+      },
+      error: {
+        render({ data }) {
+          return `${data instanceof Error ? data.message : ''}`;
+        },
+      },
+    });
   };
   return loading ? (
     <Loading />
@@ -70,9 +79,6 @@ function LoginForm() {
           error={!errors.password?.message ? '' : errors.password.message}
         />
         <Button btnType="submit">{t('Submit')}</Button>
-        {Object.keys(authError).length > 0 && (
-          <span className={styles.errorMessage}>{authError.message}</span>
-        )}
       </form>
     </div>
   );

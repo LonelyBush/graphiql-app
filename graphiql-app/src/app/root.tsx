@@ -6,6 +6,7 @@ import Footer from '../components/footer/footer';
 import StoreProvider from '../lib/StoreProvider';
 import '../index.scss';
 import { AuthProvider } from '../lib/context/auth-context';
+import Toast from '../components/ui/toast/toast';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <StoreProvider>
             <I18nextProvider i18n={i18n}>
               <Layout />
+              <Toast />
               <Footer />
             </I18nextProvider>
             <Scripts />
