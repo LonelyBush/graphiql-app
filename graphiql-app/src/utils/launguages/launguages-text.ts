@@ -49,6 +49,13 @@ const resources = {
         'Password should contain 1 special character [!,@,#,$,% ..etc]',
       PasswordMinLength: 'Password must be at least 6 characters long',
       PasswordMustMatch: 'Password must match',
+      accessGranted: 'Access granted!',
+      loading: 'Loading...',
+      wrongCredentials: 'Invalid email or password combination!',
+      emailAlreadyUse: 'Email you are using is already in use!',
+      temporaryBlock:
+        'Access to this account has been temporarily disabled due to many failed login attempts. Try again later.',
+      unexpectedError: 'An unexpected error occurred!',
     },
   },
   ru: {
@@ -101,6 +108,14 @@ const resources = {
         'Пароль должен содержать 1 специальный символ [!,@,#,$,% ..и др.]',
       PasswordMinLength: 'Пароль должен содержать не менее 6 символов',
       PasswordMustMatch: 'Пароль должен совпадать',
+      accessGranted: 'Доступ получен!',
+      loading: 'Загрузка...',
+      wrongCredentials: 'Неверная электронная почта или пароль!',
+      emailAlreadyUse:
+        'Указанный вами адрес электронной почты уже используется!',
+      temporaryBlock:
+        'Доступ к этой учетной записи временно отключен из-за множества неудачных попыток входа. Попробуйте еще раз позже.',
+      unexpectedError: 'Произошла непредвиденная ошибка!',
     },
   },
 };

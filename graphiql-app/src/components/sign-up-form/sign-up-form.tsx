@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from '@remix-run/react';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import styles from './sign-up-form-style.module.scss';
 import getRegistrationSchema from '../../validation/registration-validation';
 import FormControl from '../ui/form-input/form-control';
@@ -11,6 +12,7 @@ import Button from '../ui/button/button';
 import { registerWithEmailAndPassword } from '../../firebase-auth/firebase';
 import Loading from '../ui/loading/loading';
 import useAuth from '../../hooks/useAuth-hook';
+import authError from '../../utils/authError/authError';
 
 function SignUpForm() {
   const { t } = useTranslation();
@@ -26,7 +28,6 @@ function SignUpForm() {
   });
   const { user, loading } = useAuth();
   const [loader, setLoader] = useState<boolean>(false);
-  const [authError, setAuthError] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
@@ -37,23 +38,29 @@ function SignUpForm() {
       }, 500);
     }
   }, [user, loading, navigate]);
-  const onSubmit: SubmitHandler<RegistrationData> = async (data) => {
-    try {
-      setAuthError({});
-      await registerWithEmailAndPassword(
-        data.nickname,
-        data.email,
-        data.password,
-      );
-    } catch (error) {
-      if (error instanceof Error) {
-        if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
-          setAuthError({
-            message: 'Your email is already in use ! Try another one.',
-          });
-        }
-      }
-    }
+  const onSubmit: SubmitHandler<RegistrationData> = async (FormData) => {
+    const promise = registerWithEmailAndPassword(
+      FormData.nickname,
+      FormData.email,
+      FormData.password,
+    );
+    toast.promise(promise, {
+      pending: {
+        render() {
+          return 'Loading...';
+        },
+      },
+      success: {
+        render() {
+          return `${t('accessGranted')}`;
+        },
+      },
+      error: {
+        render({ data }) {
+          return `${data instanceof Error ? t(authError(data)) : ''}`;
+        },
+      },
+    });
   };
 
   return loading || loader ? (
@@ -99,9 +106,6 @@ function SignUpForm() {
           }
         />
         <Button btnType="submit">{t('Submit')}</Button>
-        {Object.keys(authError).length > 0 && (
-          <span className={styles.errorMessage}>{authError.message}</span>
-        )}
       </form>
     </div>
   );
