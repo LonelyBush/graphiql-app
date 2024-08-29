@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from '../ui/button/button';
+import Response from '../response/response';
 import styles from './rest-full-client.module.scss';
 
 function RESTFullClient() {
@@ -84,40 +85,11 @@ function RESTFullClient() {
           />
         </div>
       </div>
-
-      <details className={styles.responseBlock}>
-        <summary className={styles.responseSummary}>
-          <span>{t('Response')} </span>
-          {responseStatus !== null && (
-            <span
-              className={`${responseStatus < 300 ? styles.responseStatusOk : styles.responseStatusError}`}
-            >
-              {t('status')}: {responseStatus}
-            </span>
-          )}
-        </summary>
-        <div className={styles.response}>
-          {responseStatus === null && !error && (
-            <h2 className={styles.noResponse}>{t('NoResponse')}</h2>
-          )}
-
-          {responseStatus !== null && (
-            <div>
-              {response && (
-                <pre>
-                  <code>{response}</code>
-                </pre>
-              )}
-              {error && (
-                <div>
-                  <h3>Error:</h3>
-                  <pre>{error}</pre>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </details>
+      <Response
+        responseStatus={responseStatus}
+        response={response}
+        error={error}
+      />
     </div>
   );
 }
