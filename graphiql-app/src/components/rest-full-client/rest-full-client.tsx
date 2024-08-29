@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Button from '../ui/button/button';
 import styles from './rest-full-client.module.scss';
 
@@ -10,7 +11,7 @@ function RESTFullClient() {
   const [response, setResponse] = useState('');
   const [responseStatus, setResponseStatus] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
-
+  const { t } = useTranslation();
   const handleRequest = async () => {
     setResponse('');
     setError(null);
@@ -45,53 +46,63 @@ function RESTFullClient() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.methodBlock}>
-        <select value={method} onChange={(e) => setMethod(e.target.value)}>
-          <option value="GET">GET</option>
-          <option value="POST">POST</option>
-          <option value="PUT">PUT</option>
-          <option value="DELETE">DELETE</option>
-        </select>
-        <input
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-        />
-        <Button btnType="button" onClick={handleRequest}>
-          Send
-        </Button>
-      </div>
-      <div>
-        <textarea
-          id="headers"
-          value={headers}
-          onChange={(e) => setHeaders(e.target.value)}
-        />
-      </div>
-      <div>
-        <textarea
-          id="body"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        />
-      </div>
-      {error && (
-        <div>
-          <h3>Error:</h3>
-          <pre>{error}</pre>
+      <div className={styles.RestBlock}>
+        <h2>{t('RESTClient')}</h2>
+        <div className={styles.methodBlock}>
+          <select
+            className={styles.customSelect}
+            value={method}
+            onChange={(e) => setMethod(e.target.value)}
+          >
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+          </select>
+          <input
+            type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          <Button btnType="button" onClick={handleRequest}>
+            Send
+          </Button>
         </div>
-      )}
+        <div>
+          <textarea
+            id="headers"
+            value={headers}
+            onChange={(e) => setHeaders(e.target.value)}
+          />
+        </div>
+        <div>
+          <textarea
+            id="body"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
+        </div>
+        {error && (
+          <div>
+            <h3>Error:</h3>
+            <pre>{error}</pre>
+          </div>
+        )}
+      </div>
 
-      {responseStatus !== null && (
-        <div>
-          <h3>Status Code: {responseStatus}</h3>
-          {response && (
-            <pre className={styles.response}>
-              <code>{response}</code>
-            </pre>
-          )}
-        </div>
-      )}
+      <details className={styles.responseBlock}>
+        <summary className={styles.responseSummary}>{t('Response')}</summary>
+        {responseStatus !== null && (
+          <div>
+            <h3>Status Code: {responseStatus}</h3>
+            {response && (
+              <pre className={styles.response}>
+                <code>{response}</code>
+              </pre>
+            )}
+          </div>
+        )}
+      </details>
     </div>
   );
 }

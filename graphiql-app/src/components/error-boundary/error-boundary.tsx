@@ -34,7 +34,7 @@ class ErrorBoundary extends React.Component<
         <div className={styles.container}>
           <h2>{t('ErrorMessage')}</h2>
           <Button btnType="button" to="/">
-            {t('BackToWelcome')}
+            {t('BackToMain')}
           </Button>
         </div>
       );

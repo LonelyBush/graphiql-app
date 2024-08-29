@@ -35,7 +35,7 @@ const resources = {
       Submit: 'Submit',
       NotFound: 'Ooops... Page not found',
       ErrorMessage: 'Ooops... You are getting an error',
-      BackToWelcome: 'Back to welcome',
+      BackToMain: 'Back to main',
       RemoveSpecialCharacters: 'Remove special characters from nickname',
       NicknameRequired: 'Nickname is required',
       InvalidEmail: 'Invalid email format',
@@ -53,6 +53,7 @@ const resources = {
       History: 'History',
       GraphiQLClient: 'GraphiQL Client',
       RESTClient: 'REST Client',
+      Response: 'Response',
     },
   },
   ru: {
@@ -91,7 +92,7 @@ const resources = {
       Submit: 'Отправить',
       NotFound: 'Упс... Страница не найдена',
       ErrorMessage: 'Упс... Вы получаете ошибку',
-      BackToWelcome: 'Вернуться на приветствие',
+      BackToMain: 'Вернуться на главную',
       RemoveSpecialCharacters: 'Удалите специальные символы из псевдонима',
       NicknameRequired: 'Псевдоним обязателен',
       InvalidEmail: 'Неверный формат электронной почты',
@@ -109,6 +110,7 @@ const resources = {
       History: 'История',
       GraphiQLClient: 'GraphiQL Клиент',
       RESTClient: 'REST Клиент',
+      Response: 'Ответ',
     },
   },
 };

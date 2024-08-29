@@ -19,7 +19,7 @@ function CatchAll() {
         </span>
       </section>
       <Button btnType="button" to="/">
-        {t('BackToWelcome')}
+        {t('BackToMain')}
       </Button>
     </div>
   );

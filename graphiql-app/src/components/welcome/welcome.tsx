@@ -7,7 +7,7 @@ import { auth } from '../../firebase-auth/firebase';
 
 function WelcomeComponent() {
   const { t } = useTranslation();
-  const userName = '';
+  const userName = 'o';
 
   const [user] = useAuthState(auth);
   useEffect(() => {
