@@ -15,21 +15,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 2rem;
+  gap: 1rem;
 }
 
 .methodBlock {
+  width: 100%;
   display: flex;
+  padding: 0.3rem;
+  color: $c-blue-500;
+  border: 1px solid $c-blue-100;
+  box-shadow: $c-box-shadow;
+  border-radius: 0.4rem;
+  background-color: $c-pink-100;
 }
 
 .customSelect {
   position: relative;
   width: 10rem;
   font-size: 1.5rem;
-  color: $c-blue-500;
-  border: 1px solid $c-blue-100;
-  background-color: $c-pink-100;
   padding: 1rem;
   padding-right: 1px;
+  color: $c-blue-500;
+  background-color: $c-pink-100;
+  border: none;
   cursor: pointer;
 
   &::after {
@@ -51,7 +60,7 @@
     background-color: $c-pink-100;
     border: none;
     cursor: pointer;
-    
+
     &:hover {
       background-color: $c-white;
     }
@@ -59,8 +68,16 @@
 
   &:focus {
     outline: none;
-    border-color: $c-white;
-    box-shadow: 0 0 3px 2px rgba(245, 245, 246, 0.5);
+    box-shadow: 0 0 3px 5px rgba(247, 247, 248, 0.5);
+  }
+}
+
+.inputUrl {
+  width: 100%;
+  padding-left: 2rem;
+  border-left: 1px solid $c-blue-500;
+  &:focus {
+    box-shadow: 0 0 3px 5px rgba(247, 247, 248, 0.5);
   }
 }
 
@@ -81,7 +98,8 @@
 
 .responseSummary {
   width: 100%;
-  display: inline-block;
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
   cursor: pointer;
   position: relative;
 
@@ -107,4 +125,18 @@
     vertical-align: middle;
     right: 0;
   }
+}
+
+.noResponse {
+  text-align: center;
+  color: $c-blue-100;
+  font-weight: 600;
+}
+
+.responseStatusOk {
+  color: rgb(73, 230, 73);
+}
+
+.responseStatusError {
+  color: rgb(252, 35, 35);
 }

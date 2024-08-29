@@ -54,6 +54,9 @@ const resources = {
       GraphiQLClient: 'GraphiQL Client',
       RESTClient: 'REST Client',
       Response: 'Response',
+      NoResponse: 'Click Send to get a response',
+      status: 'status',
+      Send: 'Send',
     },
   },
   ru: {
@@ -111,6 +114,9 @@ const resources = {
       GraphiQLClient: 'GraphiQL Клиент',
       RESTClient: 'REST Клиент',
       Response: 'Ответ',
+      NoResponse: 'Нажмите Отправить, чтобы получить ответ',
+      status: 'состояние',
+      Send: 'Отправить',
     },
   },
 };

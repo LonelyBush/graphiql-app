@@ -60,14 +60,15 @@ function RESTFullClient() {
             <option value="DELETE">DELETE</option>
           </select>
           <input
+            className={styles.inputUrl}
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-          <Button btnType="button" onClick={handleRequest}>
-            Send
-          </Button>
         </div>
+        <Button btnType="button" onClick={handleRequest}>
+          {t('Send')}
+        </Button>
         <div>
           <textarea
             id="headers"
@@ -82,26 +83,40 @@ function RESTFullClient() {
             onChange={(e) => setBody(e.target.value)}
           />
         </div>
-        {error && (
-          <div>
-            <h3>Error:</h3>
-            <pre>{error}</pre>
-          </div>
-        )}
       </div>
 
       <details className={styles.responseBlock}>
-        <summary className={styles.responseSummary}>{t('Response')}</summary>
-        {responseStatus !== null && (
-          <div>
-            <h3>Status Code: {responseStatus}</h3>
-            {response && (
-              <pre className={styles.response}>
-                <code>{response}</code>
-              </pre>
-            )}
-          </div>
-        )}
+        <summary className={styles.responseSummary}>
+          <span>{t('Response')} </span>
+          {responseStatus !== null && (
+            <span
+              className={`${responseStatus < 300 ? styles.responseStatusOk : styles.responseStatusError}`}
+            >
+              {t('status')}: {responseStatus}
+            </span>
+          )}
+        </summary>
+        <div className={styles.response}>
+          {responseStatus === null && !error && (
+            <h2 className={styles.noResponse}>{t('NoResponse')}</h2>
+          )}
+
+          {responseStatus !== null && (
+            <div>
+              {response && (
+                <pre>
+                  <code>{response}</code>
+                </pre>
+              )}
+              {error && (
+                <div>
+                  <h3>Error:</h3>
+                  <pre>{error}</pre>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </details>
     </div>
   );
