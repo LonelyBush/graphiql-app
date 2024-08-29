@@ -12,6 +12,7 @@ import Button from '../ui/button/button';
 import { logInWithEmailAndPassword } from '../../firebase-auth/firebase';
 import Loading from '../ui/loading/loading';
 import useAuth from '../../hooks/useAuth-hook';
+import authError from '../../utils/authError/authError';
 
 function LoginForm() {
   const { t } = useTranslation();
@@ -41,7 +42,7 @@ function LoginForm() {
     toast.promise(promise, {
       pending: {
         render() {
-          return 'Loading...';
+          return `${t('loading')}`;
         },
       },
       success: {
@@ -51,7 +52,7 @@ function LoginForm() {
       },
       error: {
         render({ data }) {
-          return `${data instanceof Error ? data.message : ''}`;
+          return `${data instanceof Error ? t(authError(data)) : ''}`;
         },
       },
     });

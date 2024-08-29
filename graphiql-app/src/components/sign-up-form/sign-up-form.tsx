@@ -12,6 +12,7 @@ import Button from '../ui/button/button';
 import { registerWithEmailAndPassword } from '../../firebase-auth/firebase';
 import Loading from '../ui/loading/loading';
 import useAuth from '../../hooks/useAuth-hook';
+import authError from '../../utils/authError/authError';
 
 function SignUpForm() {
   const { t } = useTranslation();
@@ -56,7 +57,7 @@ function SignUpForm() {
       },
       error: {
         render({ data }) {
-          return `${data instanceof Error ? data.message : ''}`;
+          return `${data instanceof Error ? t(authError(data)) : ''}`;
         },
       },
     });
