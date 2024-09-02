@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Editor } from '@monaco-editor/react';
 import styles from './response.module.scss';
 
 interface ResponseProps {
@@ -32,16 +33,27 @@ function Response({ responseStatus, response, error }: ResponseProps) {
             {response && (
               <div>
                 {' '}
-                <h4>Body:</h4>
-                <pre>
-                  <code className={styles.responseCode}>{response}</code>
-                </pre>
+                <Editor
+                  theme="vs-dark"
+                  loading="Loading..."
+                  height="30vh"
+                  defaultLanguage="json"
+                  defaultValue={response}
+                  options={{ readOnly: true }}
+                />
               </div>
             )}
             {error && (
               <div>
                 <h3>Error:</h3>
-                <pre className={styles.responseCode}>{error}</pre>
+                <Editor
+                  theme="vs-dark"
+                  loading="Loading..."
+                  height="30vh"
+                  defaultLanguage="json"
+                  defaultValue={error}
+                  options={{ readOnly: true }}
+                />
               </div>
             )}
           </div>

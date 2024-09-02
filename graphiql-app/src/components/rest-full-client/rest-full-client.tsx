@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '../ui/button/button';
 import Response from '../response/response';
 import styles from './rest-full-client.module.scss';
+import BodyHeadersTabs from '../rest-body-headers/rest-body-headers';
 
 function RESTFullClient() {
   const [method, setMethod] = useState('GET');
@@ -44,46 +45,34 @@ function RESTFullClient() {
       setError('Network error');
     }
   };
-
   return (
     <div className={styles.container}>
       <div className={styles.RestBlock}>
         <h2>{t('RESTClient')}</h2>
-        <div className={styles.methodBlock}>
-          <select
-            className={styles.customSelect}
-            value={method}
-            onChange={(e) => setMethod(e.target.value)}
-          >
-            <option value="GET">GET</option>
-            <option value="POST">POST</option>
-            <option value="PUT">PUT</option>
-            <option value="DELETE">DELETE</option>
-          </select>
-          <input
-            className={styles.inputUrl}
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-          />
+        <div className={styles.methodSection}>
+          <div className={styles.methodBlock}>
+            <select
+              className={styles.customSelect}
+              value={method}
+              onChange={(e) => setMethod(e.target.value)}
+            >
+              <option value="GET">GET</option>
+              <option value="POST">POST</option>
+              <option value="PUT">PUT</option>
+              <option value="DELETE">DELETE</option>
+            </select>
+            <input
+              className={styles.inputUrl}
+              type="text"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+            />
+          </div>
+          <Button btnType="button" onClick={handleRequest}>
+            {t('Send')}
+          </Button>
         </div>
-        <Button btnType="button" onClick={handleRequest}>
-          {t('Send')}
-        </Button>
-        <div>
-          <textarea
-            id="headers"
-            value={headers}
-            onChange={(e) => setHeaders(e.target.value)}
-          />
-        </div>
-        <div>
-          <textarea
-            id="body"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
-        </div>
+        <BodyHeadersTabs setHeaders={setHeaders} setBody={setBody} />
       </div>
       <Response
         responseStatus={responseStatus}
