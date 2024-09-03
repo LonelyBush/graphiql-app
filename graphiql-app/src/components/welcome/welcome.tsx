@@ -23,7 +23,7 @@ function WelcomeComponent() {
     <>
       <div className={styles.contentInner}>
         <h1 className={styles.title}>
-          {user ? `${t('Welcome')}!` : `${t('WelcomeBack')}, ${userName}!`}
+          {!user ? `${t('Welcome')}!` : `${t('WelcomeBack')}, ${userName}!`}
         </h1>
         <p className={styles.description}>{t('ProjectDescription')}</p>
         <div className={styles.buttonBlock}>
