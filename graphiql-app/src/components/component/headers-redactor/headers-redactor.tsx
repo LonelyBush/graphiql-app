@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
-import { GoTrash } from 'react-icons/go';
 import { useTranslation } from 'react-i18next';
+import { GoTrash } from 'react-icons/go';
 import Button from '../../ui/button/button';
 import styles from './headers-redactor-style.module.scss';
 
@@ -54,7 +54,7 @@ function HeadersRedactor({
   return (
     <div className={styles.headersWrapper}>
       <Button btnType="button" onClick={handleClick}>
-        {t('Add-Header')}
+        {t('AddHeader')}
       </Button>
       {headers.length > 0 && (
         <div className={styles.tableHeaders}>

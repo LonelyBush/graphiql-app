@@ -6,8 +6,6 @@ import styles from './header.module.scss';
 import { auth, logout } from '../../../utils/firebase-auth/firebase';
 
 function Header() {
-  // const user = false;
-
   const [isSticky, setIsSticky] = useState(false);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const [user] = useAuthState(auth);

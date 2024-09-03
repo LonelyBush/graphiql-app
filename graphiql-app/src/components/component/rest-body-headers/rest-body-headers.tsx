@@ -1,4 +1,5 @@
 import { SetStateAction } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Editor, OnChange } from '@monaco-editor/react';
 import { TabItem, Tabs } from '../../ui/tabs/tabs';
 import HeadersRedactor from '../headers-redactor/headers-redactor';
@@ -13,10 +14,10 @@ export default function BodyHeadersTabs({
   const handleBodyEditorChange: OnChange = (editor) => {
     if (editor) setBody(editor);
   };
-
+  const { t } = useTranslation();
   return (
     <Tabs defaultSelect={0}>
-      <TabItem label="Body" index={0}>
+      <TabItem label={t('Body')} index={0}>
         <Editor
           theme="vs-dark"
           loading="Loading..."
@@ -25,7 +26,7 @@ export default function BodyHeadersTabs({
           onChange={handleBodyEditorChange}
         />
       </TabItem>
-      <TabItem label="Headers" index={1}>
+      <TabItem label={t('Headers')} index={1}>
         <HeadersRedactor outerSetHeader={setHeaders} />
       </TabItem>
     </Tabs>

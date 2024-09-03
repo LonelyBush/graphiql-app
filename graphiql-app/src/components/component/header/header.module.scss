@@ -1,4 +1,5 @@
-@import '../../styles/colors.scss';
+@import '../../../styles/colors.scss';
+
 .header {
   width: 100%;
   height: 10vh;
@@ -40,7 +41,7 @@
 
 .logo {
   @include icon(6rem, 5rem, $c-blue-500);
-  mask-image: url('../../assets/logo/logo-react.png');
+  mask-image: url('../../../assets/logo/logo-react.png');
   &:hover {
     transform: scale(1.1);
   }
@@ -48,12 +49,12 @@
 
 .logoActive {
   @include icon(6rem, 5rem, $c-white);
-  mask-image: url('../../assets/logo/logo-react.png');
+  mask-image: url('../../../assets/logo/logo-react.png');
 }
 
 .iconSignIn {
   @include icon(3rem, 3rem, $c-blue-500);
-  mask-image: url('../../assets/svg-icons/login.svg');
+  mask-image: url('../../../assets/svg-icons/login.svg');
   &:hover {
     transform: scale(1.1);
   }
@@ -61,12 +62,12 @@
 
 .iconSignInActive {
   @include icon(3rem, 3rem, $c-white);
-  mask-image: url('../../assets/svg-icons/login.svg');
+  mask-image: url('../../../assets/svg-icons/login.svg');
 }
 
 .iconSignUp {
   @include icon(3rem, 3rem, $c-blue-500);
-  mask-image: url('../../assets/svg-icons/signup.svg');
+  mask-image: url('../../../assets/svg-icons/signup.svg');
   &:hover {
     transform: scale(1.1);
   }
@@ -74,12 +75,12 @@
 
 .iconSignUpActive {
   @include icon(3rem, 3rem, $c-white);
-  mask-image: url('../../assets/svg-icons/signup.svg');
+  mask-image: url('../../../assets/svg-icons/signup.svg');
 }
 
 .iconLogOut {
   @include icon(3rem, 3rem, $c-blue-500);
-  mask-image: url('../../assets/svg-icons/logout.svg');
+  mask-image: url('../../../assets/svg-icons/logout.svg');
   &:hover {
     transform: scale(1.1);
   }
