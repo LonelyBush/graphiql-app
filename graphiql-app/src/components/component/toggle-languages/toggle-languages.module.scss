@@ -1,0 +1,37 @@
+@import '../../../styles/colors.scss';
+
+.toggleControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language {
+  font-size: 2rem;
+}
+
+.toggle {
+  width: 40px;
+  height: 18px;
+  display: block;
+  position: relative;
+  border-radius: 10px;
+  background-color: $c-white;
+  cursor: pointer;
+}
+
+.indicator {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 0;
+  left: 1px;
+  border-radius: 10px;
+  background-color: $c-blue-500;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+
+.indicatorActive {
+  left: 20px;
+}

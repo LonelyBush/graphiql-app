@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { useState } from 'react';
 import style from './form-control.module.scss';
-import { FormData } from '../../../validation/registration-validation';
+import { FormData } from '../../../utils/validation/registration-validation';
 
 function FormControl({
   type,

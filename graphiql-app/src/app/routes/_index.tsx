@@ -1,4 +1,4 @@
-import WelcomeComponent from '../../components/welcome/welcome';
+import WelcomeComponent from '../../components/base/welcome/welcome';
 import styles from '../../styles/page-styles/welcome-page.module.scss';
 
 function WelcomePage() {

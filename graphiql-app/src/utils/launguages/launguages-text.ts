@@ -64,6 +64,11 @@ const resources = {
       temporaryBlock:
         'Access to this account has been temporarily disabled due to many failed login attempts. Try again later.',
       unexpectedError: 'An unexpected error occurred!',
+      AddHeader: 'Add Header',
+      Key: 'Key',
+      Value: 'Value',
+      Body: ' Body',
+      Headers: 'Headers',
     },
   },
   ru: {
@@ -132,6 +137,11 @@ const resources = {
       temporaryBlock:
         'Доступ к этой учетной записи временно отключен из-за множества неудачных попыток входа. Попробуйте еще раз позже.',
       unexpectedError: 'Произошла непредвиденная ошибка!',
+      AddHeader: 'Добавить заголовок',
+      Key: 'Ключ',
+      Value: 'Значение',
+      Body: 'Тело',
+      Headers: 'Заголовки',
     },
   },
 };
