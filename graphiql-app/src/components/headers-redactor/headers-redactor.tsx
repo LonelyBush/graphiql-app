@@ -48,17 +48,18 @@ function HeadersRedactor({
   };
   useEffect(() => {
     outerSetHeader(JSON.stringify(getHeadersJSON(headers)));
-    console.log(JSON.stringify(getHeadersJSON(headers)));
   }, [headers, outerSetHeader]);
   return (
     <div className={styles.headersWrapper}>
       <Button btnType="button" onClick={handleClick}>
         Add header
       </Button>
-      <div className={styles.tableHeaders}>
-        <p>Key</p>
-        <p>Value</p>
-      </div>
+      {headers.length > 0 && (
+        <div className={styles.tableHeaders}>
+          <p>Key</p>
+          <p>Value</p>
+        </div>
+      )}
       <div className={styles.headersList}>
         {headers.map((header, index) => {
           return (
