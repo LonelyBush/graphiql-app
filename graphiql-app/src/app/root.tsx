@@ -4,6 +4,7 @@ import i18n from '../utils/launguages/i18n';
 import Layout from '../components/layout/layout';
 import Footer from '../components/footer/footer';
 import StoreProvider from '../lib/StoreProvider';
+import ErrorBoundaryComponent from '../components/error-boundary/error-boundary';
 import '../index.scss';
 import { AuthProvider } from '../lib/context/auth-context';
 import Toast from '../components/ui/toast/toast';
@@ -17,6 +18,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <ErrorBoundaryComponent>
         <AuthProvider>
           <StoreProvider>
             <I18nextProvider i18n={i18n}>
@@ -27,6 +29,7 @@ export default function App() {
             <Scripts />
           </StoreProvider>
         </AuthProvider>
+</ErrorBoundaryComponent>
       </body>
     </html>
   );
