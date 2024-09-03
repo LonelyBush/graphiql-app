@@ -2,10 +2,17 @@ import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from '@remix-run/react';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import styles from './sign-up-form-style.module.scss';
 import getRegistrationSchema from '../../validation/registration-validation';
 import FormControl from '../ui/form-input/form-control';
 import Button from '../ui/button/button';
+import { registerWithEmailAndPassword } from '../../firebase-auth/firebase';
+import Loading from '../ui/loading/loading';
+import useAuth from '../../hooks/useAuth-hook';
+import authError from '../../utils/authError/authError';
 
 function SignUpForm() {
   const { t } = useTranslation();
@@ -19,12 +26,46 @@ function SignUpForm() {
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
-
-  const onSubmit: SubmitHandler<RegistrationData> = async (data) => {
-    console.log(data);
+  const { user, loading } = useAuth();
+  const [loader, setLoader] = useState<boolean>(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      setLoader(true);
+      setTimeout(() => {
+        navigate('/');
+        setLoader(false);
+      }, 500);
+    }
+  }, [user, loading, navigate]);
+  const onSubmit: SubmitHandler<RegistrationData> = async (FormData) => {
+    const promise = registerWithEmailAndPassword(
+      FormData.nickname,
+      FormData.email,
+      FormData.password,
+    );
+    toast.promise(promise, {
+      pending: {
+        render() {
+          return 'Loading...';
+        },
+      },
+      success: {
+        render() {
+          return `${t('accessGranted')}`;
+        },
+      },
+      error: {
+        render({ data }) {
+          return `${data instanceof Error ? t(authError(data)) : ''}`;
+        },
+      },
+    });
   };
 
-  return (
+  return loading || loader ? (
+    <Loading />
+  ) : (
     <div className={styles.signInFormSection}>
       <h2>{t('Registration')}</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>
@@ -32,7 +73,7 @@ function SignUpForm() {
           type="text"
           label={t('Nickname')}
           name="nickname"
-          placeholder="John_Doe"
+          placeholder="JohnDoe"
           register={register}
           error={!errors.nickname?.message ? '' : errors.nickname.message}
         />

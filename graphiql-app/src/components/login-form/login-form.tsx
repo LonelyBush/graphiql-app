@@ -2,10 +2,17 @@ import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import { useNavigate } from '@remix-run/react';
+import { toast } from 'react-toastify';
 import styles from './login-form-style.module.scss';
 import getLoginSchema from '../../validation/login-validation';
 import FormControl from '../ui/form-input/form-control';
 import Button from '../ui/button/button';
+import { logInWithEmailAndPassword } from '../../firebase-auth/firebase';
+import Loading from '../ui/loading/loading';
+import useAuth from '../../hooks/useAuth-hook';
+import authError from '../../utils/authError/authError';
 
 function LoginForm() {
   const { t } = useTranslation();
@@ -19,11 +26,40 @@ function LoginForm() {
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate, loading]);
 
-  const onSubmit: SubmitHandler<LoginData> = async (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<LoginData> = async (FormData) => {
+    const promise = logInWithEmailAndPassword(
+      FormData.email,
+      FormData.password,
+    );
+    toast.promise(promise, {
+      pending: {
+        render() {
+          return `${t('loading')}`;
+        },
+      },
+      success: {
+        render() {
+          return `${t('accessGranted')}`;
+        },
+      },
+      error: {
+        render({ data }) {
+          return `${data instanceof Error ? t(authError(data)) : ''}`;
+        },
+      },
+    });
   };
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <div className={styles.signInFormSection}>
       <h2>{t('Login')}</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>

@@ -6,6 +6,8 @@ import Footer from '../components/footer/footer';
 import StoreProvider from '../lib/StoreProvider';
 import ErrorBoundaryComponent from '../components/error-boundary/error-boundary';
 import '../index.scss';
+import { AuthProvider } from '../lib/context/auth-context';
+import Toast from '../components/ui/toast/toast';
 
 export default function App() {
   return (
@@ -17,14 +19,17 @@ export default function App() {
       </head>
       <body>
         <ErrorBoundaryComponent>
+        <AuthProvider>
           <StoreProvider>
             <I18nextProvider i18n={i18n}>
               <Layout />
+              <Toast />
               <Footer />
             </I18nextProvider>
             <Scripts />
           </StoreProvider>
-        </ErrorBoundaryComponent>
+        </AuthProvider>
+</ErrorBoundaryComponent>
       </body>
     </html>
   );

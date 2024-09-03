@@ -57,6 +57,13 @@ const resources = {
       NoResponse: 'Enter the URL and click Send to get a response',
       status: 'status',
       Send: 'Send',
+      accessGranted: 'Access granted!',
+      loading: 'Loading...',
+      wrongCredentials: 'Invalid email or password combination!',
+      emailAlreadyUse: 'Email you are using is already in use!',
+      temporaryBlock:
+        'Access to this account has been temporarily disabled due to many failed login attempts. Try again later.',
+      unexpectedError: 'An unexpected error occurred!',
     },
   },
   ru: {
@@ -117,6 +124,14 @@ const resources = {
       NoResponse: 'Введите URL и нажмите «Отправить», чтобы получить ответ.',
       status: 'состояние',
       Send: 'Отправить',
+      accessGranted: 'Доступ получен!',
+      loading: 'Загрузка...',
+      wrongCredentials: 'Неверная электронная почта или пароль!',
+      emailAlreadyUse:
+        'Указанный вами адрес электронной почты уже используется!',
+      temporaryBlock:
+        'Доступ к этой учетной записи временно отключен из-за множества неудачных попыток входа. Попробуйте еще раз позже.',
+      unexpectedError: 'Произошла непредвиденная ошибка!',
     },
   },
 };
