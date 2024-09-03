@@ -1,5 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { Children, ReactElement, ReactNode, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './tabs-style.module.scss';
 
 interface TabItemInterface {
@@ -19,6 +20,7 @@ export function Tabs({
   defaultSelect: number;
   children: ReactElement<TabItemInterface>[];
 }) {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState(defaultSelect);
 
   const changeTab = (newIndex: number) => {
@@ -39,7 +41,7 @@ export function Tabs({
                   : styles.tabNav
               }
             >
-              {label}
+              {t(label)}
             </button>
           );
         })}

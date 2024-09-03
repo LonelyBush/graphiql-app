@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
 import { GoTrash } from 'react-icons/go';
+import { useTranslation } from 'react-i18next';
 import Button from '../ui/button/button';
 import styles from './headers-redactor-style.module.scss';
 
@@ -14,6 +15,7 @@ function HeadersRedactor({
 }: {
   outerSetHeader: React.Dispatch<SetStateAction<string>>;
 }) {
+  const { t } = useTranslation();
   const [headers, setHeaders] = useState<Headers[]>([]);
 
   const handleClick = () => {
@@ -52,12 +54,12 @@ function HeadersRedactor({
   return (
     <div className={styles.headersWrapper}>
       <Button btnType="button" onClick={handleClick}>
-        Add header
+        {t('Add-Header')}
       </Button>
       {headers.length > 0 && (
         <div className={styles.tableHeaders}>
-          <p>Key</p>
-          <p>Value</p>
+          <p>{t('Key')}</p>
+          <p>{t('Value')}</p>
         </div>
       )}
       <div className={styles.headersList}>
