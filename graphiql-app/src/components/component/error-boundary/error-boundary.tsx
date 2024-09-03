@@ -1,6 +1,6 @@
 import React from 'react';
 import { withTranslation, WithTranslation } from 'react-i18next';
-import Button from '../ui/button/button';
+import Button from '../../ui/button/button';
 import styles from './error-boundary.module.scss';
 
 interface ErrorBoundaryProps extends WithTranslation {

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from '../ui/button/button';
+import Button from '../../ui/button/button';
 import styles from './welcome-component.module.scss';
-import Loading from '../ui/loading/loading';
-import AboutComponent from '../about/about-component';
-import useAuth from '../../hooks/useAuth-hook';
+import Loading from '../../ui/loading/loading';
+import AboutComponent from '../../component/about/about-component';
+import useAuth from '../../../utils/hooks/useAuth-hook';
 
 function WelcomeComponent() {
   const { t } = useTranslation();

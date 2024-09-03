@@ -1,11 +1,11 @@
 @import '../../../styles/colors.scss';
 
-.toastBody{
-    font-family: "salina trial";
-     font-size: 1.5rem;
-     color: var(--c-black);
+.toastBody {
+  font-family: 'salina trial';
+  font-size: 1.5rem;
+  color: var(--c-black);
 }
 
 .toastWrapper {
-    box-shadow: $c-box-shadow;
+  box-shadow: $c-box-shadow;
 }

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from '../ui/button/button';
-import Response from '../response/response';
+import Button from '../../ui/button/button';
+import Response from '../../component/response/response';
 import styles from './rest-full-client.module.scss';
-import BodyHeadersTabs from '../rest-body-headers/rest-body-headers';
+import BodyHeadersTabs from '../../component/rest-body-headers/rest-body-headers';
 
 function RESTFullClient() {
   const [method, setMethod] = useState('GET');

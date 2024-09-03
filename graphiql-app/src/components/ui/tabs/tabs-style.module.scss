@@ -1,54 +1,51 @@
 @import '../../../styles/colors.scss';
 
-.tabsWrapper{
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    
+.tabsWrapper {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-.tabsNavigationSection{
-    display: flex;
-    width: 100%;
-    border-bottom: 0.1rem solid $c-pink-300;
+.tabsNavigationSection {
+  display: flex;
+  width: 100%;
+  border-bottom: 0.1rem solid $c-pink-300;
 }
 
-.tabNav{
-    padding: 1rem;
-    color: $c-blue-100;
-    cursor: pointer;
-    background-color: transparent;
-    font-size: 2.5rem;
-    transition: all 0.4s linear;
-    border-bottom: 0.2rem solid transparent;
+.tabNav {
+  padding: 1rem;
+  color: $c-blue-100;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 2.5rem;
+  transition: all 0.4s linear;
+  border-bottom: 0.2rem solid transparent;
 }
 
-.tabNav:hover{
-    color: $c-white;
-    border-bottom: 0.2rem solid $c-pink-300;
+.tabNav:hover {
+  color: $c-white;
+  border-bottom: 0.2rem solid $c-pink-300;
 }
 
-.tabNav.active{
-    color: $c-white;
-    border-bottom: 0.2rem solid $c-pink-300;
+.tabNav.active {
+  color: $c-white;
+  border-bottom: 0.2rem solid $c-pink-300;
 }
 
-.tabContentWrapper{
-    display: flex;
-    padding: 0.5rem;
-    width: 100%;;
+.tabContentWrapper {
+  display: flex;
+  padding: 0.5rem;
+  width: 100%;
 }
 
-.tabContent{
-    width: 100%;
-    display: none;
-
+.tabContent {
+  width: 100%;
+  display: none;
 }
 
-.tabContent.active{
-    display: flex;
-    width: 100%;
+.tabContent.active {
+  display: flex;
+  width: 100%;
 }
-

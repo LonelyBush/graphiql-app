@@ -6,13 +6,13 @@ import { useNavigate } from '@remix-run/react';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import styles from './sign-up-form-style.module.scss';
-import getRegistrationSchema from '../../validation/registration-validation';
-import FormControl from '../ui/form-input/form-control';
-import Button from '../ui/button/button';
-import { registerWithEmailAndPassword } from '../../firebase-auth/firebase';
-import Loading from '../ui/loading/loading';
-import useAuth from '../../hooks/useAuth-hook';
-import authError from '../../utils/authError/authError';
+import getRegistrationSchema from '../../../utils/validation/registration-validation';
+import FormControl from '../../ui/form-input/form-control';
+import Button from '../../ui/button/button';
+import { registerWithEmailAndPassword } from '../../../utils/firebase-auth/firebase';
+import Loading from '../../ui/loading/loading';
+import useAuth from '../../../utils/hooks/useAuth-hook';
+import authError from '../../../utils/authError/authError';
 
 function SignUpForm() {
   const { t } = useTranslation();

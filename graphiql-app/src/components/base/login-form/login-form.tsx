@@ -6,13 +6,13 @@ import { useEffect } from 'react';
 import { useNavigate } from '@remix-run/react';
 import { toast } from 'react-toastify';
 import styles from './login-form-style.module.scss';
-import getLoginSchema from '../../validation/login-validation';
-import FormControl from '../ui/form-input/form-control';
-import Button from '../ui/button/button';
-import { logInWithEmailAndPassword } from '../../firebase-auth/firebase';
-import Loading from '../ui/loading/loading';
-import useAuth from '../../hooks/useAuth-hook';
-import authError from '../../utils/authError/authError';
+import getLoginSchema from '../../../utils/validation/login-validation';
+import FormControl from '../../ui/form-input/form-control';
+import Button from '../../ui/button/button';
+import { logInWithEmailAndPassword } from '../../../utils/firebase-auth/firebase';
+import Loading from '../../ui/loading/loading';
+import useAuth from '../../../utils/hooks/useAuth-hook';
+import authError from '../../../utils/authError/authError';
 
 function LoginForm() {
   const { t } = useTranslation();

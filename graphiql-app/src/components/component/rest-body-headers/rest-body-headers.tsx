@@ -1,6 +1,6 @@
 import { SetStateAction } from 'react';
 import { Editor, OnChange } from '@monaco-editor/react';
-import { TabItem, Tabs } from '../ui/tabs/tabs';
+import { TabItem, Tabs } from '../../ui/tabs/tabs';
 import HeadersRedactor from '../headers-redactor/headers-redactor';
 
 export default function BodyHeadersTabs({

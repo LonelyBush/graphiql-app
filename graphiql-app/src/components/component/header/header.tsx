@@ -3,7 +3,7 @@ import { NavLink } from '@remix-run/react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import ToggleLanguages from '../toggle-languages/toggle-languages';
 import styles from './header.module.scss';
-import { auth, logout } from '../../firebase-auth/firebase';
+import { auth, logout } from '../../../utils/firebase-auth/firebase';
 
 function Header() {
   // const user = false;

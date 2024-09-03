@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import AboutUsCard from './about-us-card/about-us-card';
+import AboutUsCard from '../about-us-card/about-us-card';
 import styles from './about-component.module.scss';
 
 function AboutComponent() {

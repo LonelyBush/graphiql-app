@@ -2,7 +2,7 @@
 import { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
 import { GoTrash } from 'react-icons/go';
 import { useTranslation } from 'react-i18next';
-import Button from '../ui/button/button';
+import Button from '../../ui/button/button';
 import styles from './headers-redactor-style.module.scss';
 
 type Headers = {

@@ -1,0 +1,49 @@
+@import '../../styles/colors.scss';
+
+.goTrashIcon {
+  display: block;
+  cursor: pointer;
+}
+
+.inputSection {
+  display: flex;
+  gap: 1rem;
+}
+
+.inputStyle {
+  width: 100%;
+  display: flex;
+  padding: 0.3rem;
+  color: $c-blue-500;
+  border: 0.1rem solid $c-gray;
+  box-shadow: $c-box-shadow;
+  border-radius: 0.4rem;
+  background-color: $c-pink-100;
+  &:focus {
+    border: 0.2rem solid $c-blue-500;
+  }
+}
+
+.headersList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.headersWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.headersWrapper > button {
+  display: flex;
+  align-self: flex-start;
+}
+
+.tableHeaders {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2.5rem;
+  width: 94%;
+}

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { setLanguage } from '../../lib/slices/language-slice';
-import { RootState } from '../../lib/store';
+import { setLanguage } from '../../../lib/slices/language-slice';
+import { RootState } from '../../../lib/store';
 import styles from './toggle-languages.module.scss';
 
 function ToggleLanguages() {
