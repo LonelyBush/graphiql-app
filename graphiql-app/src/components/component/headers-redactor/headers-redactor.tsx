@@ -15,12 +15,12 @@ function HeadersRedactor({
 }: {
   outerSetHeader: React.Dispatch<SetStateAction<string>>;
 }) {
+  const { t } = useTranslation();
   const [headers, setHeaders] = useState<Headers[]>([]);
 
   const handleClick = () => {
     setHeaders([...headers, { 'header-key': '', 'header-value': '' }]);
   };
-  const { t } = useTranslation();
   const getHeadersJSON = (currentHeaders: Headers[]) => {
     const headersJSON = currentHeaders.reduce(
       (acc: { [key: string]: string }, header) => {
