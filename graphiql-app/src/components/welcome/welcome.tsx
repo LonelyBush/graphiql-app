@@ -23,16 +23,23 @@ function WelcomeComponent() {
     <>
       <div className={styles.contentInner}>
         <h1 className={styles.title}>
-          {userName.length === 0
-            ? `${t('Welcome')}!`
-            : `${t('WelcomeBack')}, ${userName}!`}
+          {user ? `${t('Welcome')}!` : `${t('WelcomeBack')}, ${userName}!`}
         </h1>
         <p className={styles.description}>{t('ProjectDescription')}</p>
         <div className={styles.buttonBlock}>
-          {userName.length > 0 ? (
-            <Button btnType="button" to="/main">
-              {t('MainPage')}
-            </Button>
+          {user ? (
+            <>
+              {' '}
+              <Button btnType="button" to="/rest-full">
+                {t('RESTClient')}
+              </Button>
+              <Button btnType="button" to="/graphiql">
+                {t('GraphiQLClient')}
+              </Button>
+              <Button btnType="button" to="/history">
+                {t('History')}
+              </Button>
+            </>
           ) : (
             <>
               {' '}

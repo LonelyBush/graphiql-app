@@ -19,17 +19,17 @@ export default function App() {
       </head>
       <body>
         <ErrorBoundaryComponent>
-        <AuthProvider>
-          <StoreProvider>
-            <I18nextProvider i18n={i18n}>
-              <Layout />
-              <Toast />
-              <Footer />
-            </I18nextProvider>
-            <Scripts />
-          </StoreProvider>
-        </AuthProvider>
-</ErrorBoundaryComponent>
+          <AuthProvider>
+            <StoreProvider>
+              <I18nextProvider i18n={i18n}>
+                <Layout />
+                <Toast />
+                <Footer />
+              </I18nextProvider>
+              <Scripts />
+            </StoreProvider>
+          </AuthProvider>
+        </ErrorBoundaryComponent>
       </body>
     </html>
   );
