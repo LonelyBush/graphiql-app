@@ -14,17 +14,14 @@ export function TabItem(props: TabItemInterface): ReactElement {
 
 export function Tabs({
   defaultSelect = 0,
-  onSelect,
   children,
 }: {
   defaultSelect: number;
-  onSelect?: (num: number) => void;
   children: ReactElement<TabItemInterface>[];
 }) {
   const [selected, setSelected] = useState(defaultSelect);
 
   const changeTab = (newIndex: number) => {
-    if (typeof onSelect === 'function') onSelect(newIndex);
     return setSelected(newIndex);
   };
 

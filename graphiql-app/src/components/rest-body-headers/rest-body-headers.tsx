@@ -1,6 +1,7 @@
 import { SetStateAction } from 'react';
 import { Editor, OnChange } from '@monaco-editor/react';
 import { TabItem, Tabs } from '../ui/tabs/tabs';
+import HeadersRedactor from '../headers-redactor/headers-redactor';
 
 export default function BodyHeadersTabs({
   setBody,
@@ -11,10 +12,6 @@ export default function BodyHeadersTabs({
 }) {
   const handleBodyEditorChange: OnChange = (editor) => {
     if (editor) setBody(editor);
-  };
-
-  const handleHeadersEditorChange: OnChange = (editor) => {
-    if (editor) setHeaders(editor);
   };
 
   return (
@@ -29,13 +26,7 @@ export default function BodyHeadersTabs({
         />
       </TabItem>
       <TabItem label="Headers" index={1}>
-        <Editor
-          theme="vs-dark"
-          loading="Loading..."
-          height="30vh"
-          defaultLanguage="json"
-          onChange={handleHeadersEditorChange}
-        />
+        <HeadersRedactor outerSetHeader={setHeaders} />
       </TabItem>
     </Tabs>
   );

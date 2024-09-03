@@ -1,8 +1,18 @@
 @import '../../styles/colors.scss';
 .response {
-  min-height: 10vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
+ justify-content: center;
+  gap: 1rem;
+}
+.response > h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.response > svg {
+  align-self: center;
 }
 
 .responseCode {
@@ -12,7 +22,7 @@
 }
 
 .responseBlock {
-  border-top: 0.1rem solid $c-pink-500;
+  border-top: 0.1rem solid #e9c2c5;
   padding: 0.5rem 1rem;
   width: 100%;
 }
@@ -38,7 +48,7 @@
   }
 
   &::before {
-    border: solid $c-pink-500;
+    border: solid #e9c2c5;
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 3px;

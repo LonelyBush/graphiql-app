@@ -12,8 +12,7 @@
 .tabsNavigationSection{
     display: flex;
     width: 100%;
-    border-bottom: 0.1rem solid $c-pink-100;
-
+    border-bottom: 0.1rem solid $c-pink-300;
 }
 
 .tabNav{
@@ -22,18 +21,18 @@
     cursor: pointer;
     background-color: transparent;
     font-size: 2.5rem;
+    transition: all 0.4s linear;
+    border-bottom: 0.2rem solid transparent;
 }
 
 .tabNav:hover{
-    font-weight: bold;
-    color: $c-blue-300;
-    border-bottom: 0.2rem solid $c-blue-300;
+    color: $c-white;
+    border-bottom: 0.2rem solid $c-pink-300;
 }
 
 .tabNav.active{
-    font-weight: bold;
-    color: $c-blue-300;
-    border-bottom: 0.2rem solid $c-blue-300;
+    color: $c-white;
+    border-bottom: 0.2rem solid $c-pink-300;
 }
 
 .tabContentWrapper{

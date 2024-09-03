@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Editor } from '@monaco-editor/react';
+import { AiOutlineApi } from 'react-icons/ai';
 import styles from './response.module.scss';
 
 interface ResponseProps {
@@ -25,7 +26,10 @@ function Response({ responseStatus, response, error }: ResponseProps) {
       </summary>
       <div className={styles.response}>
         {responseStatus === null && !error && (
-          <h2 className={styles.noResponse}>{t('NoResponse')}</h2>
+          <>
+            <AiOutlineApi color="#e9c2c5" size="8rem" />
+            <h2 className={styles.noResponse}>{t('NoResponse')}</h2>
+          </>
         )}
 
         {responseStatus !== null && (
@@ -36,7 +40,7 @@ function Response({ responseStatus, response, error }: ResponseProps) {
                 <Editor
                   theme="vs-dark"
                   loading="Loading..."
-                  height="30vh"
+                  height="50vh"
                   defaultLanguage="json"
                   defaultValue={response}
                   options={{ readOnly: true }}
@@ -49,7 +53,7 @@ function Response({ responseStatus, response, error }: ResponseProps) {
                 <Editor
                   theme="vs-dark"
                   loading="Loading..."
-                  height="30vh"
+                  height="50vh"
                   defaultLanguage="json"
                   defaultValue={error}
                   options={{ readOnly: true }}
