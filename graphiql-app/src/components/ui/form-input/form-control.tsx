@@ -2,7 +2,6 @@ import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useState } from 'react';
 import style from './form-control.module.scss';
-import { FormData } from '../../../utils/validation/registration-validation';
 
 function FormControl<T extends FieldValues>({
   type,

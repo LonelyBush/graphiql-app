@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from '@remix-run/react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import styles from './sign-up-form-style.module.scss';
 import getRegistrationSchema from '../../../utils/validation/registration-validation';
@@ -27,15 +27,10 @@ function SignUpForm() {
     resolver: yupResolver(schema),
   });
   const { user, loading } = useAuth();
-  const [loader, setLoader] = useState<boolean>(false);
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) {
-      setLoader(true);
-      setTimeout(() => {
-        navigate('/');
-        setLoader(false);
-      }, 500);
+    if (user?.displayName) {
+      navigate('/');
     }
   }, [user, loading, navigate]);
   const onSubmit: SubmitHandler<RegistrationData> = async (FormData) => {
@@ -52,6 +47,7 @@ function SignUpForm() {
       },
       success: {
         render() {
+          navigate('/');
           return `${t('accessGranted')}`;
         },
       },
@@ -63,7 +59,7 @@ function SignUpForm() {
     });
   };
 
-  return loading || loader ? (
+  return loading ? (
     <Loading />
   ) : (
     <div className={styles.signInFormSection}>

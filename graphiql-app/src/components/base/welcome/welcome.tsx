@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from '../../ui/button/button';
 import styles from './welcome-component.module.scss';
@@ -9,19 +8,8 @@ import useAuth from '../../../utils/hooks/useAuth-hook';
 function WelcomeComponent() {
   const { t } = useTranslation();
   const { user, loading } = useAuth();
-  const [userName, setUserName] = useState('');
-  const [isReady, setIsReady] = useState(false);
 
-  useEffect(() => {
-    if (user?.displayName) {
-      setUserName(user.displayName);
-    } else {
-      setUserName('');
-    }
-    setIsReady(true);
-  }, [loading, user]);
-
-  if (loading || !isReady) {
+  if (loading) {
     return <Loading />;
   }
 
@@ -29,7 +17,9 @@ function WelcomeComponent() {
     <>
       <div className={styles.contentInner}>
         <h1 className={styles.title}>
-          {user ? `${t('WelcomeBack')}, ${userName}!` : `${t('Welcome')}!`}
+          {user
+            ? `${t('WelcomeBack')}, ${user?.displayName}!`
+            : `${t('Welcome')}!`}
         </h1>
         <p className={styles.description}>{t('ProjectDescription')}</p>
         <div className={styles.buttonBlock}>

@@ -43,13 +43,15 @@ const registerWithEmailAndPassword = async (
 ) => {
   return new Promise((resolve, reject) => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
+      .then(async (result) => {
         const { user } = result;
         if (user && auth.currentUser) {
-          updateProfile(auth.currentUser, {
+          await updateProfile(user, {
             displayName: nickname,
           });
-          resolve(user);
+          await user.reload();
+          const updatedUser = auth.currentUser;
+          resolve(updatedUser);
         }
       })
       .catch((error) => reject(error));
