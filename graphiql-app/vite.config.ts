@@ -1,12 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-import { vitePlugin as remix } from '@remix-run/dev';
 import { defineConfig, loadEnv } from 'vite';
+import { vitePlugin as remix } from '@remix-run/dev';
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
+
   return {
     define: {
       'process.env.API_KEY': JSON.stringify(env.API_KEY),
@@ -20,11 +17,7 @@ export default defineConfig(({ mode }) => {
       'process.env.MEASUREMENT_ID': JSON.stringify(env.MEASUREMENT_ID),
       global: {},
     },
-    plugins: [
-      remix({
-        appDirectory: 'src/app',
-      }),
-    ],
+    plugins: mode === 'test' ? [] : [remix({ appDirectory: 'src/app' })],
     test: {
       globals: true,
       environment: 'jsdom',
