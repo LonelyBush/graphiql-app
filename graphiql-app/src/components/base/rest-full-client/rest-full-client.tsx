@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from '../../ui/button/button';
+import { useDispatch } from 'react-redux';
 import Response from '../../component/response/response';
-import styles from './rest-full-client.module.scss';
 import BodyHeadersTabs from '../../component/rest-body-headers/rest-body-headers';
+import { addRestLinks } from '../../../lib/slices/rest-history-slice';
+import Button from '../../ui/button/button';
+import styles from './rest-full-client.module.scss';
 
 function RESTFullClient() {
   const [method, setMethod] = useState('GET');
@@ -14,10 +16,11 @@ function RESTFullClient() {
   const [responseStatus, setResponseStatus] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const handleRequest = async () => {
     setResponse('');
     setError(null);
-
+    dispatch(addRestLinks(url));
     try {
       const options: RequestInit = {
         method,
@@ -26,7 +29,6 @@ function RESTFullClient() {
       };
 
       const res = await fetch(url, options);
-
       if (!res.ok) {
         setResponseStatus(res.status);
         const errorText = await res.text();

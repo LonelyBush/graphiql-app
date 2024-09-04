@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import languageSlice from './slices/language-slice';
+import restLinksSlice from './slices/rest-history-slice';
 
 export const makeStore = () =>
   configureStore({
     reducer: {
       language: languageSlice,
+      restLinks: restLinksSlice,
     },
   });
 
