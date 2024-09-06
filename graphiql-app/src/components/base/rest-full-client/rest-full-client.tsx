@@ -20,7 +20,8 @@ function RESTFullClient() {
   const handleRequest = async () => {
     setResponse('');
     setError(null);
-    dispatch(addRestLinks(url));
+    const requestTime = new Date().toISOString();
+    dispatch(addRestLinks([method, url, requestTime]));
     try {
       const options: RequestInit = {
         method,

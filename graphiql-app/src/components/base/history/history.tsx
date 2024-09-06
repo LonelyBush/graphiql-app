@@ -1,18 +1,56 @@
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../lib/store';
+import Button from '../../ui/button/button';
 import styles from './history.module.scss';
 
 function History() {
+  const { t } = useTranslation();
   const restHistory = useSelector(
     (state: RootState) => state.restLinks.restLinks,
   );
+
+  const graphiQLHistory = useSelector(
+    (state: RootState) => state.restLinks.restLinks,
+  );
+
+  const sortedRequests = [...restHistory, ...graphiQLHistory].sort((a, b) => {
+    const dateA = new Date(a[2]).getTime();
+    const dateB = new Date(b[2]).getTime();
+
+    return dateA - dateB;
+  });
+
   return (
     <div className={styles.historyBlock}>
-      <h2>History</h2>
-      {restHistory.map((url, index) => (
-        /* eslint-disable react/no-array-index-key */
-        <p key={`rest${url + index}`}>{url}</p>
-      ))}
+      {sortedRequests.length === 0 ? (
+        <>
+          <p>{t('NoHistory')} </p>
+          <div className={styles.buttonBlock}>
+            {' '}
+            <Button btnType="button" to="/rest-full">
+              {t('RESTClient')}
+            </Button>
+            <Button btnType="button" to="/graphiql">
+              {t('GraphiQLClient')}
+            </Button>
+          </div>
+        </>
+      ) : (
+        <>
+          {' '}
+          <h2>{t('HistoryRequests')}</h2>
+          {sortedRequests.map((result, index) => (
+            /* eslint-disable react/no-array-index-key */
+            <div className={styles.resultBlock}>
+              <p key={`rest${result[0] + index}`} className={styles.method}>
+                {result[0]}
+              </p>
+              <p key={`rest${result[1] + index}`}>{result[1]}</p>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 }
