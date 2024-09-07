@@ -17,6 +17,7 @@ function RESTFullClient() {
   const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
   const handleRequest = async () => {
     setResponse('');
     setError(null);

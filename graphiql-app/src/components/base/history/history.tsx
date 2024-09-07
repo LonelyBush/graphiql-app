@@ -1,11 +1,26 @@
+import { useEffect } from 'react';
+import { useNavigate } from '@remix-run/react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import useAuth from '../../../utils/hooks/useAuth-hook';
 import { RootState } from '../../../lib/store';
 import Button from '../../ui/button/button';
 import styles from './history.module.scss';
 
 function History() {
   const { t } = useTranslation();
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) {
+      navigate('/');
+    } else {
+      navigate('/history');
+    }
+  }, [user, loading, navigate]);
+
   const restHistory = useSelector(
     (state: RootState) => state.restLinks.restLinks,
   );

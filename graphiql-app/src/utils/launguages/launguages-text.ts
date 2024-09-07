@@ -69,7 +69,8 @@ const resources = {
       Value: 'Value',
       Body: ' Body',
       Headers: 'Headers',
-      NoHistory: 'You haven`t executed any requests.It`s empty here. Try:',
+      NoHistory:
+        'You haven`t executed any requests.It`s empty here.Try these options:',
       HistoryRequests: 'History Requests',
     },
   },
@@ -144,7 +145,8 @@ const resources = {
       Value: 'Значение',
       Body: 'Тело',
       Headers: 'Заголовки',
-      NoHistory: 'Вы не выполнили ни одного запроса. Здесь пусто. Попробовать:',
+      NoHistory:
+        'Вы еще не выполнили ни одного запроса, Здесь пусто. Попробуйте эти варианты:',
       HistoryRequests: 'История запросов',
     },
   },
