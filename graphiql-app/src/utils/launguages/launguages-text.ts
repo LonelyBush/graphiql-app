@@ -80,7 +80,7 @@ const resources = {
       WelcomeBack: 'Добро пожаловать обратно',
       En: 'Анг',
       Ru: 'Рус',
-      SignUp: 'Авторизоваться',
+      SignUp: 'Зарегистрироваться',
       SignIn: 'Войти',
       MainPage: 'Главная Страница',
       ProjectDescription:
