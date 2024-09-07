@@ -22,3 +22,8 @@
 .method {
   color: $c-pink-500;
 }
+
+.linksBlock {
+  display: flex;
+  flex-direction: column;
+}

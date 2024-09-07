@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface RestLinksState {
-  restLinks: string[][];
-}
+import { RequestItem, RestLinksState } from '../../types/interface';
+import { saveRequestToLocalStorage } from '../../utils/local-storage/request-ls';
 
 const initialState: RestLinksState = {
   restLinks: [],
+  //   restLinks:(typeof window !== 'undefined' && getRequestFromLocalStorage('restfull'))||[],
 };
 
 const restLinksSlice = createSlice({
   name: 'rest-links',
   initialState,
   reducers: {
-    addRestLinks: (state, action: PayloadAction<string[]>) => {
-      state.restLinks.push(action.payload);
+    addRestLinks: (state, action: PayloadAction<RequestItem[]>) => {
+      state.restLinks.push(...action.payload);
+      saveRequestToLocalStorage('restfull', state.restLinks);
     },
   },
 });
