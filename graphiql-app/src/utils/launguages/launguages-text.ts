@@ -69,6 +69,9 @@ const resources = {
       Value: 'Value',
       Body: ' Body',
       Headers: 'Headers',
+      NoHistory:
+        'You haven`t executed any requests.It`s empty here.Try these options:',
+      HistoryRequests: 'History Requests',
     },
   },
   ru: {
@@ -77,7 +80,7 @@ const resources = {
       WelcomeBack: 'Добро пожаловать обратно',
       En: 'Анг',
       Ru: 'Рус',
-      SignUp: 'Авторизоваться',
+      SignUp: 'Зарегистрироваться',
       SignIn: 'Войти',
       MainPage: 'Главная Страница',
       ProjectDescription:
@@ -142,6 +145,9 @@ const resources = {
       Value: 'Значение',
       Body: 'Тело',
       Headers: 'Заголовки',
+      NoHistory:
+        'Вы еще не выполнили ни одного запроса, Здесь пусто. Попробуйте эти варианты:',
+      HistoryRequests: 'История запросов',
     },
   },
 };

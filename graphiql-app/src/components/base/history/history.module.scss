@@ -1,0 +1,24 @@
+@import '../../../styles/colors.scss';
+.historyBlock {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: $c-blue-100;
+}
+
+.buttonBlock {
+  display: flex;
+  gap: 2rem;
+}
+
+.resultBlock {
+  display: flex;
+  gap: 1rem;
+}
+
+.method {
+  color: $c-pink-500;
+}
