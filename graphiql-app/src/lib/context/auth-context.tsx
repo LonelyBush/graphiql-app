@@ -4,7 +4,7 @@ import { useNavigate } from '@remix-run/react';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../../utils/firebase-auth/firebase';
 
-interface ContextType {
+export interface ContextType {
   user: User | undefined | null;
   loading: boolean;
   error: Error | undefined;
