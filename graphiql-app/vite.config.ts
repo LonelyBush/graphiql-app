@@ -22,6 +22,13 @@ export default defineConfig(({ mode }) => {
       environment: 'jsdom',
       coverage: {
         provider: 'v8',
+        include: ['src/**/*.tsx', 'src/**/*.ts'],
+        exclude: [
+          'src/setupTests.ts',
+          'src/**/index.ts',
+          'src/**/*test.tsx',
+          'src/**/*test.ts',
+        ],
       },
       setupFiles: ['./src/vitest-setup/test.ts'],
     },
