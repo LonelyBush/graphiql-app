@@ -25,6 +25,7 @@ function ToggleLanguages() {
       <span className={styles.language}>{t('En')}</span>
       <button type="button" className={styles.toggle} onClick={handleClick}>
         <div
+          data-testid="indicator"
           className={`${styles.indicator} ${
             isLanguageToggled === 'ru' ? styles.indicatorActive : ''
           }`}
