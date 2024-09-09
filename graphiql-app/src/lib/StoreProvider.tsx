@@ -4,21 +4,14 @@ import { makeStore, AppStore } from './store';
 
 interface StoreProviderProps {
   children: React.ReactNode;
+  /* eslint-disable react/require-default-props */
   store?: AppStore;
 }
 
 function StoreProvider({ children, store: externalStore }: StoreProviderProps) {
-  const storeRef = useRef<AppStore>();
-
-  if (!storeRef.current) {
-    storeRef.current = externalStore || makeStore();
-  }
+  const storeRef = useRef<AppStore>(externalStore || makeStore());
 
   return <Provider store={storeRef.current}>{children}</Provider>;
 }
-
-StoreProvider.defaultProps = {
-  store: undefined,
-};
 
 export default StoreProvider;
