@@ -1,27 +1,26 @@
 import { describe, it, expect } from 'vitest';
-import * as yup from 'yup';
-import getLoginSchema from '../validation/login-validation';
+import authError from './authError';
 
-const t = (key: string) => key;
+describe('authError', () => {
+  it('should return "wrongCredentials" for auth/invalid-credential error', () => {
+    const error = new Error('Firebase: Error (auth/invalid-credential).');
+    expect(authError(error)).toBe('wrongCredentials');
+  });
 
-describe('getLoginSchema', () => {
-  const schema = getLoginSchema(t);
+  it('should return "emailAlreadyUse" for auth/email-already-in-use error', () => {
+    const error = new Error('Firebase: Error (auth/email-already-in-use).');
+    expect(authError(error)).toBe('emailAlreadyUse');
+  });
 
-  it('should fail validation if password is too short', async () => {
-    const invalidData = {
-      email: 'test@example.com',
-      password: 'P1!',
-    };
+  it('should return "temporaryBlock" for auth/too-many-requests error', () => {
+    const error = new Error(
+      'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).',
+    );
+    expect(authError(error)).toBe('temporaryBlock');
+  });
 
-    try {
-      await schema.validate(invalidData);
-      throw new Error('Expected validation to fail, but it succeeded.');
-    } catch (error) {
-      if (error instanceof yup.ValidationError) {
-        expect(error.errors).toContain('PasswordMinLength');
-      } else {
-        throw error;
-      }
-    }
+  it('should return "unexpectedError" for any other error', () => {
+    const error = new Error('Some other error message');
+    expect(authError(error)).toBe('unexpectedError');
   });
 });
