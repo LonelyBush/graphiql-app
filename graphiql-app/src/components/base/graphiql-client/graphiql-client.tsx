@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Editor } from '@monaco-editor/react';
+import { useTranslation } from 'react-i18next';
 import { getIntrospectionQuery, parse, print } from 'graphql';
 import { useNavigate, useSearchParams } from '@remix-run/react';
 
-import styles from './graphiql-client.module.scss';
 import Button from '../../ui/button/button';
 import Response from '../../component/response/response';
 import example from './exampleForGraphiQL';
+import styles from './graphiql-client.module.scss';
 
 interface GraphQLResponse {
   data?: Record<string, unknown>;
@@ -38,6 +39,7 @@ function GraphiqlClient() {
   );
 
   const [shouldFetchSchema, setShouldFetchSchema] = useState(false);
+  const { t } = useTranslation();
 
   const handleError = (error: unknown) => {
     if (error instanceof Error) {
@@ -156,7 +158,7 @@ function GraphiqlClient() {
   return (
     <div className={styles.wrapperGraphi}>
       <div className={styles.selector}>
-        <label htmlFor="endpoint">Endpoint URL:</label>
+        <label htmlFor="endpoint">{t('EndpointURL')}:</label>
         <input
           id="endpoint"
           type="text"
@@ -166,7 +168,7 @@ function GraphiqlClient() {
       </div>
 
       <div className={styles.selector}>
-        <label htmlFor="sdl-endpoint">SDL Endpoint URL:</label>
+        <label htmlFor="sdl-endpoint">{t('SDLEndpointURL')}:</label>
         <input
           id="sdl-endpoint"
           type="text"
@@ -176,7 +178,7 @@ function GraphiqlClient() {
       </div>
 
       <div className={styles.selector}>
-        <label htmlFor="headers-editor">Headers:</label>
+        <label htmlFor="headers-editor">{t('Headers')}:</label>
         <div id="headers-editor">
           <Editor
             height="150px"
@@ -193,7 +195,7 @@ function GraphiqlClient() {
       </div>
 
       <div className={styles.selector}>
-        <label htmlFor="query-editor">GraphQL Query Editor:</label>
+        <label htmlFor="query-editor">{t('GraphiQLQueryEditor')}:</label>
         <div id="query-editor">
           <Editor
             height="150px"
@@ -210,7 +212,7 @@ function GraphiqlClient() {
       </div>
 
       <div className={styles.selector}>
-        <label htmlFor="variables-editor">Variables Editor:</label>
+        <label htmlFor="variables-editor">{t('VariablesEditor')}:</label>
         <div id="variables-editor">
           <Editor
             height="150px"
@@ -227,35 +229,22 @@ function GraphiqlClient() {
       </div>
 
       <Button btnType="button" onClick={handleSubmit}>
-        Run Query
+        {t('Send')}
       </Button>
-
-      <div className={styles.selector}>
-        {response !== null ? (
-          <Response
-            responseStatus={responseStatus}
-            response={response}
-            error={responseError}
-          />
-        ) : (
-          'No response yet'
-        )}
-      </div>
-
-      <div className={styles.selector}>
-        {documentation !== '' ? (
-          <>
-            Documentation (SDL):
-            <Response
-              responseStatus={documentationStatus}
-              response={documentation}
-              error={documentationError}
-            />
-          </>
-        ) : (
-          'No documentation (SDL) yet'
-        )}
-      </div>
+      <Response
+        title={t('Response')}
+        responseStatus={responseStatus}
+        response={response!}
+        error={responseError}
+      />
+      {documentation !== '' ? (
+        <Response
+          title={t('DocumentationSDL')}
+          responseStatus={documentationStatus}
+          response={documentation}
+          error={documentationError}
+        />
+      ) : null}
     </div>
   );
 }
