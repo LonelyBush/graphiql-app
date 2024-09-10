@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface GraphiQLLinksState {
-  graphiQLLinks: string[][];
-}
+import { GraphiQLLinksState } from '../../types/interface';
 
 const initialState: GraphiQLLinksState = {
   graphiQLLinks: [],

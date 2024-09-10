@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LanguageState } from '../../types/interface';
 
-const initialState: LanguageState = {
+export const initialState: LanguageState = {
   language: 'en',
 };
 
