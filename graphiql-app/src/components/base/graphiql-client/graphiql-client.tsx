@@ -116,6 +116,7 @@ function GraphiqlClient() {
   };
 
   //   useEffect(() => {
+  //
   //     if (query && variables && headers) {
   //       fetchGraphQL({ query, variables: JSON.parse(variables || '{}') });
   //     }
