@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface RestLinksState {
-  restLinks: string[][];
-}
+import { RestLinksState } from '../../types/interface';
 
 const initialState: RestLinksState = {
   restLinks: [],

@@ -1,10 +1,16 @@
 import { describe, it, expect, vi } from 'vitest';
 import i18n from './i18n';
 import store from '../../lib/store';
+import { AppState } from '../../types/interface';
 
 describe('i18n initialization and language change', () => {
   it('should initialize with the saved language from the store', () => {
-    const initialState = { language: { language: 'en' } };
+    const initialState: AppState = {
+      language: { language: 'en' },
+      restLinks: { restLinks: [] },
+      graphiQLLinks: { graphiQLLinks: [] },
+    };
+
     const getStateSpy = vi
       .spyOn(store, 'getState')
       .mockReturnValue(initialState);
@@ -15,28 +21,42 @@ describe('i18n initialization and language change', () => {
   });
 
   it('should initialize with default language when store language is null', () => {
-    const initialState = { language: { language: 'en' } };
+    const initialState: AppState = {
+      language: { language: 'en' },
+      restLinks: { restLinks: [] },
+      graphiQLLinks: { graphiQLLinks: [] },
+    };
+
     const getStateSpy = vi
       .spyOn(store, 'getState')
       .mockReturnValue(initialState);
 
     const defaultLanguage = 'en';
     i18n.changeLanguage(defaultLanguage);
-
     expect(i18n.language).toBe(defaultLanguage);
 
     getStateSpy.mockRestore();
   });
 
   it('should change language when the store language changes', async () => {
-    const initialState = { language: { language: 'ru' } };
+    const initialState: AppState = {
+      language: { language: 'ru' },
+      restLinks: { restLinks: [] },
+      graphiQLLinks: { graphiQLLinks: [] },
+    };
+
     const getStateSpy = vi
       .spyOn(store, 'getState')
       .mockReturnValue(initialState);
+
     const subscribeSpy = vi
       .spyOn(store, 'subscribe')
       .mockImplementation((callback) => {
-        const newState = { language: { language: 'ru' } };
+        const newState: AppState = {
+          language: { language: 'ru' },
+          restLinks: { restLinks: [] },
+          graphiQLLinks: { graphiQLLinks: [] },
+        };
         getStateSpy.mockReturnValue(newState);
         callback();
         return () => {};
