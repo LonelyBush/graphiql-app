@@ -35,7 +35,6 @@ describe('AuthProvider', () => {
     const navigate = vi.fn();
     (useNavigate as unknown as () => () => void) = () => navigate;
 
-    // Define TestComponent using function declaration
     function TestComponent() {
       return (
         <AuthContext.Consumer>
