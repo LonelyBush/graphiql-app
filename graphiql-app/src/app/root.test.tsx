@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import App from '../root';
+import App from './root';
 
 vi.mock('@remix-run/react', () => ({
   Links: () => <link data-testid="links" />,
@@ -9,27 +9,27 @@ vi.mock('@remix-run/react', () => ({
   useNavigate: () => vi.fn(),
 }));
 
-vi.mock('../../components/component/layout/layout', () => ({
+vi.mock('../components/component/layout/layout', () => ({
   default: () => <div data-testid="layout">Layout</div>,
 }));
 
-vi.mock('../../components/component/footer/footer', () => ({
+vi.mock('../components/component/footer/footer', () => ({
   default: () => <div data-testid="footer">Footer</div>,
 }));
-vi.mock('../../components/component/error-boundary/error-boundary', () => ({
+vi.mock('../components/component/error-boundary/error-boundary', () => ({
   default: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="error-boundary">{children}</div>
   ),
 }));
-vi.mock('../../components/ui/toast/toast', () => ({
+vi.mock('../components/ui/toast/toast', () => ({
   default: () => <div data-testid="toast">Toast</div>,
 }));
-vi.mock('../../lib/StoreProvider', () => ({
+vi.mock('../lib/StoreProvider', () => ({
   default: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="store-provider">{children}</div>
   ),
 }));
-vi.mock('../../lib/context/auth-context', () => ({
+vi.mock('../lib/context/auth-context', () => ({
   AuthProvider: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="auth-provider">{children}</div>
   ),
