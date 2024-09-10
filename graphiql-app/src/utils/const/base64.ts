@@ -1,5 +1,9 @@
-const encodeToBase64 = (data: string): string => {
+export const encodeToBase64 = (data: string): string => {
   return btoa(data);
+};
+
+export const decodeToString = (data: string): string => {
+  return atob(data);
 };
 
 const createEncodedUrl = (

@@ -26,7 +26,7 @@ function History() {
   );
 
   const graphiQLHistory = useSelector(
-    (state: RootState) => state.restLinks.restLinks,
+    (state: RootState) => state.graphiQLLinks.graphiQLLinks,
   );
 
   const sortedRequests = [...restHistory, ...graphiQLHistory].sort((a, b) => {

@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
+import { useSearchParams } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { GoTrash } from 'react-icons/go';
 import Button from '../../ui/button/button';
@@ -16,6 +17,7 @@ function HeadersRedactor({
   outerSetHeader: React.Dispatch<SetStateAction<string>>;
 }) {
   const { t } = useTranslation();
+  const [, setSearchParams] = useSearchParams();
   const [headers, setHeaders] = useState<Headers[]>([]);
 
   const handleClick = () => {
@@ -50,7 +52,8 @@ function HeadersRedactor({
   };
   useEffect(() => {
     outerSetHeader(JSON.stringify(getHeadersJSON(headers)));
-  }, [headers, outerSetHeader]);
+    setSearchParams(JSON.parse(JSON.stringify(getHeadersJSON(headers))));
+  }, [headers, outerSetHeader, setSearchParams]);
   return (
     <div className={styles.headersWrapper}>
       <Button btnType="button" onClick={handleClick}>

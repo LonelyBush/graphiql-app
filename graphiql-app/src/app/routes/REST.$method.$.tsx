@@ -1,24 +1,35 @@
-import { useState } from 'react';
+import { useLoaderData, useLocation, useNavigate } from '@remix-run/react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import Response from '../../component/response/response';
-import BodyHeadersTabs from '../../component/rest-body-headers/rest-body-headers';
-import { addRestLinks } from '../../../lib/slices/rest-history-slice';
-import Button from '../../ui/button/button';
-import { RequestData, RequestItem } from '../../../types/interface';
-import createEncodedUrl from '../../../utils/const/base64';
-import styles from './rest-full-client.module.scss';
+import { LoaderFunctionArgs } from '@remix-run/server-runtime';
+import { RequestData, RequestItem } from '../../types/interface';
+import createEncodedUrl, {
+  decodeToString,
+  encodeToBase64,
+} from '../../utils/const/base64';
+import { addRestLinks } from '../../lib/slices/rest-history-slice';
+import styles from '../../components/base/rest-full-client/rest-full-client.module.scss';
+import BodyHeadersTabs from '../../components/component/rest-body-headers/rest-body-headers';
+import Button from '../../components/ui/button/button';
+import Response from '../../components/component/response/response';
+import dynamicPathConverter from '../../utils/dynamic-path-converter/dynamic-path-conv';
+
+export const loader = ({ params }: LoaderFunctionArgs) => {
+  return params;
+};
 
 interface RequestItemProps {
   /* eslint-disable react/require-default-props */
   requestItem?: RequestItem;
 }
 
-function RESTFullClient({ requestItem }: RequestItemProps) {
-  const [method, setMethod] = useState(
-    requestItem?.requestData.method || 'GET',
-  );
-  const [url, setUrl] = useState(requestItem?.requestData.url || '');
+function RESTFullPage({ requestItem }: RequestItemProps) {
+  const navigate = useNavigate();
+  const params = useLoaderData<typeof loader>();
+  const location = useLocation();
+  const [method, setMethod] = useState(params.method || 'GET');
+  const [url, setUrl] = useState(params['*']?.split('/')![0] || '');
   const [headers, setHeaders] = useState('');
   const [body, setBody] = useState(requestItem?.requestData.body || '');
   const [response, setResponse] = useState('');
@@ -82,7 +93,15 @@ function RESTFullClient({ requestItem }: RequestItemProps) {
       setError('Network error');
     }
   };
-
+  useEffect(() => {
+    setMethod(params.method!);
+    if (params['*']) {
+      if (params['*'].split('/').length > 2) {
+        navigate('/errorPage');
+      }
+      setUrl(decodeToString(params['*']?.split('/')[0]));
+    }
+  }, [params.method, params, navigate]);
   return (
     <div className={styles.container}>
       <div className={styles.RestBlock}>
@@ -92,7 +111,12 @@ function RESTFullClient({ requestItem }: RequestItemProps) {
             <select
               className={styles.customSelect}
               value={method}
-              onChange={(e) => setMethod(e.target.value)}
+              onChange={(e) => {
+                navigate(
+                  `/REST/${e.target.value}/${params['*']}${location.search}`,
+                );
+                setMethod(e.target.value);
+              }}
             >
               <option value="GET">GET</option>
               <option value="POST">POST</option>
@@ -103,14 +127,24 @@ function RESTFullClient({ requestItem }: RequestItemProps) {
               className={styles.inputUrl}
               type="text"
               value={url}
-              onChange={(e) => setUrl(e.target.value)}
+              onChange={(e) => {
+                const transformed = dynamicPathConverter(params['*']);
+                transformed.url = encodeToBase64(e.target.value);
+                const newPath = Object.values(transformed).join('/');
+                navigate(`/REST/${params.method}/${newPath}${location.search}`);
+                setUrl(e.target.value);
+              }}
             />
           </div>
           <Button btnType="button" onClick={handleRequest}>
             {t('Send')}
           </Button>
         </div>
-        <BodyHeadersTabs setHeaders={setHeaders} setBody={setBody} />
+        <BodyHeadersTabs
+          params={params || {}}
+          setHeaders={setHeaders}
+          setBody={setBody}
+        />
       </div>
       <Response
         responseStatus={responseStatus}
@@ -121,4 +155,4 @@ function RESTFullClient({ requestItem }: RequestItemProps) {
   );
 }
 
-export default RESTFullClient;
+export default RESTFullPage;
