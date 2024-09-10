@@ -4,18 +4,19 @@ import { AiOutlineApi } from 'react-icons/ai';
 import styles from './response.module.scss';
 
 interface ResponseProps {
+  title: string;
   responseStatus: number | null;
   error: string | null;
   response: string;
 }
 
-function Response({ responseStatus, response, error }: ResponseProps) {
+function Response({ title, responseStatus, response, error }: ResponseProps) {
   const { t } = useTranslation();
 
   return (
     <details className={styles.responseBlock}>
       <summary className={styles.responseSummary}>
-        <span>{t('Response')} </span>
+        <span>{title}</span>
         {responseStatus !== null && (
           <span
             className={`${responseStatus < 300 ? styles.responseStatusOk : styles.responseStatusError}`}

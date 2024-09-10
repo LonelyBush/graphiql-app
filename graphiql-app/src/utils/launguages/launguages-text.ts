@@ -72,6 +72,11 @@ const resources = {
       NoHistory:
         'You haven`t executed any requests.It`s empty here.Try these options:',
       HistoryRequests: 'History Requests',
+      DocumentationSDL: 'Documentation (SDL)',
+      GraphiQLQueryEditor: 'GraphiQL Query Editor',
+      VariablesEditor: 'Variables Editor',
+      SDLEndpointURL: 'SDL Endpoint URL',
+      EndpointURL: 'Endpoint URL',
     },
   },
   ru: {
@@ -148,6 +153,11 @@ const resources = {
       NoHistory:
         'Вы еще не выполнили ни одного запроса, Здесь пусто. Попробуйте эти варианты:',
       HistoryRequests: 'История запросов',
+      DocumentationSDL: 'Документация (SDL)',
+      VariablesEditor: 'Редактор переменных',
+      GraphiQLQueryEditor: 'Редактор запросов GraphiQL',
+      SDLEndpointURL: 'URL-адрес конечной точки SDL',
+      EndpointURL: 'URL-адрес конечной точки',
     },
   },
 };
