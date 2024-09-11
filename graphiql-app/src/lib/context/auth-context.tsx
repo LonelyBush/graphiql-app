@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useMemo } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from '@remix-run/react';
 import { onAuthStateChanged, User } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../utils/firebase-auth/firebase';
 
 interface ContextType {

@@ -1,4 +1,5 @@
-import { s, a, c, e, f, i, m, p, r } from "./assets/server-build-Bght6Iq6.js";
+import { createRequestHandler } from "@netlify/remix-adapter";
+import { b as build } from "./assets/server-build-Bght6Iq6.js";
 import "react/jsx-runtime";
 import "node:stream";
 import "@remix-run/node";
@@ -21,14 +22,10 @@ import "react-icons/ai";
 import "react-hook-form";
 import "@hookform/resolvers/yup";
 import "yup";
+const _virtual_netlifyServer = createRequestHandler({
+  build,
+  getLoadContext: async (_req, ctx) => ctx
+});
 export {
-  s as assets,
-  a as assetsBuildDirectory,
-  c as basename,
-  e as entry,
-  f as future,
-  i as isSpaMode,
-  m as mode,
-  p as publicPath,
-  r as routes
+  _virtual_netlifyServer as default
 };
