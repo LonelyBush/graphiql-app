@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RestLinksState } from '../../types/interface';
+import { RequestItem, RestLinksState } from '../../types/interface';
 
 const initialState: RestLinksState = {
   restLinks: [],
@@ -9,8 +9,8 @@ const restLinksSlice = createSlice({
   name: 'rest-links',
   initialState,
   reducers: {
-    addRestLinks: (state, action: PayloadAction<string[]>) => {
-      state.restLinks.push(action.payload);
+    addRestLinks: (state, action: PayloadAction<RequestItem[]>) => {
+      state.restLinks.push(...action.payload);
     },
   },
 });

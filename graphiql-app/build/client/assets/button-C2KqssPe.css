@@ -1,1 +1,30 @@
-._btn_nkz0b_1{display:inline-block;padding:.5rem;font-size:2.5rem;font-weight:400;line-height:1;color:#535878;background-color:#e9c2c5;filter:drop-shadow(.1rem .1rem .1rem #ffffff);cursor:pointer;transition:all .3s ease-in-out}._btn_nkz0b_1:active,._btn_nkz0b_1:focus{background-color:#fee1dd}._btn_nkz0b_1:disabled{border:none;background-color:gray;box-shadow:none;cursor:not-allowed}@media (hover: hover) and (pointer: fine){._btn_nkz0b_1:hover:not([disabled]){color:#fee1dd;background-color:#535878;filter:drop-shadow(.2rem .2rem .3rem black);transform:scale(1.05)}}
+._btn_nkz0b_1 {
+  display: inline-block;
+  padding: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #535878;
+  background-color: #e9c2c5;
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem #ffffff);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+._btn_nkz0b_1:active,
+._btn_nkz0b_1:focus {
+  background-color: #fee1dd;
+}
+._btn_nkz0b_1:disabled {
+  border: none;
+  background-color: gray;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+@media (hover: hover) and (pointer: fine) {
+  ._btn_nkz0b_1:hover:not([disabled]) {
+    color: #fee1dd;
+    background-color: #535878;
+    filter: drop-shadow(0.2rem 0.2rem 0.3rem black);
+    transform: scale(1.05);
+  }
+}
