@@ -1,26 +1,16 @@
 export interface LanguageState {
   language: string;
 }
-
-export interface RequestData {
-  url: string;
-  method: string;
-  headers: Record<string, string>;
-  body?: string;
-  values?: Record<string, string | number | boolean>;
-  sdlUrl?: string;
-}
-
-export interface RequestItem {
-  urlPage: string;
-  requestData: RequestData;
-  data: string;
+export interface GraphiQLLinksState {
+  graphiQLLinks: string[][];
 }
 
 export interface RestLinksState {
-  restLinks: RequestItem[];
+  restLinks: string[][];
 }
 
-export interface GraphiQLLinksState {
-  graphiQLLinks: RequestItem[];
+export interface AppState {
+  language: LanguageState;
+  restLinks: RestLinksState;
+  graphiQLLinks: GraphiQLLinksState;
 }

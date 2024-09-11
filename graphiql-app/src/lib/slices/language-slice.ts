@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LanguageState } from '../../types/interface';
 
-const initialState: LanguageState = {
+export const initialState: LanguageState = {
   language: 'en',
 };
 
@@ -10,7 +10,7 @@ const languageSlice = createSlice({
   initialState,
   reducers: {
     setLanguage: (state, action: PayloadAction<string>) => {
-      // eslint-disable-next-line no-param-reassign
+      /* eslint-disable-next-line no-param-reassign */
       state.language = action.payload;
     },
   },

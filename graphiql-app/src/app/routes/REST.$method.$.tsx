@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { LoaderFunctionArgs } from '@remix-run/server-runtime';
-import { RequestData, RequestItem } from '../../types/interface';
 import { decodeToString, encodeToBase64 } from '../../utils/const/base64';
 import styles from '../../components/base/rest-full-client/rest-full-client.module.scss';
 import BodyHeadersTabs from '../../components/component/rest-body-headers/rest-body-headers';
@@ -68,22 +67,7 @@ function RESTFullPage() {
 
   const handleStoreSafe = async () => {
     const requestTime = new Date().toISOString();
-
-    const parsedHeaders = headers ? JSON.parse(headers) : {};
-
-    const requestData: RequestData = {
-      url,
-      method,
-      headers: parsedHeaders,
-      body: method !== 'GET' ? body : undefined,
-    };
-    const urlPage = location.pathname + location.search;
-    const requestItemStore: RequestItem = {
-      urlPage,
-      requestData,
-      data: requestTime,
-    };
-    dispatch(addRestLinks([requestItemStore]));
+    dispatch(addRestLinks([method, url, requestTime]));
   };
 
   useEffect(() => {
@@ -161,6 +145,7 @@ function RESTFullPage() {
         responseStatus={responseStatus}
         response={response}
         error={error}
+        title=""
       />
     </div>
   );

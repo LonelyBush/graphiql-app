@@ -2,16 +2,16 @@ import React, { useRef } from 'react';
 import { Provider } from 'react-redux';
 import { makeStore, AppStore } from './store';
 
-export default function StoreProvider({
-  children,
-}: {
+interface StoreProviderProps {
   children: React.ReactNode;
-}) {
-  const storeRef = useRef<AppStore>();
+  /* eslint-disable react/require-default-props */
+  store?: AppStore;
+}
 
-  if (!storeRef.current) {
-    storeRef.current = makeStore();
-  }
+function StoreProvider({ children, store: externalStore }: StoreProviderProps) {
+  const storeRef = useRef<AppStore>(externalStore || makeStore());
 
   return <Provider store={storeRef.current}>{children}</Provider>;
 }
+
+export default StoreProvider;
