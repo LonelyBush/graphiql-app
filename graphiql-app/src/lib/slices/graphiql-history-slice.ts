@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GraphiQLLinksState } from '../../types/interface';
+import { RequestItem, GraphiQLLinksState } from '../../types/interface';
 
 const initialState: GraphiQLLinksState = {
   graphiQLLinks: [],
@@ -9,8 +9,8 @@ const graphiQLLinksSlice = createSlice({
   name: 'graphiql-links',
   initialState,
   reducers: {
-    addGraphiQLLinks: (state, action: PayloadAction<string[]>) => {
-      state.graphiQLLinks.push(action.payload);
+    addGraphiQLLinks: (state, action: PayloadAction<RequestItem[]>) => {
+      state.graphiQLLinks.push(...action.payload);
     },
   },
 });

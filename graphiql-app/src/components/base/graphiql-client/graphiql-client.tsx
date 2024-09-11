@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import { Editor } from '@monaco-editor/react';
 import { useTranslation } from 'react-i18next';
 import { getIntrospectionQuery, parse, print } from 'graphql';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useSearchParams } from '@remix-run/react';
 
 import Button from '../../ui/button/button';
 import Response from '../../component/response/response';
 import example from './exampleForGraphiQL';
 import styles from './graphiql-client.module.scss';
+import { addGraphiQLLinks } from '../../../lib/slices/graphiql-history-slice';
+import { RequestItem, RequestData } from '../../../types/interface';
 
 interface GraphQLResponse {
   data?: Record<string, unknown>;
@@ -40,6 +43,7 @@ function GraphiqlClient() {
 
   const [shouldFetchSchema, setShouldFetchSchema] = useState(false);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleError = (error: unknown) => {
     if (error instanceof Error) {
@@ -130,7 +134,7 @@ function GraphiqlClient() {
 
     setHeaders(JSON.stringify(JSON.parse(headers), null, 2));
     setQuery(print(parse(query)));
-
+    const requestTime = new Date().toISOString();
     try {
       const searchParamsLocal = new URLSearchParams({
         query,
@@ -138,6 +142,21 @@ function GraphiqlClient() {
         headers,
         fetchSchema: 'true',
       });
+
+      const requestData: RequestData = {
+        url: endpoint,
+        method: 'graphiql',
+        headers,
+        sdlUrl: sdlEndpoint,
+      };
+
+      const graphiQLItemStore: RequestItem = {
+        urlPage: `?${searchParamsLocal.toString()}`,
+        requestData,
+        data: requestTime,
+      };
+
+      dispatch(addGraphiQLLinks([graphiQLItemStore]));
 
       navigate(`?${searchParamsLocal.toString()}`, { replace: true });
       fetchGraphQL({ query, variables: JSON.parse(variables || '{}') });
