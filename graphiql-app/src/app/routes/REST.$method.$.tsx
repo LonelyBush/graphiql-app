@@ -145,7 +145,7 @@ function RESTFullPage() {
         responseStatus={responseStatus}
         response={response}
         error={error}
-        title=""
+        title={t('Response')}
       />
     </div>
   );
