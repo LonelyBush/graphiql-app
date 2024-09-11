@@ -43,7 +43,7 @@ function History() {
           <p>{t('NoHistory')} </p>
           <div className={styles.buttonBlock}>
             {' '}
-            <Button btnType="button" to="/rest-full">
+            <Button btnType="button" to="/REST/GET">
               {t('RESTClient')}
             </Button>
             <Button btnType="button" to="/graphiql">
@@ -68,8 +68,8 @@ function History() {
                 >
                   {result.requestData.method}
                 </p>
-                <Link to={`/${result.urlPage}`} key={result.urlPage + index}>
-                  {`${window.location.origin}/${result.urlPage}`}
+                <Link to={`${result.urlPage}`} key={result.urlPage + index}>
+                  {`${result.requestData.url}`}
                 </Link>
               </div>
             ))}

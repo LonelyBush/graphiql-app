@@ -46,16 +46,22 @@ export default function BodyHeadersTabs({
       if (params['*'].split('/').length > 2) {
         navigate('/errorPage');
       }
-      setBody(
-        params['*']?.split('/')[1] !== undefined
-          ? decodeToString(params['*']?.split('/')[1])
-          : '',
-      );
-      setValue(
-        params['*']?.split('/')[1] !== undefined
-          ? decodeToString(params['*']?.split('/')[1])
-          : '',
-      );
+      try {
+        setBody(
+          params['*']?.split('/')[1] !== undefined
+            ? decodeToString(params['*']?.split('/')[1])
+            : '',
+        );
+        setValue(
+          params['*']?.split('/')[1] !== undefined
+            ? decodeToString(params['*']?.split('/')[1])
+            : '',
+        );
+      } catch (err) {
+        if (err instanceof Error) {
+          navigate('/error');
+        }
+      }
     }
   }, [params, navigate, setBody]);
   const { t } = useTranslation();
