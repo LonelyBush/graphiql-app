@@ -1,12 +1,6 @@
-interface Example {
-  endpoint: string;
-  sdlEndpoint: string;
-  headers: string;
-  query: string;
-  variables?: string;
-}
+import { DataGraphiQL } from '../../../types/interface';
 
-const example: Example = {
+const example: DataGraphiQL = {
   endpoint: 'https://rickandmortyapi.com/graphql',
   sdlEndpoint: 'https://rickandmortyapi.com/graphql',
   headers: '{"Content-Type": "application/json"}',

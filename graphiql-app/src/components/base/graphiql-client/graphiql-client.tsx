@@ -2,26 +2,41 @@ import { useState, useEffect } from 'react';
 import { Editor } from '@monaco-editor/react';
 import { useTranslation } from 'react-i18next';
 import { getIntrospectionQuery, parse, print } from 'graphql';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useSearchParams } from '@remix-run/react';
 
 import Button from '../../ui/button/button';
 import Response from '../../component/response/response';
 import example from './exampleForGraphiQL';
 import styles from './graphiql-client.module.scss';
+import { addGraphiQLLinks } from '../../../lib/slices/graphiql-history-slice';
+import {
+  RequestItem,
+  RequestData,
+  RequestItemProps,
+} from '../../../types/interface';
 
 interface GraphQLResponse {
   data?: Record<string, unknown>;
   error?: string;
 }
 
-function GraphiqlClient() {
+function GraphiqlClient({ requestItem }: RequestItemProps) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const [endpoint, setEndpoint] = useState<string>(example.endpoint);
-  const [sdlEndpoint, setSdlEndpoint] = useState<string>(example.sdlEndpoint);
-  const [query, setQuery] = useState<string>(print(parse(example.query)));
-  const [variables, setVariables] = useState<string>('{}');
+  const [endpoint, setEndpoint] = useState<string>(
+    requestItem?.requestData.url || example.endpoint,
+  );
+  const [sdlEndpoint, setSdlEndpoint] = useState<string>(
+    requestItem?.requestData.sdlUrl || example.sdlEndpoint,
+  );
+  const [query, setQuery] = useState<string>(
+    print(parse(requestItem?.requestData.query || example.query)),
+  );
+  const [variables, setVariables] = useState<string>(
+    requestItem?.requestData.variables || '{}',
+  );
   const [headers, setHeaders] = useState<string>(
     JSON.stringify(JSON.parse(example.headers), null, 2),
   );
@@ -40,6 +55,7 @@ function GraphiqlClient() {
 
   const [shouldFetchSchema, setShouldFetchSchema] = useState(false);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleError = (error: unknown) => {
     if (error instanceof Error) {
@@ -130,7 +146,7 @@ function GraphiqlClient() {
 
     setHeaders(JSON.stringify(JSON.parse(headers), null, 2));
     setQuery(print(parse(query)));
-
+    const requestTime = new Date().toISOString();
     try {
       const searchParamsLocal = new URLSearchParams({
         query,
@@ -138,6 +154,23 @@ function GraphiqlClient() {
         headers,
         fetchSchema: 'true',
       });
+
+      const requestData: RequestData = {
+        url: endpoint,
+        sdlUrl: sdlEndpoint,
+        method: 'GRAPHIQL',
+        headers,
+        variables,
+        query,
+      };
+
+      const graphiQLItemStore: RequestItem = {
+        urlPage: `?${searchParamsLocal.toString()}`,
+        requestData,
+        data: requestTime,
+      };
+
+      dispatch(addGraphiQLLinks([graphiQLItemStore]));
 
       navigate(`?${searchParamsLocal.toString()}`, { replace: true });
       fetchGraphQL({ query, variables: JSON.parse(variables || '{}') });
@@ -157,6 +190,7 @@ function GraphiqlClient() {
 
   return (
     <div className={styles.wrapperGraphi}>
+      <h2>{t('GraphiQLClient')}</h2>
       <div className={styles.selector}>
         <label htmlFor="endpoint">{t('EndpointURL')}:</label>
         <input
@@ -237,14 +271,14 @@ function GraphiqlClient() {
         response={response!}
         error={responseError}
       />
-      {documentation !== '' ? (
+      {responseStatus && (
         <Response
           title={t('DocumentationSDL')}
           responseStatus={documentationStatus}
           response={documentation}
           error={documentationError}
         />
-      ) : null}
+      )}
     </div>
   );
 }

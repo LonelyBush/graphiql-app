@@ -16,6 +16,11 @@ import Button from '../../components/ui/button/button';
 import Response from '../../components/component/response/response';
 import dynamicPathConverter from '../../utils/dynamic-path-converter/dynamic-path-conv';
 import { addRestLinks } from '../../lib/slices/rest-history-slice';
+import {
+  RequestData,
+  RequestItem,
+  ActionResponse,
+} from '../../types/interface';
 
 export const action = async ({ request }: LoaderFunctionArgs) => {
   const formData = await request.formData();
@@ -43,12 +48,6 @@ export const action = async ({ request }: LoaderFunctionArgs) => {
   }
 };
 
-interface ActionResponse {
-  status: number | null;
-  data: string | null;
-  error?: string | null;
-}
-
 function RESTFullPage() {
   const navigate = useNavigate();
   const params = useParams();
@@ -67,9 +66,20 @@ function RESTFullPage() {
 
   const handleStoreSafe = async () => {
     const requestTime = new Date().toISOString();
-    dispatch(addRestLinks([method, url, requestTime]));
-  };
+    const requestData: RequestData = {
+      url,
+      method,
+      headers,
+      body: method !== 'GET' ? body : undefined,
+    };
 
+    const requestItemStore: RequestItem = {
+      urlPage: location.pathname.replace('/REST/', ''),
+      requestData,
+      data: requestTime,
+    };
+    dispatch(addRestLinks([requestItemStore]));
+  };
   useEffect(() => {
     setMethod(params.method!);
     if (params['*']) {

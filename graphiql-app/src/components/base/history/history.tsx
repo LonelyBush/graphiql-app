@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from '@remix-run/react';
+import { useNavigate, Link } from '@remix-run/react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import useAuth from '../../../utils/hooks/useAuth-hook';
@@ -26,12 +26,12 @@ function History() {
   );
 
   const graphiQLHistory = useSelector(
-    (state: RootState) => state.restLinks.restLinks,
+    (state: RootState) => state.graphiQLLinks.graphiQLLinks,
   );
 
   const sortedRequests = [...restHistory, ...graphiQLHistory].sort((a, b) => {
-    const dateA = new Date(a[2]).getTime();
-    const dateB = new Date(b[2]).getTime();
+    const dateA = new Date(a.data).getTime();
+    const dateB = new Date(b.data).getTime();
 
     return dateA - dateB;
   });
@@ -46,7 +46,7 @@ function History() {
             <Button btnType="button" to="/REST/GET">
               {t('RESTClient')}
             </Button>
-            <Button btnType="button" to="/graphiql">
+            <Button btnType="button" to="/GRAPHIQL">
               {t('GraphiQLClient')}
             </Button>
           </div>
@@ -55,15 +55,32 @@ function History() {
         <>
           {' '}
           <h2>{t('HistoryRequests')}</h2>
-          {sortedRequests.map((result, index) => (
-            /* eslint-disable react/no-array-index-key */
-            <div className={styles.resultBlock}>
-              <p key={`rest-${result[0] + index}`} className={styles.method}>
-                {result[0]}
-              </p>
-              <p key={`rest-${result[1] + index}`}>{result[1]}</p>
-            </div>
-          ))}
+          <div className={styles.linksBlock}>
+            {sortedRequests.map((result, index) => (
+              /* eslint-disable react/no-array-index-key */
+              <div
+                key={result.requestData.method + result.urlPage + index}
+                className={styles.resultBlock}
+              >
+                <p
+                  key={result.requestData.method + index}
+                  className={styles.method}
+                >
+                  {result.requestData.method}
+                </p>
+                <Link
+                  to={
+                    result.requestData.method !== 'GRAPHIQL'
+                      ? `/REST/${result.urlPage}`
+                      : `/GRAPHIQL/${result.urlPage}`
+                  }
+                  key={result.urlPage + index}
+                >
+                  {result.requestData.url}
+                </Link>
+              </div>
+            ))}
+          </div>
         </>
       )}
     </div>
