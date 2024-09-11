@@ -79,6 +79,7 @@ function RESTFullClient() {
         <BodyHeadersTabs setHeaders={setHeaders} setBody={setBody} />
       </div>
       <Response
+        title={t('Response')}
         responseStatus={responseStatus}
         response={response}
         error={error}

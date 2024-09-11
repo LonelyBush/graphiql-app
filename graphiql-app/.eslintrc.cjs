@@ -44,5 +44,6 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 0,
     'react/jsx-props-no-spreading': 0,
     'no-nested-ternary': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
   },
 };
