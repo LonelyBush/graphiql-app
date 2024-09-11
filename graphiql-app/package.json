@@ -12,6 +12,7 @@
     "lint": "eslint . --ext ts,tsx",
     "lint:fix": "eslint . --fix",
     "format:fix": "prettier . --write",
+    "start": "netlify serve",
     "prepare": "cd .. && husky graphiql-app/.husky"
   },
   "dependencies": {
@@ -19,6 +20,8 @@
     "@graphiql/toolkit": "^0.10.0",
     "@hookform/resolvers": "^3.9.0",
     "@monaco-editor/react": "^4.6.0",
+    "@netlify/functions": "^2.8.1",
+    "@netlify/remix-adapter": "^2.5.0",
     "@reduxjs/toolkit": "^2.2.6",
     "@remix-run/node": "^2.11.2",
     "@remix-run/react": "^2.11.2",

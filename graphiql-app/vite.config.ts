@@ -3,6 +3,7 @@
 /// <reference types="vite/client" />
 import { vitePlugin as remix } from '@remix-run/dev';
 import { defineConfig, loadEnv } from 'vite';
+import { netlifyPlugin } from "@netlify/remix-adapter/plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -23,7 +24,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       remix({
         appDirectory: 'src/app',
-      }),
+      }), netlifyPlugin()
     ],
     test: {
       globals: true,
