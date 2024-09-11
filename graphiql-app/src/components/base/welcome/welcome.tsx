@@ -28,7 +28,7 @@ function WelcomeComponent() {
               <Button btnType="button" to="/rest-full">
                 {t('RESTClient')}
               </Button>
-              <Button btnType="button" to="/graphiql">
+              <Button btnType="button" to="/GRAPHIQL">
                 {t('GraphiQLClient')}
               </Button>
               <Button btnType="button" to="/history">

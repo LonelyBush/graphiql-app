@@ -10,21 +10,33 @@ import Response from '../../component/response/response';
 import example from './exampleForGraphiQL';
 import styles from './graphiql-client.module.scss';
 import { addGraphiQLLinks } from '../../../lib/slices/graphiql-history-slice';
-import { RequestItem, RequestData } from '../../../types/interface';
+import {
+  RequestItem,
+  RequestData,
+  RequestItemProps,
+} from '../../../types/interface';
 
 interface GraphQLResponse {
   data?: Record<string, unknown>;
   error?: string;
 }
 
-function GraphiqlClient() {
+function GraphiqlClient({ requestItem }: RequestItemProps) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const [endpoint, setEndpoint] = useState<string>(example.endpoint);
-  const [sdlEndpoint, setSdlEndpoint] = useState<string>(example.sdlEndpoint);
-  const [query, setQuery] = useState<string>(print(parse(example.query)));
-  const [variables, setVariables] = useState<string>('{}');
+  const [endpoint, setEndpoint] = useState<string>(
+    requestItem?.requestData.url || example.endpoint,
+  );
+  const [sdlEndpoint, setSdlEndpoint] = useState<string>(
+    requestItem?.requestData.sdlUrl || example.sdlEndpoint,
+  );
+  const [query, setQuery] = useState<string>(
+    print(parse(requestItem?.requestData.query || example.query)),
+  );
+  const [variables, setVariables] = useState<string>(
+    requestItem?.requestData.variables || '{}',
+  );
   const [headers, setHeaders] = useState<string>(
     JSON.stringify(JSON.parse(example.headers), null, 2),
   );
@@ -145,9 +157,11 @@ function GraphiqlClient() {
 
       const requestData: RequestData = {
         url: endpoint,
-        method: 'graphiql',
-        headers,
         sdlUrl: sdlEndpoint,
+        method: 'GRAPHIQL',
+        headers,
+        variables,
+        query,
       };
 
       const graphiQLItemStore: RequestItem = {
@@ -176,6 +190,7 @@ function GraphiqlClient() {
 
   return (
     <div className={styles.wrapperGraphi}>
+      <h2>{t('GraphiQLClient')}</h2>
       <div className={styles.selector}>
         <label htmlFor="endpoint">{t('EndpointURL')}:</label>
         <input
@@ -256,14 +271,14 @@ function GraphiqlClient() {
         response={response!}
         error={responseError}
       />
-      {documentation !== '' ? (
+      {responseStatus && (
         <Response
           title={t('DocumentationSDL')}
           responseStatus={documentationStatus}
           response={documentation}
           error={documentationError}
         />
-      ) : null}
+      )}
     </div>
   );
 }

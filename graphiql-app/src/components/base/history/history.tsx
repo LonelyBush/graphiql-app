@@ -46,7 +46,7 @@ function History() {
             <Button btnType="button" to="/REST/GET">
               {t('RESTClient')}
             </Button>
-            <Button btnType="button" to="/graphiql">
+            <Button btnType="button" to="/GRAPHIQL">
               {t('GraphiQLClient')}
             </Button>
           </div>
@@ -66,13 +66,13 @@ function History() {
                   key={result.requestData.method + index}
                   className={styles.method}
                 >
-                  {result.requestData.method.toUpperCase()}
+                  {result.requestData.method}
                 </p>
                 <Link
                   to={
-                    result.requestData.method !== 'graphiql'
+                    result.requestData.method !== 'GRAPHIQL'
                       ? `/REST/${result.urlPage}`
-                      : `/graphiql/${result.urlPage}`
+                      : `/GRAPHIQL/${result.urlPage}`
                   }
                   key={result.urlPage + index}
                 >

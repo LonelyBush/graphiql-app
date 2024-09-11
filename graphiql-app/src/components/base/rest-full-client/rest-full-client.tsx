@@ -5,14 +5,13 @@ import Response from '../../component/response/response';
 import BodyHeadersTabs from '../../component/rest-body-headers/rest-body-headers';
 import { addRestLinks } from '../../../lib/slices/rest-history-slice';
 import Button from '../../ui/button/button';
-import { RequestData, RequestItem } from '../../../types/interface';
+import {
+  RequestData,
+  RequestItem,
+  RequestItemProps,
+} from '../../../types/interface';
 import createEncodedUrl from '../../../utils/const/base64';
 import styles from './rest-full-client.module.scss';
-
-interface RequestItemProps {
-  /* eslint-disable react/require-default-props */
-  requestItem?: RequestItem;
-}
 
 function RESTFullClient({ requestItem }: RequestItemProps) {
   const [method, setMethod] = useState(

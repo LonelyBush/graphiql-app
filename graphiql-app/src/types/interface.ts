@@ -9,6 +9,8 @@ export interface RequestData {
   body?: string;
   values?: Record<string, string | number | boolean>;
   sdlUrl?: string;
+  query?: string;
+  variables?: string;
 }
 
 export interface RequestItem {
@@ -29,4 +31,17 @@ export interface AppState {
   language: LanguageState;
   restLinks: RestLinksState;
   graphiQLLinks: GraphiQLLinksState;
+}
+
+export interface DataGraphiQL {
+  endpoint: string;
+  sdlEndpoint: string;
+  headers: string;
+  query: string;
+  variables?: string;
+}
+
+export interface RequestItemProps {
+  /* eslint-disable react/require-default-props */
+  requestItem?: RequestItem;
 }
