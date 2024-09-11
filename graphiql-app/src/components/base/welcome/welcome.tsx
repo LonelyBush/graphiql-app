@@ -25,7 +25,7 @@ function WelcomeComponent() {
         <div className={styles.buttonBlock}>
           {user ? (
             <>
-              <Button btnType="button" to="/rest-full">
+              <Button btnType="button" to="/REST/GET">
                 {t('RESTClient')}
               </Button>
               <Button btnType="button" to="/graphiql">

@@ -1,7 +1,6 @@
 export interface LanguageState {
   language: string;
 }
-
 export interface GraphiQLLinksState {
   graphiQLLinks: string[][];
 }

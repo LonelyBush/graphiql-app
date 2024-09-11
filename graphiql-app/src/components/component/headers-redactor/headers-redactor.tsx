@@ -1,27 +1,31 @@
 /* eslint-disable react/no-array-index-key */
 import { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
+import { useLocation, useSearchParams } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { GoTrash } from 'react-icons/go';
 import Button from '../../ui/button/button';
 import styles from './headers-redactor-style.module.scss';
-
-type Headers = {
-  ['header-key']: string;
-  ['header-value']: string;
-};
+import searchParamURLConverter from '../../../utils/search-params-converter/search-params-converter';
 
 function HeadersRedactor({
   outerSetHeader,
 }: {
   outerSetHeader: React.Dispatch<SetStateAction<string>>;
 }) {
+  const location = useLocation();
+  const creatingState = () => {
+    return searchParamURLConverter(location.search);
+  };
   const { t } = useTranslation();
-  const [headers, setHeaders] = useState<Headers[]>([]);
+
+  const [, setSearchParams] = useSearchParams();
+  const [headers, setHeaders] =
+    useState<{ [key: string]: string }[]>(creatingState);
 
   const handleClick = () => {
     setHeaders([...headers, { 'header-key': '', 'header-value': '' }]);
   };
-  const getHeadersJSON = (currentHeaders: Headers[]) => {
+  const getHeadersJSON = (currentHeaders: { [key: string]: string }[]) => {
     const headersJSON = currentHeaders.reduce(
       (acc: { [key: string]: string }, header) => {
         if (header['header-key']) {
@@ -50,7 +54,8 @@ function HeadersRedactor({
   };
   useEffect(() => {
     outerSetHeader(JSON.stringify(getHeadersJSON(headers)));
-  }, [headers, outerSetHeader]);
+    setSearchParams(JSON.parse(JSON.stringify(getHeadersJSON(headers))));
+  }, [headers, outerSetHeader, setSearchParams, location.search]);
   return (
     <div className={styles.headersWrapper}>
       <Button btnType="button" onClick={handleClick}>

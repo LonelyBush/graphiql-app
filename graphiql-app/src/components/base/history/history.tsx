@@ -43,7 +43,7 @@ function History() {
           <p>{t('NoHistory')} </p>
           <div className={styles.buttonBlock}>
             {' '}
-            <Button btnType="button" to="/rest-full">
+            <Button btnType="button" to="/REST/GET">
               {t('RESTClient')}
             </Button>
             <Button btnType="button" to="/graphiql">
@@ -58,10 +58,10 @@ function History() {
           {sortedRequests.map((result, index) => (
             /* eslint-disable react/no-array-index-key */
             <div className={styles.resultBlock}>
-              <p key={`rest${result[0] + index}`} className={styles.method}>
+              <p key={`rest-${result[0] + index}`} className={styles.method}>
                 {result[0]}
               </p>
-              <p key={`rest${result[1] + index}`}>{result[1]}</p>
+              <p key={`rest-${result[1] + index}`}>{result[1]}</p>
             </div>
           ))}
         </>
