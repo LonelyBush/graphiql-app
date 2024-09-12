@@ -67,7 +67,7 @@ function LoginForm() {
           type="email"
           label={t('Email')}
           name="email"
-          placeholder="example@gmai.com"
+          placeholder="example@gmail.com"
           register={register}
           error={!errors.email?.message ? '' : errors.email.message}
         />
@@ -75,7 +75,7 @@ function LoginForm() {
           type="password"
           label={t('Password')}
           name="password"
-          placeholder={undefined}
+          placeholder=""
           register={register}
           error={!errors.password?.message ? '' : errors.password.message}
         />

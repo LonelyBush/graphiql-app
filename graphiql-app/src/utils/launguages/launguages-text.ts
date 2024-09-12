@@ -28,7 +28,7 @@ const resources = {
         'I love the latest technologies and constant development I want to succeed in my future profession, because it is much better to develop in the field that you like.',
       Registration: 'Registration',
       Login: 'Login',
-      Email: ' Email',
+      Email: 'Email',
       Nickname: 'Nickname',
       Password: 'Password',
       ConfirmPassword: 'Confirm password',
