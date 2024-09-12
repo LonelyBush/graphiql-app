@@ -190,28 +190,37 @@ function GraphiqlClient({ requestItem }: RequestItemProps) {
 
   return (
     <div className={styles.wrapperGraphi}>
-      <h2>{t('GraphiQLClient')}</h2>
-      <div className={styles.selector}>
-        <label htmlFor="endpoint">{t('EndpointURL')}:</label>
-        <input
-          id="endpoint"
-          type="text"
-          value={endpoint}
-          onChange={(e) => setEndpoint(e.target.value)}
-        />
+      <h2 className={styles.title}>{t('GraphiQLClient')}</h2>
+      <div className={styles.inputContainer}>
+        <div className={styles.inputBlock}>
+          <div className={styles.inputInner}>
+            <label htmlFor="endpoint">{t('EndpointURL')}:</label>
+            <input
+              id="endpoint"
+              type="text"
+              value={endpoint}
+              className={styles.inputUrl}
+              onChange={(e) => setEndpoint(e.target.value)}
+            />
+          </div>
+
+          <div className={styles.inputInner}>
+            <label htmlFor="sdl-endpoint">{t('SDLEndpointURL')}:</label>
+            <input
+              id="sdl-endpoint"
+              type="text"
+              value={sdlEndpoint}
+              className={styles.inputUrl}
+              onChange={(e) => setSdlEndpoint(e.target.value)}
+            />
+          </div>
+        </div>
+        <Button btnType="button" onClick={handleSubmit}>
+          {t('Send')}
+        </Button>
       </div>
 
-      <div className={styles.selector}>
-        <label htmlFor="sdl-endpoint">{t('SDLEndpointURL')}:</label>
-        <input
-          id="sdl-endpoint"
-          type="text"
-          value={sdlEndpoint}
-          onChange={(e) => setSdlEndpoint(e.target.value)}
-        />
-      </div>
-
-      <div className={styles.selector}>
+      <div>
         <label htmlFor="headers-editor">{t('Headers')}:</label>
         <div id="headers-editor">
           <Editor
@@ -219,6 +228,7 @@ function GraphiqlClient({ requestItem }: RequestItemProps) {
             language="json"
             value={headers}
             onChange={handleEditorChange(setHeaders)}
+            theme="vs-dark"
             options={{
               minimap: { enabled: false },
               scrollBeyondLastLine: false,
@@ -228,7 +238,7 @@ function GraphiqlClient({ requestItem }: RequestItemProps) {
         </div>
       </div>
 
-      <div className={styles.selector}>
+      <div>
         <label htmlFor="query-editor">{t('GraphiQLQueryEditor')}:</label>
         <div id="query-editor">
           <Editor
@@ -236,6 +246,7 @@ function GraphiqlClient({ requestItem }: RequestItemProps) {
             language="graphql"
             value={query}
             onChange={handleEditorChange(setQuery)}
+            theme="vs-dark"
             options={{
               minimap: { enabled: false },
               scrollBeyondLastLine: false,
@@ -245,7 +256,7 @@ function GraphiqlClient({ requestItem }: RequestItemProps) {
         </div>
       </div>
 
-      <div className={styles.selector}>
+      <div>
         <label htmlFor="variables-editor">{t('VariablesEditor')}:</label>
         <div id="variables-editor">
           <Editor
@@ -253,6 +264,7 @@ function GraphiqlClient({ requestItem }: RequestItemProps) {
             language="json"
             value={variables}
             onChange={handleEditorChange(setVariables)}
+            theme="vs-dark"
             options={{
               minimap: { enabled: false },
               scrollBeyondLastLine: false,
@@ -261,10 +273,6 @@ function GraphiqlClient({ requestItem }: RequestItemProps) {
           />
         </div>
       </div>
-
-      <Button btnType="button" onClick={handleSubmit}>
-        {t('Send')}
-      </Button>
       <Response
         title={t('Response')}
         responseStatus={responseStatus}

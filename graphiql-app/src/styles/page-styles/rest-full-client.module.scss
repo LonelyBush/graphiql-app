@@ -1,6 +1,7 @@
-@import '../../../styles/colors.scss';
+@import '../colors.scss';
 .container {
   min-height: 80vh;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,6 +9,10 @@
   gap: 2rem;
   background-color: $c-blue-500;
   color: $c-white;
+}
+
+.title {
+  text-align: center;
 }
 
 .RestBlock {

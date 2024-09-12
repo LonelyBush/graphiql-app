@@ -77,6 +77,7 @@ const resources = {
       VariablesEditor: 'Variables Editor',
       SDLEndpointURL: 'SDL Endpoint URL',
       EndpointURL: 'Endpoint URL',
+      Error: 'Error',
     },
   },
   ru: {
@@ -158,6 +159,7 @@ const resources = {
       GraphiQLQueryEditor: 'Редактор запросов GraphiQL',
       SDLEndpointURL: 'URL-адрес конечной точки SDL',
       EndpointURL: 'URL-адрес конечной точки',
+      Error: 'Ошибка',
     },
   },
 };

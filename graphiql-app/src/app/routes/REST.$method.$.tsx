@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { LoaderFunctionArgs } from '@remix-run/server-runtime';
 import { decodeToString, encodeToBase64 } from '../../utils/const/base64';
-import styles from '../../components/base/rest-full-client/rest-full-client.module.scss';
 import BodyHeadersTabs from '../../components/component/rest-body-headers/rest-body-headers';
 import Button from '../../components/ui/button/button';
 import Response from '../../components/component/response/response';
@@ -21,6 +20,7 @@ import {
   RequestItem,
   ActionResponse,
 } from '../../types/interface';
+import styles from '../../styles/page-styles/rest-full-client.module.scss';
 
 export const action = async ({ request }: LoaderFunctionArgs) => {
   const formData = await request.formData();
@@ -98,7 +98,7 @@ function RESTFullPage() {
   return (
     <div className={styles.container}>
       <div className={styles.RestBlock}>
-        <h2>{t('RESTClient')}</h2>
+        <h2 className={styles.title}>{t('RESTClient')}</h2>
         <div className={styles.methodSection}>
           <Form
             className={styles.formAction}
