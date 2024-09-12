@@ -38,7 +38,7 @@ export const action = async ({ request }: LoaderFunctionArgs) => {
 
   try {
     const res = await fetch(url, options);
-    const responseBody = await res.text();
+    const responseBody = await res.json();
     return {
       status: res.status,
       data: responseBody,
@@ -63,7 +63,6 @@ function RESTFullPage() {
   const response = actionData?.data || '';
   const responseStatus = actionData?.status || null;
   const error = actionData?.error || null;
-
   const handleStoreSafe = async () => {
     const requestTime = new Date().toISOString();
     const requestData: RequestData = {
@@ -153,7 +152,7 @@ function RESTFullPage() {
       </div>
       <Response
         responseStatus={responseStatus}
-        response={response}
+        response={JSON.stringify(response, null, 2)}
         error={error}
         title={t('Response')}
       />
