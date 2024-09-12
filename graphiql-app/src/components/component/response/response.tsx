@@ -20,7 +20,9 @@ function Response({ title, responseStatus, response, error }: ResponseProps) {
           <span
             className={`${responseStatus < 300 ? styles.responseStatusOk : styles.responseStatusError}`}
           >
-            {t('status')}: {responseStatus}
+            {title !== t('DocumentationSDL')
+              ? `${t('status')}: ${responseStatus}`
+              : ''}
           </span>
         )}
       </summary>
@@ -49,7 +51,7 @@ function Response({ title, responseStatus, response, error }: ResponseProps) {
             )}
             {error && (
               <div>
-                <h3>Error:</h3>
+                <h3>{t('Error')}:</h3>
                 <Editor
                   theme="vs-dark"
                   loading="Loading..."
@@ -66,7 +68,7 @@ function Response({ title, responseStatus, response, error }: ResponseProps) {
           <div>
             {error && (
               <div>
-                <h3>Error:</h3>
+                <h3>{t('Error')}:</h3>
                 <Editor
                   theme="vs-dark"
                   loading="Loading..."
