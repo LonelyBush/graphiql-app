@@ -46,6 +46,6 @@ module.exports = {
     'no-nested-ternary': 'off',
     'prefer-object-spread': 0,
     'jsx-a11y/label-has-associated-control': 'off',
-    "react-refresh/only-export-components": 0
+    'react-refresh/only-export-components': 0,
   },
 };

@@ -71,9 +71,9 @@ function RESTFullPage() {
       headers,
       body: method !== 'GET' ? body : undefined,
     };
-
+    const fullUrl = `${location.pathname}${location.search}`;
     const requestItemStore: RequestItem = {
-      urlPage: location.pathname.replace('/REST/', ''),
+      urlPage: fullUrl.replace('/REST/', ''),
       requestData,
       data: requestTime,
     };
