@@ -44,7 +44,7 @@ export const action = async ({ request }: LoaderFunctionArgs) => {
       data: responseBody,
     };
   } catch (error) {
-    return { error: 'Network error' };
+    return { error: 'Bad request data, try again !' };
   }
 };
 

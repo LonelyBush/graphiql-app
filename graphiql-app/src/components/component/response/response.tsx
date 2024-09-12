@@ -12,7 +12,6 @@ interface ResponseProps {
 
 function Response({ title, responseStatus, response, error }: ResponseProps) {
   const { t } = useTranslation();
-
   return (
     <details className={styles.responseBlock}>
       <summary className={styles.responseSummary}>
@@ -48,6 +47,23 @@ function Response({ title, responseStatus, response, error }: ResponseProps) {
                 />
               </div>
             )}
+            {error && (
+              <div>
+                <h3>Error:</h3>
+                <Editor
+                  theme="vs-dark"
+                  loading="Loading..."
+                  height="50vh"
+                  defaultLanguage="json"
+                  defaultValue={error}
+                  options={{ readOnly: true }}
+                />
+              </div>
+            )}
+          </div>
+        )}
+        {responseStatus === null && (
+          <div>
             {error && (
               <div>
                 <h3>Error:</h3>
