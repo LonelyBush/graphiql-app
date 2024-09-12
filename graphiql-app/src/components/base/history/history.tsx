@@ -56,16 +56,12 @@ function History() {
           {' '}
           <h2>{t('HistoryRequests')}</h2>
           <div className={styles.linksBlock}>
-            {sortedRequests.map((result, index) => (
-              /* eslint-disable react/no-array-index-key */
+            {sortedRequests.map((result) => (
               <div
-                key={result.requestData.method + result.urlPage + index}
+                key={result.requestData.method + result.urlPage + Math.random()}
                 className={styles.resultBlock}
               >
-                <p
-                  key={result.requestData.method + index}
-                  className={styles.method}
-                >
+                <p key={result.requestData.method} className={styles.method}>
                   {result.requestData.method}
                 </p>
                 <Link
@@ -74,7 +70,7 @@ function History() {
                       ? `/REST/${result.urlPage}`
                       : `/GRAPHIQL/${result.urlPage}`
                   }
-                  key={result.urlPage + index}
+                  key={result.urlPage + Math.random()}
                 >
                   {result.requestData.url}
                 </Link>
