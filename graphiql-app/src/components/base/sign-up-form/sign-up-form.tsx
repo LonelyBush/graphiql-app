@@ -77,7 +77,7 @@ function SignUpForm() {
           type="email"
           label={t('Email')}
           name="email"
-          placeholder="example@gmai.com"
+          placeholder="example@gmail.com"
           register={register}
           error={!errors.email?.message ? '' : errors.email.message}
         />
@@ -85,7 +85,7 @@ function SignUpForm() {
           type="password"
           label={t('Password')}
           name="password"
-          placeholder={undefined}
+          placeholder={t('Password')}
           register={register}
           error={!errors.password?.message ? '' : errors.password.message}
         />
@@ -93,7 +93,7 @@ function SignUpForm() {
           type="password"
           label={t('ConfirmPassword')}
           name="confirmPassword"
-          placeholder={undefined}
+          placeholder={t('ConfirmPassword')}
           register={register}
           error={
             !errors.confirmPassword?.message
