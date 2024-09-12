@@ -13,7 +13,6 @@ const createEncodedUrl = (
   headers?: Record<string, string>,
 ) => {
   const encodedUrl = encodeToBase64(url);
-
   const encodedBody = body ? encodeToBase64(body) : '';
 
   let fullUrl = `${method}/${encodedUrl}`;
@@ -25,7 +24,7 @@ const createEncodedUrl = (
   if (headers) {
     const queryParams = new URLSearchParams();
     Object.entries(headers).forEach(([key, value]) => {
-      queryParams.append(key, encodeURIComponent(value));
+      queryParams.append(key, value);
     });
     fullUrl += `?${queryParams.toString()}`;
   }

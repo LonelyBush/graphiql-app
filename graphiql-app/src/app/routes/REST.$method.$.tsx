@@ -79,6 +79,7 @@ function RESTFullPage() {
     };
     dispatch(addRestLinks([requestItemStore]));
   };
+
   useEffect(() => {
     setMethod(params.method!);
     if (params['*']) {
