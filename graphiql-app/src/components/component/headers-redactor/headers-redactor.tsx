@@ -67,7 +67,7 @@ function HeadersRedactor({
           <p>{t('Value')}</p>
         </div>
       )}
-      <div className={styles.headersList}>
+      <div aria-live="polite" role="rowgroup" className={styles.headersList}>
         {headers.map((header, index) => {
           return (
             <div className={styles.inputSection} key={`index-id-${index}`}>
@@ -75,6 +75,7 @@ function HeadersRedactor({
                 className={styles.inputStyle}
                 type="text"
                 name="header-key"
+                aria-label="header-key"
                 value={header['header-key']}
                 onChange={(e) => {
                   handleInputChange(index, e);
@@ -84,6 +85,7 @@ function HeadersRedactor({
                 className={styles.inputStyle}
                 type="text"
                 name="header-value"
+                aria-label="header-value"
                 value={header['header-value']}
                 onChange={(e) => {
                   handleInputChange(index, e);
@@ -91,6 +93,7 @@ function HeadersRedactor({
               />
               <button
                 type="button"
+                aria-label="trash-btn"
                 className={styles.goTrashIcon}
                 onClick={() => {
                   handleDelete(index);
