@@ -4,8 +4,7 @@ import Button from '../../ui/button/button';
 import styles from './error-boundary.module.scss';
 
 interface ErrorBoundaryProps extends WithTranslation {
-  fallback?: React.ReactNode;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 interface ErrorBoundaryState {

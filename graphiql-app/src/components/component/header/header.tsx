@@ -37,8 +37,8 @@ function Header() {
       <header className={`${styles.header} ${isSticky ? styles.sticky : ''}`}>
         <NavLink
           to="/"
-          className={({ isActive, isPending }) =>
-            isPending ? styles.logo : isActive ? styles.logoActive : styles.logo
+          className={({ isActive }) =>
+            isActive ? styles.logoActive : styles.logo
           }
         />
         <nav className={styles.navHeader}>
@@ -56,22 +56,16 @@ function Header() {
             <>
               <NavLink
                 to="/registration"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? styles.iconSignUp
-                    : isActive
-                      ? styles.iconSignUpActive
-                      : styles.iconSignUp
+                aria-label="registration-btn"
+                className={({ isActive }) =>
+                  isActive ? styles.iconSignUpActive : styles.iconSignUp
                 }
               />
               <NavLink
                 to="/login"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? styles.iconSignIn
-                    : isActive
-                      ? styles.iconSignInActive
-                      : styles.iconSignIn
+                aria-label="login-btn"
+                className={({ isActive }) =>
+                  isActive ? styles.iconSignInActive : styles.iconSignIn
                 }
               />
             </>

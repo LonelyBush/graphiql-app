@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
         reporter: ['text', 'json', 'html'],
         reportsDirectory: 'coverage',
         include: ['src/**/*.{ts,tsx}'],
-        exclude: ['node_modules/', 'dist/', 'src/**/*.{test.ts,test.tsx}'],
+        exclude: ['node_modules/', 'dist/', 'src/**/*.{test.ts,test.tsx}', 'src/types/**' , 'src/scss-modules.d.ts'],
       },
       setupFiles: ['./src/vitest-setup/test.ts'],
     },
