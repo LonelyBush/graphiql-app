@@ -23,7 +23,12 @@ function ToggleLanguages() {
   return (
     <div className={styles.toggleControl}>
       <span className={styles.language}>{t('En')}</span>
-      <button type="button" className={styles.toggle} onClick={handleClick}>
+      <button
+        type="button"
+        aria-label="toggle-lang"
+        className={styles.toggle}
+        onClick={handleClick}
+      >
         <div
           data-testid="indicator"
           className={`${styles.indicator} ${
