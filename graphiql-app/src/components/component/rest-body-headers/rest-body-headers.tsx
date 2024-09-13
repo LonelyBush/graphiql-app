@@ -70,6 +70,7 @@ export default function BodyHeadersTabs({
       <TabItem label={t('Body')} index={0}>
         <div
           className={styles.editorWrapper}
+          data-testid="editorWrapper"
           onBlur={() => {
             const transformed = dynamicPathConverter(params['*']);
             transformed.body = encodeToBase64(getValue());

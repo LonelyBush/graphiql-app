@@ -12,7 +12,6 @@ import {
   logout,
 } from './firebase';
 
-// Mock Firebase methods
 vi.mock('firebase/auth', () => {
   return {
     getAuth: vi.fn(() => ({
