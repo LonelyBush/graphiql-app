@@ -12,7 +12,8 @@
     "lint": "eslint . --ext ts,tsx",
     "lint:fix": "eslint . --fix",
     "format:fix": "prettier . --write",
-    "prepare": "cd .. && husky graphiql-app/.husky"
+    "prepare": "cd .. && husky graphiql-app/.husky",
+    "postbuild": "remix setup netlify"
   },
   "dependencies": {
     "@graphiql/react": "^0.26.0",
