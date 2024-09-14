@@ -13,7 +13,7 @@ export default function App() {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon-react.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <Meta />
         <Links />
       </head>

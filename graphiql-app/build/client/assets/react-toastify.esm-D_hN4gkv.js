@@ -1,5 +1,5 @@
-import { G as ct } from './iconBase-z_erZi_H.js';
-import { r as b, R as y } from './index-DeHznlkS.js';
+import { G as ct } from './iconBase-QCAFBzlY.js';
+import { r as b, R as y } from './index-wWMGXTih.js';
 function Mt(t) {
   return ct({
     tag: 'svg',

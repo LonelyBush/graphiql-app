@@ -1,4 +1,4 @@
-import { R as a } from './index-DeHznlkS.js';
+import { R as a } from './index-wWMGXTih.js';
 var p = {
     color: void 0,
     size: void 0,
