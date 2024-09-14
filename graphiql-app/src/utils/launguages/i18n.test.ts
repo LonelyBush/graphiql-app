@@ -20,9 +20,9 @@ describe('i18n initialization and language change', () => {
     getStateSpy.mockRestore();
   });
 
-  it('should initialize with default language when store language is null', () => {
+  it('should initialize with default language when store language is empty', () => {
     const initialState: AppState = {
-      language: { language: 'en' },
+      language: { language: '' },
       restLinks: { restLinks: [] },
       graphiQLLinks: { graphiQLLinks: [] },
     };
