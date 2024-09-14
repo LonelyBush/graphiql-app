@@ -1,4 +1,4 @@
-import { d as S, r as b, j as r } from './index-DeHznlkS.js';
+import { d as S, r as b, j as r } from './index-wWMGXTih.js';
 import {
   c as j,
   a as n,
@@ -6,18 +6,18 @@ import {
   u as E,
   F as i,
   o as _,
-  d as v,
-} from './authError-B8rNQ2NH.js';
-import { B as y } from './react-toastify.esm-OaNhFX5r.js';
-import { u as R, B as k } from './button-DYUIl9Ir.js';
-import { r as N } from './auth-context-CQxQiTwU.js';
-import { L as $ } from './loading-DSuaqnr6.js';
-import { u as q } from './useAuth-hook-6GkHdI7V.js';
-import './iconBase-z_erZi_H.js';
+  d as y,
+} from './authError-C6dDEtMD.js';
+import { B as R } from './react-toastify.esm-D_hN4gkv.js';
+import { u as k, B as N } from './button-CmpeQtVi.js';
+import { r as $ } from './auth-context-BVoH_ZDZ.js';
+import { L as q } from './loading-DBB8G3ZU.js';
+import { u as v } from './useAuth-hook-DYEurJeX.js';
+import './iconBase-QCAFBzlY.js';
 const F = '_signInFormSection_7ml70_1',
   M = '_formWrapper_7ml70_15',
   I = '_errorMessage_7ml70_35',
-  h = { signInFormSection: F, formWrapper: M, errorMessage: I },
+  f = { signInFormSection: F, formWrapper: M, errorMessage: I },
   L = (e) =>
     j().shape({
       nickname: n()
@@ -38,21 +38,21 @@ const F = '_signInFormSection_7ml70_1',
     });
 function W() {
   var d, l, p, u;
-  const { t: e } = R(),
-    f = L(e),
+  const { t: e } = k(),
+    h = L(e),
     {
       register: a,
       handleSubmit: w,
       formState: { errors: s },
-    } = E({ mode: 'onChange', resolver: _(f) }),
-    { user: o, loading: c } = q(),
+    } = E({ mode: 'onChange', resolver: _(h) }),
+    { user: o, loading: c } = v(),
     m = S();
   b.useEffect(() => {
     o != null && o.displayName && m('/');
   }, [o, c, m]);
-  const x = async (t) => {
-    const P = N(t.nickname, t.email, t.password);
-    y.promise(P, {
+  const P = async (t) => {
+    const x = $(t.nickname, t.email, t.password);
+    R.promise(x, {
       pending: {
         render() {
           return 'Loading...';
@@ -65,20 +65,20 @@ function W() {
       },
       error: {
         render({ data: g }) {
-          return `${g instanceof Error ? e(v(g)) : ''}`;
+          return `${g instanceof Error ? e(y(g)) : ''}`;
         },
       },
     });
   };
   return c
-    ? r.jsx($, {})
+    ? r.jsx(q, {})
     : r.jsxs('div', {
-        className: h.signInFormSection,
+        className: f.signInFormSection,
         children: [
           r.jsx('h2', { children: e('Registration') }),
           r.jsxs('form', {
-            onSubmit: w(x),
-            className: h.formWrapper,
+            onSubmit: w(P),
+            className: f.formWrapper,
             children: [
               r.jsx(i, {
                 type: 'text',
@@ -95,7 +95,7 @@ function W() {
                 type: 'email',
                 label: e('Email'),
                 name: 'email',
-                placeholder: 'example@gmai.com',
+                placeholder: 'example@gmail.com',
                 register: a,
                 error:
                   (l = s.email) != null && l.message ? s.email.message : '',
@@ -104,7 +104,7 @@ function W() {
                 type: 'password',
                 label: e('Password'),
                 name: 'password',
-                placeholder: void 0,
+                placeholder: e('Password'),
                 register: a,
                 error:
                   (p = s.password) != null && p.message
@@ -115,14 +115,14 @@ function W() {
                 type: 'password',
                 label: e('ConfirmPassword'),
                 name: 'confirmPassword',
-                placeholder: void 0,
+                placeholder: e('ConfirmPassword'),
                 register: a,
                 error:
                   (u = s.confirmPassword) != null && u.message
                     ? s.confirmPassword.message
                     : '',
               }),
-              r.jsx(k, { btnType: 'submit', children: e('Submit') }),
+              r.jsx(N, { btnType: 'submit', children: e('Submit') }),
             ],
           }),
         ],

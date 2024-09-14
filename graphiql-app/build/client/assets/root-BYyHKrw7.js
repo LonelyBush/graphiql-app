@@ -1,37 +1,35 @@
-import { r as P, j as h, O as Oe, R as Ne } from './index-DeHznlkS.js';
+import { r as P, j as d, O as Re, R as ke } from './index-wWMGXTih.js';
+import { c as Oe, a as Ne } from './redux-toolkit.modern-C1Urj9PA.js';
+import { r as Pe } from './rest-history-slice-BfPXPxgQ.js';
+import { g as Ce } from './graphiql-history-slice-C9bI_IZu.js';
 import {
-  c as xe,
-  s as Pe,
-  a as Ce,
-  r as je,
-} from './rest-history-slice-ClFBwpBo.js';
-import {
-  s as $e,
-  a as Ee,
-  g as Ie,
+  s as Ee,
+  a as je,
+  g as $e,
   u as se,
-  I as Ae,
-  B as Te,
-} from './button-DYUIl9Ir.js';
-import { u as Fe, l as De, a as Ue, A as He } from './auth-context-CQxQiTwU.js';
-import { u as Ve, a as Me, P as Ke } from './react-redux-ulQB2trU.js';
+  I as Ie,
+  B as Ae,
+} from './button-CmpeQtVi.js';
+import { u as Te, l as De, a as Fe, A as Ue } from './auth-context-BVoH_ZDZ.js';
+import { u as Ve, a as He, P as Me } from './react-redux-CHx4hV8O.js';
 import {
   N as Y,
-  h as Be,
+  f as Ke,
   L as _,
-  M as _e,
-  j as ze,
-  S as Je,
-} from './components-D8uQ7O_9.js';
-import { F as Ge, a as Qe, Q as We } from './react-toastify.esm-OaNhFX5r.js';
-import './iconBase-z_erZi_H.js';
-const qe = {
+  M as Be,
+  h as _e,
+  S as ze,
+} from './components-Cvv4xV_s.js';
+import { F as Ge, a as Je, Q as Qe } from './react-toastify.esm-D_hN4gkv.js';
+import './index-Dpa_0JzH.js';
+import './iconBase-QCAFBzlY.js';
+const We = {
     type: '3rdParty',
     init(i) {
-      $e(i.options.react), Ee(i);
+      Ee(i.options.react), je(i);
     },
   },
-  Ye = (i, e = {}) =>
+  qe = (i, e = {}) =>
     function (s) {
       function n({ forwardedRef: a, ...o }) {
         const [l, c, g] = se(i, { ...o, keyPrefix: e.keyPrefix }),
@@ -43,17 +41,17 @@ const qe = {
           P.createElement(s, f)
         );
       }
-      (n.displayName = `withI18nextTranslation(${Ie(s)})`),
+      (n.displayName = `withI18nextTranslation(${$e(s)})`),
         (n.WrappedComponent = s);
       const r = (a, o) =>
         P.createElement(n, Object.assign({}, a, { forwardedRef: o }));
       return e.withRef ? P.forwardRef(r) : n;
     };
-function Ze({ i18n: i, defaultNS: e, children: t }) {
+function Ye({ i18n: i, defaultNS: e, children: t }) {
   const s = P.useMemo(() => ({ i18n: i, defaultNS: e }), [i, e]);
-  return P.createElement(Ae.Provider, { value: s }, t);
+  return P.createElement(Ie.Provider, { value: s }, t);
 }
-const Xe = {
+const Ze = {
   type: 'logger',
   log(i) {
     this.output('log', i);
@@ -68,7 +66,7 @@ const Xe = {
     console && console[i] && console[i].apply(console, e);
   },
 };
-class J {
+class G {
   constructor(e) {
     let t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     this.init(e, t);
@@ -76,7 +74,7 @@ class J {
   init(e) {
     let t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     (this.prefix = t.prefix || 'i18next:'),
-      (this.logger = e || Xe),
+      (this.logger = e || Ze),
       (this.options = t),
       (this.debug = t.debug);
   }
@@ -107,7 +105,7 @@ class J {
         this.logger[t](e));
   }
   create(e) {
-    return new J(this.logger, {
+    return new G(this.logger, {
       prefix: `${this.prefix}:${e}:`,
       ...this.options,
     });
@@ -116,11 +114,11 @@ class J {
     return (
       (e = e || this.options),
       (e.prefix = e.prefix || this.prefix),
-      new J(this.logger, e)
+      new G(this.logger, e)
     );
   }
 }
-var N = new J();
+var N = new G();
 class q {
   constructor() {
     this.observers = {};
@@ -171,15 +169,15 @@ const U = () => {
     return (t.resolve = i), (t.reject = e), t;
   },
   ae = (i) => (i == null ? '' : '' + i),
-  et = (i, e, t) => {
+  Xe = (i, e, t) => {
     i.forEach((s) => {
       e[s] && (t[s] = e[s]);
     });
   },
-  tt = /###/g,
-  oe = (i) => (i && i.indexOf('###') > -1 ? i.replace(tt, '.') : i),
+  et = /###/g,
+  oe = (i) => (i && i.indexOf('###') > -1 ? i.replace(et, '.') : i),
   le = (i) => !i || typeof i == 'string',
-  H = (i, e, t) => {
+  V = (i, e, t) => {
     const s = typeof e != 'string' ? e : e.split('.');
     let n = 0;
     for (; n < s.length - 1; ) {
@@ -192,34 +190,34 @@ const U = () => {
     return le(i) ? {} : { obj: i, k: oe(s[n]) };
   },
   ue = (i, e, t) => {
-    const { obj: s, k: n } = H(i, e, Object);
+    const { obj: s, k: n } = V(i, e, Object);
     if (s !== void 0 || e.length === 1) {
       s[n] = t;
       return;
     }
     let r = e[e.length - 1],
       a = e.slice(0, e.length - 1),
-      o = H(i, a, Object);
+      o = V(i, a, Object);
     for (; o.obj === void 0 && a.length; )
       (r = `${a[a.length - 1]}.${r}`),
         (a = a.slice(0, a.length - 1)),
-        (o = H(i, a, Object)),
+        (o = V(i, a, Object)),
         o && o.obj && typeof o.obj[`${o.k}.${r}`] < 'u' && (o.obj = void 0);
     o.obj[`${o.k}.${r}`] = t;
   },
-  st = (i, e, t, s) => {
-    const { obj: n, k: r } = H(i, e, Object);
+  tt = (i, e, t, s) => {
+    const { obj: n, k: r } = V(i, e, Object);
     (n[r] = n[r] || []), n[r].push(t);
   },
-  G = (i, e) => {
-    const { obj: t, k: s } = H(i, e);
+  J = (i, e) => {
+    const { obj: t, k: s } = V(i, e);
     if (t) return t[s];
   },
-  nt = (i, e, t) => {
-    const s = G(i, t);
-    return s !== void 0 ? s : G(e, t);
+  st = (i, e, t) => {
+    const s = J(i, t);
+    return s !== void 0 ? s : J(e, t);
   },
-  be = (i, e, t) => {
+  xe = (i, e, t) => {
     for (const s in e)
       s !== '__proto__' &&
         s !== 'constructor' &&
@@ -229,12 +227,12 @@ const U = () => {
             typeof e[s] == 'string' ||
             e[s] instanceof String
             ? t && (i[s] = e[s])
-            : be(i[s], e[s], t)
+            : xe(i[s], e[s], t)
           : (i[s] = e[s]));
     return i;
   },
-  $ = (i) => i.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
-var it = {
+  j = (i) => i.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+var nt = {
   '&': '&amp;',
   '<': '&lt;',
   '>': '&gt;',
@@ -242,9 +240,9 @@ var it = {
   "'": '&#39;',
   '/': '&#x2F;',
 };
-const rt = (i) =>
-  typeof i == 'string' ? i.replace(/[&<>"'\/]/g, (e) => it[e]) : i;
-class at {
+const it = (i) =>
+  typeof i == 'string' ? i.replace(/[&<>"'\/]/g, (e) => nt[e]) : i;
+class rt {
   constructor(e) {
     (this.capacity = e), (this.regExpMap = new Map()), (this.regExpQueue = []);
   }
@@ -261,13 +259,13 @@ class at {
     );
   }
 }
-const ot = [' ', ',', '?', '!', ';'],
-  lt = new at(20),
-  ut = (i, e, t) => {
+const at = [' ', ',', '?', '!', ';'],
+  ot = new rt(20),
+  lt = (i, e, t) => {
     (e = e || ''), (t = t || '');
-    const s = ot.filter((a) => e.indexOf(a) < 0 && t.indexOf(a) < 0);
+    const s = at.filter((a) => e.indexOf(a) < 0 && t.indexOf(a) < 0);
     if (s.length === 0) return !0;
-    const n = lt.getRegExp(
+    const n = ot.getRegExp(
       `(${s.map((a) => (a === '?' ? '\\?' : a)).join('|')})`,
     );
     let r = !n.test(i);
@@ -341,7 +339,7 @@ class ce extends q {
             : typeof s == 'string' && r
               ? o.push(...s.split(r))
               : o.push(s)));
-    const l = G(this.data, o);
+    const l = J(this.data, o);
     return (
       !l &&
         !t &&
@@ -385,9 +383,9 @@ class ce extends q {
       o = [e, t];
     e.indexOf('.') > -1 && ((o = e.split('.')), (n = s), (s = t), (t = o[1])),
       this.addNamespaces(t);
-    let l = G(this.data, o) || {};
+    let l = J(this.data, o) || {};
     a.skipCopy || (s = JSON.parse(JSON.stringify(s))),
-      n ? be(l, s, r) : (l = { ...l, ...s }),
+      n ? xe(l, s, r) : (l = { ...l, ...s }),
       ue(this.data, o, l),
       a.silent || this.emit('added', e, t, s);
   }
@@ -420,7 +418,7 @@ class ce extends q {
     return this.data;
   }
 }
-var Se = {
+var be = {
   processors: {},
   addPostProcessor(i) {
     this.processors[i.name] = i;
@@ -439,7 +437,7 @@ class W extends q {
   constructor(e) {
     let t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     super(),
-      et(
+      Xe(
         [
           'resourceStore',
           'languageUtils',
@@ -480,7 +478,7 @@ class W extends q {
         !t.keySeparator &&
         !this.options.userDefinedNsSeparator &&
         !t.nsSeparator &&
-        !ut(e, s, n);
+        !lt(e, s, n);
     if (a && !o) {
       const l = e.match(this.interpolator.nestingRegexp);
       if (l && l.length > 0) return { key: e, namespaces: r };
@@ -539,7 +537,7 @@ class W extends q {
     }
     const f = this.resolve(e, t);
     let u = f && f.res;
-    const d = (f && f.usedKey) || a,
+    const h = (f && f.usedKey) || a,
       p = (f && f.exactUsedKey) || a,
       y = Object.prototype.toString.apply(u),
       m = ['[object Number]', '[object Function]', '[object RegExp]'],
@@ -560,7 +558,7 @@ class W extends q {
             'accessing an object - but returnObjects options is not enabled!',
           );
         const x = this.options.returnedObjectHandler
-          ? this.options.returnedObjectHandler(d, u, { ...t, ns: o })
+          ? this.options.returnedObjectHandler(h, u, { ...t, ns: o })
           : `key '${a} (${this.language})' returned an object instead of string.`;
         return n
           ? ((f.res = x), (f.usedParams = this.getUsedParamsDetails(t)), f)
@@ -569,10 +567,10 @@ class W extends q {
       if (r) {
         const x = Array.isArray(u),
           w = x ? [] : {},
-          O = x ? p : d;
+          k = x ? p : h;
         for (const v in u)
           if (Object.prototype.hasOwnProperty.call(u, v)) {
-            const K = `${O}${r}${v}`;
+            const K = `${k}${r}${v}`;
             (w[v] = this.translate(K, { ...t, joinArrays: !1, ns: o })),
               w[v] === K && (w[v] = u[v]);
           }
@@ -583,26 +581,26 @@ class W extends q {
     else {
       let x = !1,
         w = !1;
-      const O = t.count !== void 0 && typeof t.count != 'string',
+      const k = t.count !== void 0 && typeof t.count != 'string',
         v = W.hasDefaultValue(t),
-        K = O ? this.pluralResolver.getSuffix(c, t.count, t) : '',
-        ke =
-          t.ordinal && O
+        K = k ? this.pluralResolver.getSuffix(c, t.count, t) : '',
+        Le =
+          t.ordinal && k
             ? this.pluralResolver.getSuffix(c, t.count, { ordinal: !1 })
             : '',
         ne =
-          O &&
+          k &&
           !t.ordinal &&
           t.count === 0 &&
           this.pluralResolver.shouldUseIntlApi(),
         A =
           (ne && t[`defaultValue${this.options.pluralSeparator}zero`]) ||
           t[`defaultValue${K}`] ||
-          t[`defaultValue${ke}`] ||
+          t[`defaultValue${Le}`] ||
           t.defaultValue;
       !this.isValidLookup(u) && v && ((x = !0), (u = A)),
         this.isValidLookup(u) || ((w = !0), (u = a));
-      const Re =
+      const we =
           (t.missingKeyNoValueFallbackToKey ||
             this.options.missingKeyNoValueFallbackToKey) &&
           w
@@ -614,48 +612,48 @@ class W extends q {
           (this.logger.log(T ? 'updateKey' : 'missingKey', c, l, a, T ? A : u),
           r)
         ) {
-          const k = this.resolve(a, { ...t, keySeparator: !1 });
-          k &&
-            k.res &&
+          const R = this.resolve(a, { ...t, keySeparator: !1 });
+          R &&
+            R.res &&
             this.logger.warn(
               'Seems the loaded translations were in flat JSON format instead of nested. Either set keySeparator: false on init or make sure your translations are published in nested format.',
             );
         }
-        let F = [];
+        let D = [];
         const B = this.languageUtils.getFallbackCodes(
           this.options.fallbackLng,
           t.lng || this.language,
         );
         if (this.options.saveMissingTo === 'fallback' && B && B[0])
-          for (let k = 0; k < B.length; k++) F.push(B[k]);
+          for (let R = 0; R < B.length; R++) D.push(B[R]);
         else
           this.options.saveMissingTo === 'all'
-            ? (F = this.languageUtils.toResolveHierarchy(
+            ? (D = this.languageUtils.toResolveHierarchy(
                 t.lng || this.language,
               ))
-            : F.push(t.lng || this.language);
-        const ie = (k, j, D) => {
-          const re = v && D !== u ? D : Re;
+            : D.push(t.lng || this.language);
+        const ie = (R, E, F) => {
+          const re = v && F !== u ? F : we;
           this.options.missingKeyHandler
-            ? this.options.missingKeyHandler(k, l, j, re, T, t)
+            ? this.options.missingKeyHandler(R, l, E, re, T, t)
             : this.backendConnector &&
               this.backendConnector.saveMissing &&
-              this.backendConnector.saveMissing(k, l, j, re, T, t),
-            this.emit('missingKey', k, l, j, u);
+              this.backendConnector.saveMissing(R, l, E, re, T, t),
+            this.emit('missingKey', R, l, E, u);
         };
         this.options.saveMissing &&
-          (this.options.saveMissingPlurals && O
-            ? F.forEach((k) => {
-                const j = this.pluralResolver.getSuffixes(k, t);
+          (this.options.saveMissingPlurals && k
+            ? D.forEach((R) => {
+                const E = this.pluralResolver.getSuffixes(R, t);
                 ne &&
                   t[`defaultValue${this.options.pluralSeparator}zero`] &&
-                  j.indexOf(`${this.options.pluralSeparator}zero`) < 0 &&
-                  j.push(`${this.options.pluralSeparator}zero`),
-                  j.forEach((D) => {
-                    ie([k], a + D, t[`defaultValue${D}`] || A);
+                  E.indexOf(`${this.options.pluralSeparator}zero`) < 0 &&
+                  E.push(`${this.options.pluralSeparator}zero`),
+                  E.forEach((F) => {
+                    ie([R], a + F, t[`defaultValue${F}`] || A);
                   });
               })
-            : ie(F, a, A));
+            : ie(D, a, A));
       }
       (u = this.extendTranslation(u, e, t, f, s)),
         w &&
@@ -715,8 +713,8 @@ class W extends q {
         c)
       ) {
         const u = e.match(this.interpolator.nestingRegexp),
-          d = u && u.length;
-        g < d && (s.nest = !1);
+          h = u && u.length;
+        g < h && (s.nest = !1);
       }
       !s.lng &&
         this.options.compatibilityAPI !== 'v1' &&
@@ -728,17 +726,17 @@ class W extends q {
             e,
             function () {
               for (
-                var u = arguments.length, d = new Array(u), p = 0;
+                var u = arguments.length, h = new Array(u), p = 0;
                 p < u;
                 p++
               )
-                d[p] = arguments[p];
-              return r && r[0] === d[0] && !s.context
+                h[p] = arguments[p];
+              return r && r[0] === h[0] && !s.context
                 ? (a.logger.warn(
-                    `It seems you are nesting recursively key: ${d[0]} in key: ${t[0]}`,
+                    `It seems you are nesting recursively key: ${h[0]} in key: ${t[0]}`,
                   ),
                   null)
-                : a.translate(...d, t);
+                : a.translate(...h, t);
             },
             s,
           )),
@@ -751,7 +749,7 @@ class W extends q {
         l &&
         l.length &&
         s.applyPostProcessor !== !1 &&
-        (e = Se.handle(
+        (e = be.handle(
           l,
           e,
           t,
@@ -786,7 +784,7 @@ class W extends q {
         let f = c.namespaces;
         this.options.fallbackNS && (f = f.concat(this.options.fallbackNS));
         const u = t.count !== void 0 && typeof t.count != 'string',
-          d =
+          h =
             u &&
             !t.ordinal &&
             t.count === 0 &&
@@ -823,14 +821,14 @@ class W extends q {
                 let x;
                 u && (x = this.pluralResolver.getSuffix(L, t.count, t));
                 const w = `${this.options.pluralSeparator}zero`,
-                  O = `${this.options.pluralSeparator}ordinal${this.options.pluralSeparator}`;
+                  k = `${this.options.pluralSeparator}ordinal${this.options.pluralSeparator}`;
                 if (
                   (u &&
                     (S.push(g + x),
                     t.ordinal &&
-                      x.indexOf(O) === 0 &&
-                      S.push(g + x.replace(O, this.options.pluralSeparator)),
-                    d && S.push(g + w)),
+                      x.indexOf(k) === 0 &&
+                      S.push(g + x.replace(k, this.options.pluralSeparator)),
+                    h && S.push(g + w)),
                   p)
                 ) {
                   const v = `${g}${this.options.contextSeparator}${t.context}`;
@@ -838,9 +836,9 @@ class W extends q {
                     u &&
                       (S.push(v + x),
                       t.ordinal &&
-                        x.indexOf(O) === 0 &&
-                        S.push(v + x.replace(O, this.options.pluralSeparator)),
-                      d && S.push(v + w));
+                        x.indexOf(k) === 0 &&
+                        S.push(v + x.replace(k, this.options.pluralSeparator)),
+                      h && S.push(v + w));
                 }
               }
               let M;
@@ -1045,7 +1043,7 @@ class fe {
     );
   }
 }
-let ct = [
+let ut = [
     {
       lngs: [
         'ach',
@@ -1194,7 +1192,7 @@ let ct = [
     { lngs: ['sl'], nr: [5, 1, 2, 3], fc: 21 },
     { lngs: ['he', 'iw'], nr: [1, 2, 20, 21], fc: 22 },
   ],
-  gt = {
+  ct = {
     1: (i) => +(i > 1),
     2: (i) => +(i != 1),
     3: (i) => 0,
@@ -1260,28 +1258,28 @@ let ct = [
     22: (i) =>
       i == 1 ? 0 : i == 2 ? 1 : (i < 0 || i > 10) && i % 10 == 0 ? 2 : 3,
   };
-const ft = ['v1', 'v2', 'v3'],
-  ht = ['v4'],
-  he = { zero: 0, one: 1, two: 2, few: 3, many: 4, other: 5 },
+const gt = ['v1', 'v2', 'v3'],
+  ft = ['v4'],
+  de = { zero: 0, one: 1, two: 2, few: 3, many: 4, other: 5 },
   dt = () => {
     const i = {};
     return (
-      ct.forEach((e) => {
+      ut.forEach((e) => {
         e.lngs.forEach((t) => {
-          i[t] = { numbers: e.nr, plurals: gt[e.fc] };
+          i[t] = { numbers: e.nr, plurals: ct[e.fc] };
         });
       }),
       i
     );
   };
-class pt {
+class ht {
   constructor(e) {
     let t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     (this.languageUtils = e),
       (this.options = t),
       (this.logger = N.create('pluralResolver')),
       (!this.options.compatibilityJSON ||
-        ht.includes(this.options.compatibilityJSON)) &&
+        ft.includes(this.options.compatibilityJSON)) &&
         (typeof Intl > 'u' || !Intl.PluralRules) &&
         ((this.options.compatibilityJSON = 'v3'),
         this.logger.error(
@@ -1331,7 +1329,7 @@ class pt {
       ? this.shouldUseIntlApi()
         ? s
             .resolvedOptions()
-            .pluralCategories.sort((n, r) => he[n] - he[r])
+            .pluralCategories.sort((n, r) => de[n] - de[r])
             .map(
               (n) =>
                 `${this.options.prepend}${t.ordinal ? `ordinal${this.options.prepend}` : ''}${n}`,
@@ -1375,14 +1373,14 @@ class pt {
           : s.toString();
   }
   shouldUseIntlApi() {
-    return !ft.includes(this.options.compatibilityJSON);
+    return !gt.includes(this.options.compatibilityJSON);
   }
 }
-const de = function (i, e, t) {
+const he = function (i, e, t) {
     let s =
         arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : '.',
       n = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : !0,
-      r = nt(i, e, t);
+      r = st(i, e, t);
     return (
       !r &&
         n &&
@@ -1392,7 +1390,7 @@ const de = function (i, e, t) {
     );
   },
   X = (i) => i.replace(/\$/g, '$$$$');
-class mt {
+class pt {
   constructor() {
     let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
     (this.logger = N.create('interpolator')),
@@ -1415,23 +1413,23 @@ class mt {
       unescapeSuffix: g,
       unescapePrefix: f,
       nestingPrefix: u,
-      nestingPrefixEscaped: d,
+      nestingPrefixEscaped: h,
       nestingSuffix: p,
       nestingSuffixEscaped: y,
       nestingOptionsSeparator: m,
       maxReplaces: L,
       alwaysFormat: S,
     } = e.interpolation;
-    (this.escape = t !== void 0 ? t : rt),
+    (this.escape = t !== void 0 ? t : it),
       (this.escapeValue = s !== void 0 ? s : !0),
       (this.useRawValueToEscape = n !== void 0 ? n : !1),
-      (this.prefix = r ? $(r) : a || '{{'),
-      (this.suffix = o ? $(o) : l || '}}'),
+      (this.prefix = r ? j(r) : a || '{{'),
+      (this.suffix = o ? j(o) : l || '}}'),
       (this.formatSeparator = c || ','),
       (this.unescapePrefix = g ? '' : f || '-'),
       (this.unescapeSuffix = this.unescapePrefix ? '' : g || ''),
-      (this.nestingPrefix = u ? $(u) : d || $('$t(')),
-      (this.nestingSuffix = p ? $(p) : y || $(')')),
+      (this.nestingPrefix = u ? j(u) : h || j('$t(')),
+      (this.nestingSuffix = p ? j(p) : y || j(')')),
       (this.nestingOptionsSeparator = m || ','),
       (this.maxReplaces = L || 1e3),
       (this.alwaysFormat = S !== void 0 ? S : !1),
@@ -1460,24 +1458,24 @@ class mt {
           this.options.interpolation &&
           this.options.interpolation.defaultVariables) ||
         {},
-      c = (d) => {
-        if (d.indexOf(this.formatSeparator) < 0) {
-          const L = de(
+      c = (h) => {
+        if (h.indexOf(this.formatSeparator) < 0) {
+          const L = he(
             t,
             l,
-            d,
+            h,
             this.options.keySeparator,
             this.options.ignoreJSONStructure,
           );
           return this.alwaysFormat
-            ? this.format(L, void 0, s, { ...n, ...t, interpolationkey: d })
+            ? this.format(L, void 0, s, { ...n, ...t, interpolationkey: h })
             : L;
         }
-        const p = d.split(this.formatSeparator),
+        const p = h.split(this.formatSeparator),
           y = p.shift().trim(),
           m = p.join(this.formatSeparator).trim();
         return this.format(
-          de(
+          he(
             t,
             l,
             y,
@@ -1499,13 +1497,13 @@ class mt {
           : this.options.interpolation.skipOnVariables;
     return (
       [
-        { regex: this.regexpUnescape, safeValue: (d) => X(d) },
+        { regex: this.regexpUnescape, safeValue: (h) => X(h) },
         {
           regex: this.regexp,
-          safeValue: (d) => (this.escapeValue ? X(this.escape(d)) : X(d)),
+          safeValue: (h) => (this.escapeValue ? X(this.escape(h)) : X(h)),
         },
-      ].forEach((d) => {
-        for (o = 0; (r = d.regex.exec(e)); ) {
+      ].forEach((h) => {
+        for (o = 0; (r = h.regex.exec(e)); ) {
           const p = r[1].trim();
           if (((a = c(p)), a === void 0))
             if (typeof g == 'function') {
@@ -1521,13 +1519,13 @@ class mt {
               ),
                 (a = '');
           else typeof a != 'string' && !this.useRawValueToEscape && (a = ae(a));
-          const y = d.safeValue(a);
+          const y = h.safeValue(a);
           if (
             ((e = e.replace(r[0], y)),
             f
-              ? ((d.regex.lastIndex += a.length),
-                (d.regex.lastIndex -= r[0].length))
-              : (d.regex.lastIndex = 0),
+              ? ((h.regex.lastIndex += a.length),
+                (h.regex.lastIndex -= r[0].length))
+              : (h.regex.lastIndex = 0),
             o++,
             o >= this.maxReplaces)
           )
@@ -1548,9 +1546,9 @@ class mt {
       const f = l.split(new RegExp(`${g}[ ]*{`));
       let u = `{${f[1]}`;
       (l = f[0]), (u = this.interpolate(u, a));
-      const d = u.match(/'/g),
+      const h = u.match(/'/g),
         p = u.match(/"/g);
-      ((d && d.length % 2 === 0 && !p) || p.length % 2 !== 0) &&
+      ((h && h.length % 2 === 0 && !p) || p.length % 2 !== 0) &&
         (u = u.replace(/'/g, '"'));
       try {
         (a = JSON.parse(u)), c && (a = { ...c, ...a });
@@ -1602,7 +1600,7 @@ class mt {
     return e;
   }
 }
-const yt = (i) => {
+const mt = (i) => {
     let e = i.toLowerCase().trim();
     const t = {};
     if (i.indexOf('(') > -1) {
@@ -1630,7 +1628,7 @@ const yt = (i) => {
     }
     return { formatName: e, formatOptions: t };
   },
-  E = (i) => {
+  $ = (i) => {
     const e = {};
     return (t, s, n) => {
       let r = n;
@@ -1645,29 +1643,29 @@ const yt = (i) => {
       return o || ((o = i(Q(s), n)), (e[a] = o)), o(t);
     };
   };
-class xt {
+class yt {
   constructor() {
     let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
     (this.logger = N.create('formatter')),
       (this.options = e),
       (this.formats = {
-        number: E((t, s) => {
+        number: $((t, s) => {
           const n = new Intl.NumberFormat(t, { ...s });
           return (r) => n.format(r);
         }),
-        currency: E((t, s) => {
+        currency: $((t, s) => {
           const n = new Intl.NumberFormat(t, { ...s, style: 'currency' });
           return (r) => n.format(r);
         }),
-        datetime: E((t, s) => {
+        datetime: $((t, s) => {
           const n = new Intl.DateTimeFormat(t, { ...s });
           return (r) => n.format(r);
         }),
-        relativetime: E((t, s) => {
+        relativetime: $((t, s) => {
           const n = new Intl.RelativeTimeFormat(t, { ...s });
           return (r) => n.format(r, s.range || 'day');
         }),
-        list: E((t, s) => {
+        list: $((t, s) => {
           const n = new Intl.ListFormat(t, { ...s });
           return (r) => n.format(r);
         }),
@@ -1688,7 +1686,7 @@ class xt {
     this.formats[e.toLowerCase().trim()] = t;
   }
   addCached(e, t) {
-    this.formats[e.toLowerCase().trim()] = E(t);
+    this.formats[e.toLowerCase().trim()] = $(t);
   }
   format(e, t, s) {
     let n = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : {};
@@ -1703,14 +1701,14 @@ class xt {
       r[0] = [r[0], ...r.splice(1, o)].join(this.formatSeparator);
     }
     return r.reduce((o, l) => {
-      const { formatName: c, formatOptions: g } = yt(l);
+      const { formatName: c, formatOptions: g } = mt(l);
       if (this.formats[c]) {
         let f = o;
         try {
           const u =
               (n && n.formatParams && n.formatParams[n.interpolationkey]) || {},
-            d = u.locale || u.lng || n.locale || n.lng || s;
-          f = this.formats[c](o, d, { ...g, ...n, ...u });
+            h = u.locale || u.lng || n.locale || n.lng || s;
+          f = this.formats[c](o, h, { ...g, ...n, ...u });
         } catch (u) {
           this.logger.warn(u);
         }
@@ -1720,10 +1718,10 @@ class xt {
     }, e);
   }
 }
-const bt = (i, e) => {
+const xt = (i, e) => {
   i.pending[e] !== void 0 && (delete i.pending[e], i.pendingCount--);
 };
-class St extends q {
+class bt extends q {
   constructor(e, t, s) {
     let n = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : {};
     super(),
@@ -1793,8 +1791,8 @@ class St extends q {
       t && s && (this.state[e] = 0);
     const o = {};
     this.queue.forEach((l) => {
-      st(l.loaded, [r], a),
-        bt(l, e),
+      tt(l.loaded, [r], a),
+        xt(l, e),
         t && l.errors.push(t),
         l.pendingCount === 0 &&
           !l.done &&
@@ -2009,12 +2007,12 @@ const pe = () => ({
     i
   ),
   z = () => {},
-  vt = (i) => {
+  St = (i) => {
     Object.getOwnPropertyNames(Object.getPrototypeOf(i)).forEach((t) => {
       typeof i[t] == 'function' && (i[t] = i[t].bind(i));
     });
   };
-class V extends q {
+class H extends q {
   constructor() {
     let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {},
       t = arguments.length > 1 ? arguments[1] : void 0;
@@ -2024,7 +2022,7 @@ class V extends q {
       (this.services = {}),
       (this.logger = N),
       (this.modules = { external: [] }),
-      vt(this),
+      St(this),
       t && !this.isInitialized && !e.isClone)
     ) {
       if (!this.options.initImmediate) return this.init(e, t), this;
@@ -2064,14 +2062,14 @@ class V extends q {
       let g;
       this.modules.formatter
         ? (g = this.modules.formatter)
-        : typeof Intl < 'u' && (g = xt);
+        : typeof Intl < 'u' && (g = yt);
       const f = new fe(this.options);
       this.store = new ce(this.options.resources, this.options);
       const u = this.services;
       (u.logger = N),
         (u.resourceStore = this.store),
         (u.languageUtils = f),
-        (u.pluralResolver = new pt(f, {
+        (u.pluralResolver = new ht(f, {
           prepend: this.options.pluralSeparator,
           compatibilityJSON: this.options.compatibilityJSON,
           simplifyPluralSuffix: this.options.simplifyPluralSuffix,
@@ -2084,22 +2082,22 @@ class V extends q {
           (this.options.interpolation.format = u.formatter.format.bind(
             u.formatter,
           ))),
-        (u.interpolator = new mt(this.options)),
+        (u.interpolator = new pt(this.options)),
         (u.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) }),
-        (u.backendConnector = new St(
+        (u.backendConnector = new bt(
           r(this.modules.backend),
           u.resourceStore,
           u,
           this.options,
         )),
-        u.backendConnector.on('*', function (d) {
+        u.backendConnector.on('*', function (h) {
           for (
             var p = arguments.length, y = new Array(p > 1 ? p - 1 : 0), m = 1;
             m < p;
             m++
           )
             y[m - 1] = arguments[m];
-          e.emit(d, ...y);
+          e.emit(h, ...y);
         }),
         this.modules.languageDetector &&
           ((u.languageDetector = r(this.modules.languageDetector)),
@@ -2109,17 +2107,17 @@ class V extends q {
           ((u.i18nFormat = r(this.modules.i18nFormat)),
           u.i18nFormat.init && u.i18nFormat.init(this)),
         (this.translator = new W(this.services, this.options)),
-        this.translator.on('*', function (d) {
+        this.translator.on('*', function (h) {
           for (
             var p = arguments.length, y = new Array(p > 1 ? p - 1 : 0), m = 1;
             m < p;
             m++
           )
             y[m - 1] = arguments[m];
-          e.emit(d, ...y);
+          e.emit(h, ...y);
         }),
-        this.modules.external.forEach((d) => {
-          d.init && d.init(this);
+        this.modules.external.forEach((h) => {
+          h.init && h.init(this);
         });
     }
     if (
@@ -2254,7 +2252,7 @@ class V extends q {
         (this.modules.logger = e),
       e.type === 'languageDetector' && (this.modules.languageDetector = e),
       e.type === 'i18nFormat' && (this.modules.i18nFormat = e),
-      e.type === 'postProcessor' && Se.addPostProcessor(e),
+      e.type === 'postProcessor' && be.addPostProcessor(e),
       e.type === 'formatter' && (this.modules.formatter = e),
       e.type === '3rdParty' && this.modules.external.push(e),
       this
@@ -2349,12 +2347,12 @@ class V extends q {
         (l.ns = l.ns || r.ns),
         l.keyPrefix !== '' && (l.keyPrefix = l.keyPrefix || s || r.keyPrefix);
       const u = n.options.keySeparator || '.';
-      let d;
+      let h;
       return (
         l.keyPrefix && Array.isArray(a)
-          ? (d = a.map((p) => `${l.keyPrefix}${u}${p}`))
-          : (d = l.keyPrefix ? `${l.keyPrefix}${u}${a}` : a),
-        n.t(d, l)
+          ? (h = a.map((p) => `${l.keyPrefix}${u}${p}`))
+          : (h = l.keyPrefix ? `${l.keyPrefix}${u}${a}` : a),
+        n.t(h, l)
       );
     };
     return (
@@ -2523,7 +2521,7 @@ class V extends q {
   static createInstance() {
     let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {},
       t = arguments.length > 1 ? arguments[1] : void 0;
-    return new V(e, t);
+    return new H(e, t);
   }
   cloneInstance() {
     let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {},
@@ -2531,7 +2529,7 @@ class V extends q {
     const s = e.forkResourceStore;
     s && delete e.forkResourceStore;
     const n = { ...this.options, ...e, isClone: !0 },
-      r = new V(n);
+      r = new H(n);
     return (
       (e.debug !== void 0 || e.prefix !== void 0) &&
         (r.logger = r.logger.clone(e)),
@@ -2571,8 +2569,8 @@ class V extends q {
     };
   }
 }
-const b = V.createInstance();
-b.createInstance = V.createInstance;
+const b = H.createInstance();
+b.createInstance = H.createInstance;
 b.createInstance;
 b.dir;
 b.init;
@@ -2587,7 +2585,7 @@ b.setDefaultNamespace;
 b.hasLoadedNamespace;
 b.loadNamespaces;
 b.loadLanguages;
-const Lt = {
+const vt = {
     en: {
       translation: {
         Welcome: 'Welcome',
@@ -2617,7 +2615,7 @@ const Lt = {
           'I love the latest technologies and constant development I want to succeed in my future profession, because it is much better to develop in the field that you like.',
         Registration: 'Registration',
         Login: 'Login',
-        Email: ' Email',
+        Email: 'Email',
         Nickname: 'Nickname',
         Password: 'Password',
         ConfirmPassword: 'Confirm password',
@@ -2661,6 +2659,12 @@ const Lt = {
         NoHistory:
           'You haven`t executed any requests.It`s empty here.Try these options:',
         HistoryRequests: 'History Requests',
+        DocumentationSDL: 'Documentation (SDL)',
+        GraphiQLQueryEditor: 'GraphiQL Query Editor',
+        VariablesEditor: 'Variables Editor',
+        SDLEndpointURL: 'SDL Endpoint URL',
+        EndpointURL: 'Endpoint URL',
+        Error: 'Error',
       },
     },
     ru: {
@@ -2737,105 +2741,101 @@ const Lt = {
         NoHistory:
           'Вы еще не выполнили ни одного запроса, Здесь пусто. Попробуйте эти варианты:',
         HistoryRequests: 'История запросов',
+        DocumentationSDL: 'Документация (SDL)',
+        VariablesEditor: 'Редактор переменных',
+        GraphiQLQueryEditor: 'Редактор запросов GraphiQL',
+        SDLEndpointURL: 'URL-адрес конечной точки SDL',
+        EndpointURL: 'URL-адрес конечной точки',
+        Error: 'Ошибка',
       },
     },
   },
-  wt = { language: 'en' },
-  ve = xe({
+  Lt = { language: 'en' },
+  Se = Oe({
     name: 'language',
-    initialState: wt,
+    initialState: Lt,
     reducers: {
       setLanguage: (i, e) => {
         i.language = e.payload;
       },
     },
   }),
-  { setLanguage: kt } = ve.actions,
-  Rt = ve.reducer,
-  Ot = { graphiQLLinks: [] },
-  Le = xe({
-    name: 'graphiql-links',
-    initialState: Ot,
-    reducers: {
-      addGraphiQLLinks: (i, e) => {
-        i.graphiQLLinks.push(...e.payload), Pe('graphiQL', i.graphiQLLinks);
-      },
-    },
-  });
-Le.actions;
-const Nt = Le.reducer,
-  we = () =>
-    Ce({ reducer: { language: Rt, restLinks: je, graphiQLLinks: Nt } }),
-  te = we(),
-  Pt = te.getState().language.language || 'en';
-b.use(qe).init({ resources: Lt, lng: Pt, interpolation: { escapeValue: !1 } });
+  { setLanguage: wt } = Se.actions,
+  Rt = Se.reducer,
+  ve = () =>
+    Ne({ reducer: { language: Rt, restLinks: Pe, graphiQLLinks: Ce } }),
+  te = ve(),
+  kt = te.getState().language.language || 'en';
+b.use(We).init({ resources: vt, lng: kt, interpolation: { escapeValue: !1 } });
 te.subscribe(() => {
   const i = te.getState().language.language;
   i && b.language !== i && b.changeLanguage(i);
 });
-const Ct = '_toggleControl_1al1l_1',
-  jt = '_language_1al1l_7',
-  $t = '_toggle_1al1l_1',
-  Et = '_indicator_1al1l_21',
-  It = '_indicatorActive_1al1l_33',
+const Ot = '_toggleControl_1al1l_1',
+  Nt = '_language_1al1l_7',
+  Pt = '_toggle_1al1l_1',
+  Ct = '_indicator_1al1l_21',
+  Et = '_indicatorActive_1al1l_33',
   I = {
-    toggleControl: Ct,
-    language: jt,
-    toggle: $t,
-    indicator: Et,
-    indicatorActive: It,
+    toggleControl: Ot,
+    language: Nt,
+    toggle: Pt,
+    indicator: Ct,
+    indicatorActive: Et,
   };
-function At() {
+function jt() {
   const i = Ve(),
     { i18n: e, t } = se(),
-    s = Me((o) => o.language.language),
+    s = He((o) => o.language.language),
     [n, r] = P.useState(s),
     a = () => {
       const o = n === 'ru' ? 'en' : 'ru';
-      r(o), i(kt(o)), e.changeLanguage(o);
+      r(o), i(wt(o)), e.changeLanguage(o);
     };
-  return h.jsxs('div', {
+  return d.jsxs('div', {
     className: I.toggleControl,
     children: [
-      h.jsx('span', { className: I.language, children: t('En') }),
-      h.jsx('button', {
+      d.jsx('span', { className: I.language, children: t('En') }),
+      d.jsx('button', {
         type: 'button',
+        'aria-label': 'toggle-lang',
         className: I.toggle,
         onClick: a,
-        children: h.jsx('div', {
+        children: d.jsx('div', {
+          'data-testid': 'indicator',
           className: `${I.indicator} ${n === 'ru' ? I.indicatorActive : ''}`,
         }),
       }),
-      h.jsx('span', { className: I.language, children: t('Ru') }),
+      d.jsx('span', { className: I.language, children: t('Ru') }),
     ],
   });
 }
-const Tt = '_header_10klx_1',
-  Ft = '_sticky_10klx_13',
-  Dt = '_navHeader_10klx_22',
-  Ut = '_logo_10klx_28',
-  Ht = '_logoActive_10klx_42',
-  Vt = '_iconSignIn_10klx_53',
-  Mt = '_iconSignInActive_10klx_67',
-  Kt = '_iconSignUp_10klx_78',
-  Bt = '_iconSignUpActive_10klx_92',
-  _t = '_iconLogOut_10klx_103',
-  R = {
-    header: Tt,
-    sticky: Ft,
-    navHeader: Dt,
-    logo: Ut,
-    logoActive: Ht,
-    iconSignIn: Vt,
-    iconSignInActive: Mt,
-    iconSignUp: Kt,
-    iconSignUpActive: Bt,
-    iconLogOut: _t,
+const $t = '_header_10klx_1',
+  It = '_sticky_10klx_13',
+  At = '_navHeader_10klx_22',
+  Tt = '_logo_10klx_28',
+  Dt = '_logoActive_10klx_42',
+  Ft = '_iconSignIn_10klx_53',
+  Ut = '_iconSignInActive_10klx_67',
+  Vt = '_iconSignUp_10klx_78',
+  Ht = '_iconSignUpActive_10klx_92',
+  Mt = '_iconLogOut_10klx_103',
+  O = {
+    header: $t,
+    sticky: It,
+    navHeader: At,
+    logo: Tt,
+    logoActive: Dt,
+    iconSignIn: Ft,
+    iconSignInActive: Ut,
+    iconSignUp: Vt,
+    iconSignUpActive: Ht,
+    iconLogOut: Mt,
   };
-function zt() {
+function Kt() {
   const [i, e] = P.useState(!1),
     t = P.useRef(null),
-    [s] = Fe(Ue);
+    [s] = Te(Fe);
   return (
     P.useEffect(() => {
       const n = new IntersectionObserver(
@@ -2852,49 +2852,42 @@ function zt() {
         }
       );
     }, []),
-    h.jsxs(h.Fragment, {
+    d.jsxs(d.Fragment, {
       children: [
-        h.jsx('div', { ref: t }),
-        h.jsxs('header', {
-          className: `${R.header} ${i ? R.sticky : ''}`,
+        d.jsx('div', { ref: t }),
+        d.jsxs('header', {
+          className: `${O.header} ${i ? O.sticky : ''}`,
           children: [
-            h.jsx(Y, {
+            d.jsx(Y, {
               to: '/',
-              className: ({ isActive: n, isPending: r }) =>
-                r ? R.logo : n ? R.logoActive : R.logo,
+              className: ({ isActive: n }) => (n ? O.logoActive : O.logo),
             }),
-            h.jsxs('nav', {
-              className: R.navHeader,
+            d.jsxs('nav', {
+              className: O.navHeader,
               children: [
-                h.jsx(At, {}),
+                d.jsx(jt, {}),
                 s
-                  ? h.jsx('button', {
+                  ? d.jsx('button', {
                       type: 'button',
-                      className: R.iconLogOut,
+                      className: O.iconLogOut,
                       'aria-label': 'Log out',
                       onClick: () => {
                         De();
                       },
                     })
-                  : h.jsxs(h.Fragment, {
+                  : d.jsxs(d.Fragment, {
                       children: [
-                        h.jsx(Y, {
+                        d.jsx(Y, {
                           to: '/registration',
-                          className: ({ isActive: n, isPending: r }) =>
-                            r
-                              ? R.iconSignUp
-                              : n
-                                ? R.iconSignUpActive
-                                : R.iconSignUp,
+                          'aria-label': 'registration-btn',
+                          className: ({ isActive: n }) =>
+                            n ? O.iconSignUpActive : O.iconSignUp,
                         }),
-                        h.jsx(Y, {
+                        d.jsx(Y, {
                           to: '/login',
-                          className: ({ isActive: n, isPending: r }) =>
-                            r
-                              ? R.iconSignIn
-                              : n
-                                ? R.iconSignInActive
-                                : R.iconSignIn,
+                          'aria-label': 'login-btn',
+                          className: ({ isActive: n }) =>
+                            n ? O.iconSignInActive : O.iconSignIn,
                         }),
                       ],
                     }),
@@ -2906,51 +2899,51 @@ function zt() {
     })
   );
 }
-function Jt() {
-  const e = Be().some((t) => {
+function Bt() {
+  const e = Ke().some((t) => {
     var s;
     return (s = t.handle) == null ? void 0 : s.hideHeader;
   });
-  return h.jsxs(h.Fragment, { children: [!e && h.jsx(zt, {}), h.jsx(Oe, {})] });
+  return d.jsxs(d.Fragment, { children: [!e && d.jsx(Kt, {}), d.jsx(Re, {})] });
 }
-const Gt = '_footer_1vusc_1',
-  Qt = '_iconGitHub_1vusc_10',
-  Wt = '_teamBlock_1vusc_18',
-  qt = '_footerNav_1vusc_24',
-  Yt = '_link_1vusc_32',
-  Zt = '_logoRS_1vusc_57',
+const _t = '_footer_1vusc_1',
+  zt = '_iconGitHub_1vusc_10',
+  Gt = '_teamBlock_1vusc_18',
+  Jt = '_footerNav_1vusc_24',
+  Qt = '_link_1vusc_32',
+  Wt = '_logoRS_1vusc_57',
   C = {
-    footer: Gt,
-    iconGitHub: Qt,
-    teamBlock: Wt,
-    footerNav: qt,
-    link: Yt,
-    logoRS: Zt,
+    footer: _t,
+    iconGitHub: zt,
+    teamBlock: Gt,
+    footerNav: Jt,
+    link: Qt,
+    logoRS: Wt,
   };
-function Xt() {
+function qt() {
   const { t: i } = se();
-  return h.jsxs('footer', {
+  return d.jsxs('footer', {
     className: C.footer,
     children: [
-      h.jsxs('div', {
+      d.jsxs('div', {
         className: C.teamBlock,
         children: [
-          h.jsx(Ge, { className: C.iconGitHub }),
-          h.jsxs('nav', {
+          d.jsx(Ge, { className: C.iconGitHub }),
+          d.jsxs('nav', {
             className: C.footerNav,
             children: [
               ' ',
-              h.jsx(_, {
+              d.jsx(_, {
                 to: 'https://github.com/rs0048',
                 className: C.link,
                 children: i('RomanSokolov'),
               }),
-              h.jsx(_, {
+              d.jsx(_, {
                 to: 'https://github.com/Yana-Dyachok',
                 className: C.link,
                 children: i('YanaDyachok'),
               }),
-              h.jsx(_, {
+              d.jsx(_, {
                 to: 'https://github.com/lonelybush',
                 className: C.link,
                 children: i('NikitaRadevich'),
@@ -2959,25 +2952,22 @@ function Xt() {
           }),
         ],
       }),
-      h.jsx('p', { children: '2024' }),
-      h.jsx(_, {
+      d.jsx('p', { children: '2024' }),
+      d.jsx(_, {
         to: 'https://rs.school/',
         className: C.linkBlock,
-        children: h.jsx('div', { className: C.logoRS }),
+        children: d.jsx('div', { className: C.logoRS }),
       }),
     ],
   });
 }
-function es({ children: i }) {
-  const e = P.useRef();
-  return (
-    e.current || (e.current = we()),
-    h.jsx(Ke, { store: e.current, children: i })
-  );
+function Yt({ children: i, store: e }) {
+  const t = P.useMemo(() => e || ve(), [e]);
+  return d.jsx(Me, { store: t, children: i });
 }
-const ts = '_container_lhbtw_1',
-  ss = { container: ts };
-class ns extends Ne.Component {
+const Zt = '_container_lhbtw_1',
+  Xt = { container: Zt };
+class es extends ke.Component {
   constructor(e) {
     super(e), (this.state = { hasError: !1 });
   }
@@ -2988,11 +2978,11 @@ class ns extends Ne.Component {
     const { hasError: e } = this.state,
       { t, children: s } = this.props;
     return e
-      ? h.jsxs('div', {
-          className: ss.container,
+      ? d.jsxs('div', {
+          className: Xt.container,
           children: [
-            h.jsx('h2', { children: t('ErrorMessage') }),
-            h.jsx(Te, {
+            d.jsx('h2', { children: t('ErrorMessage') }),
+            d.jsx(Ae, {
               btnType: 'button',
               to: '/',
               children: t('BackToMain'),
@@ -3002,11 +2992,11 @@ class ns extends Ne.Component {
       : s;
   }
 }
-const is = Ye()(ns),
-  rs = '_toastBody_ap29t_1',
-  as = '_toastWrapper_ap29t_7',
-  ye = { toastBody: rs, toastWrapper: as },
-  os = {
+const ts = qe()(es),
+  ss = '_toastBody_ap29t_1',
+  ns = '_toastWrapper_ap29t_7',
+  ye = { toastBody: ss, toastWrapper: ns },
+  is = {
     position: 'bottom-right',
     bodyClassName: ye.toastBody,
     toastClassName: ye.toastWrapper,
@@ -3015,36 +3005,36 @@ const is = Ye()(ns),
     pauseOnHover: !0,
     draggable: !0,
     theme: 'light',
-    transition: Qe,
+    transition: Je,
   };
-function ls() {
-  return h.jsx(We, { ...os });
+function rs() {
+  return d.jsx(Qe, { ...is });
 }
 function xs() {
-  return h.jsxs('html', {
+  return d.jsxs('html', {
     lang: 'en',
     children: [
-      h.jsxs('head', {
+      d.jsxs('head', {
         children: [
-          h.jsx('link', {
+          d.jsx('link', {
             rel: 'icon',
-            href: '/favicon-react.ico',
+            href: '/favicon.ico',
             type: 'image/x-icon',
           }),
-          h.jsx(_e, {}),
-          h.jsx(ze, {}),
+          d.jsx(Be, {}),
+          d.jsx(_e, {}),
         ],
       }),
-      h.jsx('body', {
-        children: h.jsx(is, {
-          children: h.jsx(He, {
-            children: h.jsxs(es, {
+      d.jsx('body', {
+        children: d.jsx(ts, {
+          children: d.jsx(Ue, {
+            children: d.jsxs(Yt, {
               children: [
-                h.jsxs(Ze, {
+                d.jsxs(Ye, {
                   i18n: b,
-                  children: [h.jsx(Jt, {}), h.jsx(ls, {}), h.jsx(Xt, {})],
+                  children: [d.jsx(Bt, {}), d.jsx(rs, {}), d.jsx(qt, {})],
                 }),
-                h.jsx(Je, {}),
+                d.jsx(ze, {}),
               ],
             }),
           }),

@@ -1,0 +1,46 @@
+._wrapperGraphi_madas_1 {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  gap: 1rem;
+  background-color: #535878;
+  color: #fff;
+}
+._title_madas_12 {
+  text-align: center;
+}
+._inputContainer_madas_16 {
+  display: grid;
+  grid-template-columns: 1fr 0.05fr;
+  align-items: end;
+  gap: 1rem;
+}
+._inputContainer_madas_16 > button {
+  height: 4rem;
+}
+._inputBlock_madas_26 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+._inputInner_madas_32 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+._inputUrl_madas_38 {
+  width: 100%;
+  padding-left: 2rem;
+  border: 1px solid #b8d8e3;
+  box-shadow:
+    #0000001f 0 2px 3px,
+    #0000003d 0 1px 2px;
+  border-radius: 0.4rem;
+  background-color: #fee1dd;
+  color: #535878;
+}
+._inputUrl_madas_38:focus {
+  box-shadow: 0 0 3px 5px #f7f7f880;
+}

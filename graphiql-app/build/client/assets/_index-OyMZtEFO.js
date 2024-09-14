@@ -1,8 +1,8 @@
-import { j as n } from './index-DeHznlkS.js';
-import { u as a, B as t } from './button-DYUIl9Ir.js';
-import { L as l } from './loading-DSuaqnr6.js';
-import { u as d } from './useAuth-hook-6GkHdI7V.js';
-import './auth-context-CQxQiTwU.js';
+import { j as n } from './index-wWMGXTih.js';
+import { u as a, B as t } from './button-CmpeQtVi.js';
+import { L as l } from './loading-DBB8G3ZU.js';
+import { u as d } from './useAuth-hook-DYEurJeX.js';
+import './auth-context-BVoH_ZDZ.js';
 const m = '_contentInner_8piex_1',
   j = '_description_8piex_9',
   x = '_buttonBlock_8piex_13',
@@ -11,15 +11,15 @@ const m = '_contentInner_8piex_1',
   p = '/assets/yana-BB-jdOhc.jpg',
   _ = '/assets/roman-BhWAxZYb.jpg',
   k = '/assets/nikita-DpnL6Sd8.jpg',
-  g = '_cardBlock_1y4gj_1',
-  N = '_imgBlock_1y4gj_14',
+  N = '_cardBlock_1y4gj_1',
+  g = '_imgBlock_1y4gj_14',
   u = '_img_1y4gj_14',
   B = '_cardInfoBlock_1y4gj_30',
   f = '_cardName_1y4gj_37',
   b = '_info_1y4gj_43',
   c = {
-    cardBlock: g,
-    imgBlock: N,
+    cardBlock: N,
+    imgBlock: g,
     img: u,
     cardInfoBlock: B,
     cardName: f,
@@ -154,7 +154,7 @@ function $() {
                         }),
                         n.jsx(t, {
                           btnType: 'button',
-                          to: '/graphiql',
+                          to: '/GraphiQL',
                           children: s('GraphiQLClient'),
                         }),
                         n.jsx(t, {

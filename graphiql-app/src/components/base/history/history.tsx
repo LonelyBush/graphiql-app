@@ -40,7 +40,7 @@ function History() {
     <div className={styles.historyBlock}>
       {sortedRequests.length === 0 ? (
         <>
-          <p>{t('NoHistory')} </p>
+          <h2 className={styles.title}>{t('NoHistory')} </h2>
           <div className={styles.buttonBlock}>
             {' '}
             <Button btnType="button" to="/REST/GET">
@@ -54,7 +54,7 @@ function History() {
       ) : (
         <>
           {' '}
-          <h2>{t('HistoryRequests')}</h2>
+          <h2 className={styles.title}>{t('HistoryRequests')}</h2>
           <div className={styles.linksBlock}>
             {sortedRequests.map((result) => (
               <div
@@ -71,6 +71,7 @@ function History() {
                       : `/GRAPHIQL/${result.urlPage}`
                   }
                   key={result.urlPage + Math.random()}
+                  className={styles.historyLink}
                 >
                   {result.requestData.url}
                 </Link>

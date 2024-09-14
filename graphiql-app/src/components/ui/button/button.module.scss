@@ -32,3 +32,9 @@
     transform: scale(1.05);
   }
 }
+
+@media (max-width: 520px) {
+  .btn {
+    font-size: 1.8rem;
+  }
+}

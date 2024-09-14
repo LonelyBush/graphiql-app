@@ -6,7 +6,12 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  padding: 1rem;
   background-color: $c-blue-100;
+}
+
+.title {
+  text-align: center;
 }
 
 .buttonBlock {
@@ -26,4 +31,26 @@
 .linksBlock {
   display: flex;
   flex-direction: column;
+}
+
+.historyLink {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+@media (max-width: 1200px) {
+  .historyLink {
+    max-width: 50rem;
+    line-clamp: 2;
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 550px) {
+  .historyLink {
+    max-width: 30rem;
+  }
 }
