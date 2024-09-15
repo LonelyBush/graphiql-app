@@ -10,6 +10,7 @@ import Response from '../../components/component/response/response';
 import styles from '../../styles/page-styles/graphiql-client.module.scss';
 import { RequestData, RequestItem } from '../../types/interface';
 import { addGraphiQLLinks } from '../../lib/slices/graphiql-history-slice';
+import example from '../../components/base/graphiql-client/exampleForGraphiQL';
 
 interface GraphQLResponse {
   response?: Record<string, unknown>;
@@ -27,8 +28,7 @@ export const action = async ({ request }: LoaderFunctionArgs) => {
 
   const url = formData.get('endpoint') as string;
   const headers = formData.get('headers') as string;
-  const query =
-    'query ($filter: FilterCharacter) { characters(filter: $filter) { results { name } } }';
+  const query = formData.get('query') as string;
   const variables = formData.get('variables') as string;
 
   const parsedHeaders = headers ? JSON.parse(headers) : {};
@@ -94,11 +94,11 @@ function GraphiqlClient() {
   const statusDoc = actionData?.statusDoc || null;
   const errorDoc = actionData?.errorDoc || null;
 
-  const [endpointState, setEndpoint] = useState<string>('');
+  const [endpointState, setEndpoint] = useState<string>(example.endpoint);
   const [headersState, setHeaders] = useState<string>(
     '{"Content-Type": "application/json"}',
   );
-  const [queryState, setQuery] = useState<string>('');
+  const [queryState, setQuery] = useState<string>(example.query);
   const [variablesState, setVariables] = useState<string>('{}');
 
   const [sdlEndpoint, setSdlEndpoint] = useState<string>(
