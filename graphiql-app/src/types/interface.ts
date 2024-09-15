@@ -51,3 +51,8 @@ export interface ActionResponse {
   data: string | null;
   error?: string | null;
 }
+
+export interface LoaderResponse {
+  method: string;
+  url: string;
+}
