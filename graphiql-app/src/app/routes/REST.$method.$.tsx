@@ -1,6 +1,7 @@
 import {
   Form,
   useActionData,
+  useLoaderData,
   useLocation,
   useNavigate,
   useParams,
@@ -8,7 +9,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { LoaderFunctionArgs } from '@remix-run/server-runtime';
+import { LoaderFunctionArgs, redirect } from '@remix-run/server-runtime';
 import { decodeToString, encodeToBase64 } from '../../utils/const/base64';
 import BodyHeadersTabs from '../../components/component/rest-body-headers/rest-body-headers';
 import Button from '../../components/ui/button/button';
@@ -19,8 +20,29 @@ import {
   RequestData,
   RequestItem,
   ActionResponse,
+  LoaderResponse,
 } from '../../types/interface';
 import styles from '../../styles/page-styles/rest-full-client.module.scss';
+
+export const loader = async ({ params }: LoaderFunctionArgs) => {
+  const allowedMethods = ['POST', 'GET', 'DELETE', 'PUT'];
+
+  if (!allowedMethods.includes(params.method!)) {
+    return redirect('/bad-method-try-again');
+  }
+
+  try {
+    decodeToString(params['*'] ? params['*']?.split('/')[0] : '');
+  } catch (err) {
+    if (err instanceof Error) {
+      return redirect('/bad-request-route-try-again');
+    }
+  }
+  return {
+    method: params.method,
+    url: decodeToString(params['*'] ? params['*']?.split('/')[0] : ''),
+  };
+};
 
 export const action = async ({ request }: LoaderFunctionArgs) => {
   const formData = await request.formData();
@@ -51,10 +73,11 @@ export const action = async ({ request }: LoaderFunctionArgs) => {
 function RESTFullPage() {
   const navigate = useNavigate();
   const params = useParams();
+  const loaderData = useLoaderData<LoaderResponse>();
   const actionData = useActionData<ActionResponse>();
   const location = useLocation();
-  const [method, setMethod] = useState(params.method || 'GET');
-  const [url, setUrl] = useState(params['*']?.split('/')![0] || '');
+  const [method, setMethod] = useState(loaderData.method || 'GET');
+  const [url, setUrl] = useState(loaderData.url || '');
   const [headers, setHeaders] = useState('');
   const [body, setBody] = useState('');
   const { t } = useTranslation();
@@ -81,20 +104,12 @@ function RESTFullPage() {
   };
 
   useEffect(() => {
-    setMethod(params.method!);
     if (params['*']) {
       if (params['*'].split('/').length > 2) {
         navigate('/errorPage');
       }
-      try {
-        setUrl(decodeToString(params['*']?.split('/')[0]));
-      } catch (err) {
-        if (err instanceof Error) {
-          navigate('/errorPage');
-        }
-      }
     }
-  }, [params.method, params, navigate]);
+  }, [params.method, params, navigate, loaderData.url]);
   return (
     <div className={styles.container}>
       <div className={styles.RestBlock}>
@@ -123,6 +138,7 @@ function RESTFullPage() {
                 <option value="DELETE">DELETE</option>
               </select>
               <input
+                aria-label="url-input"
                 className={styles.inputUrl}
                 type="text"
                 name="url"

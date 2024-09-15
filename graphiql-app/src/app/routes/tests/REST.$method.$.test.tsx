@@ -3,8 +3,13 @@ import { describe, it, expect, vi } from 'vitest';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
+import { redirect } from '@remix-run/react';
+import { createRemixStub } from '@remix-run/testing';
 import RESTFullPage from '../REST.$method.$';
 import { AppState, RequestItem } from '../../../types/interface';
+import CatchAll from '../$catchAll';
+import { decodeToString } from '../../../utils/const/base64';
 
 type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
 
@@ -17,6 +22,7 @@ vi.mock('@remix-run/react', async (importOriginal) => {
       status: null,
       error: null,
     }),
+    useLoaderData: () => ({ method: 'GET', url: 'test-url' }),
     useNavigate: () => vi.fn(),
     useParams: () => ({ method: 'GET', '*': 'test-url' }),
     useLocation: () => ({ pathname: '/REST/GET/test-url', search: '' }),
@@ -87,8 +93,9 @@ describe('RESTFullPage', () => {
 
   it('should update URL input value', async () => {
     renderWithProviders(<RESTFullPage />);
-    const urlInput = screen.getByRole('textbox');
-    fireEvent.change(urlInput, { target: { value: 'http://example.com' } });
+    const urlInput = screen.getByRole('textbox', { name: 'url-input' });
+    await userEvent.clear(urlInput);
+    await userEvent.type(urlInput, 'http://example.com');
     await waitFor(() => expect(urlInput).toHaveValue('http://example.com'));
   });
 
@@ -96,5 +103,48 @@ describe('RESTFullPage', () => {
     renderWithProviders(<RESTFullPage />);
     const submitButton = screen.getByRole('button', { name: 'Send' });
     fireEvent.click(submitButton);
+  });
+
+  it('should redirect on errorpage when bad method', async () => {
+    const Stub = createRemixStub([
+      {
+        path: '/REST/232Efg/E23#@wer',
+        Component: RESTFullPage,
+        ErrorBoundary: CatchAll,
+        loader({ params }) {
+          const allowedMethods = ['POST', 'GET', 'DELETE', 'PUT'];
+          return !allowedMethods.includes(params.method!)
+            ? redirect('/bad-method-url')
+            : params;
+        },
+      },
+    ]);
+    render(<Stub initialEntries={['/REST/232Efg/E23#@wer']} />);
+    expect(screen.getByText('NotFound')).toBeDefined();
+  });
+
+  it('should redirect on errorpage when bad url', async () => {
+    const Stub = createRemixStub([
+      {
+        path: '/REST/GET/E23#@wer',
+        Component: RESTFullPage,
+        ErrorBoundary: CatchAll,
+        loader({ params }) {
+          try {
+            decodeToString(params['*'] ? params['*']?.split('/')[0] : '');
+          } catch (err) {
+            if (err instanceof Error) {
+              return redirect('/bad-request-route-try-again');
+            }
+          }
+          return {
+            method: params.method,
+            url: decodeToString(params['*'] ? params['*']?.split('/')[0] : ''),
+          };
+        },
+      },
+    ]);
+    render(<Stub initialEntries={['/REST/GET/E23#@wer']} />);
+    expect(screen.getByText('NotFound')).toBeDefined();
   });
 });
