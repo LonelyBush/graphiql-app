@@ -26,9 +26,8 @@ Husky                     | setting up Git hooks:                  | npm run pre
 Vitest                    | run vitest with coverage               | npm run test
 
 ## Instructions for setting up and running the project locally
-- npm install
 - cd graphiql-app
-- npm instal
+- npm install
 - npm run dev
 - press h + enter to show help
 - press r + enter to restart the server
