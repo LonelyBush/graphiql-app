@@ -11,6 +11,7 @@ import styles from '../../styles/page-styles/graphiql-client.module.scss';
 import { RequestData, RequestItem } from '../../types/interface';
 import { addGraphiQLLinks } from '../../lib/slices/graphiql-history-slice';
 import example from '../../components/base/graphiql-client/exampleForGraphiQL';
+import { encodeToBase64 } from '../../utils/const/base64';
 
 interface GraphQLResponse {
   response?: Record<string, unknown>;
@@ -31,19 +32,6 @@ export const action = async ({ request }: LoaderFunctionArgs) => {
   const query = formData.get('query') as string;
   const variables = formData.get('variables') as string;
 
-  const parsedHeaders = headers ? JSON.parse(headers) : {};
-
-  const options: RequestInit = {
-    method: 'POST',
-    headers: parsedHeaders,
-    body: JSON.stringify({ query, variables: JSON.parse(variables || '{}') }),
-  };
-  const optionsDoc: RequestInit = {
-    method: 'POST',
-    headers: parsedHeaders,
-    body: JSON.stringify({ query: getIntrospectionQuery() }),
-  };
-
   let status: number | undefined;
   let response: unknown;
   let error: string | undefined;
@@ -52,6 +40,12 @@ export const action = async ({ request }: LoaderFunctionArgs) => {
   let errorDoc: string | undefined;
 
   try {
+    const parsedHeaders = headers ? JSON.parse(headers) : {};
+    const optionsDoc: RequestInit = {
+      method: 'POST',
+      headers: parsedHeaders,
+      body: JSON.stringify({ query: getIntrospectionQuery() }),
+    };
     const resDoc = await fetch(url, optionsDoc);
     statusDoc = resDoc.status;
     responseDoc = await resDoc.json();
@@ -60,6 +54,12 @@ export const action = async ({ request }: LoaderFunctionArgs) => {
   }
 
   try {
+    const parsedHeaders = headers ? JSON.parse(headers) : {};
+    const options: RequestInit = {
+      method: 'POST',
+      headers: parsedHeaders,
+      body: JSON.stringify({ query, variables: JSON.parse(variables || '{}') }),
+    };
     const res = await fetch(url, options);
     status = res.status;
     response = await res.json();
@@ -82,10 +82,8 @@ function GraphiqlClient() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const response = actionData?.response || '';
   const status = actionData?.status || null;
-
   const [errorHangle, setErrorHangle] = useState<string | null>(
     actionData?.error || null,
   );
@@ -105,12 +103,12 @@ function GraphiqlClient() {
     endpointState === '' ? '' : `${endpointState}?sdl`,
   );
   const [isSdlModified, setIsSdlModified] = useState<boolean>(false);
-
+  const [searchParamsLocacl, setSearchParamsLocal] = useState<string>('');
   useEffect(() => {
     if (!isSdlModified) {
       setSdlEndpoint(endpointState === '' ? '' : `${endpointState}?sdl`);
     }
-  }, [endpointState, isSdlModified]);
+  }, [endpointState, isSdlModified, navigate]);
 
   const handleEditorChange =
     (setValue: React.Dispatch<React.SetStateAction<string>>) =>
@@ -133,10 +131,10 @@ function GraphiqlClient() {
       const requestTime = new Date().toISOString();
 
       const searchParamsLocal = new URLSearchParams({
-        endpoint: endpointState,
-        query: queryState,
-        variables: variablesState,
-        headers: headersState,
+        endpoint: encodeToBase64(endpointState),
+        query: encodeToBase64(queryState),
+        variables: encodeToBase64(variablesState),
+        headers: encodeToBase64(headersState),
       });
 
       const requestData: RequestData = {
@@ -153,6 +151,7 @@ function GraphiqlClient() {
         requestData,
         data: requestTime,
       };
+      setSearchParamsLocal(`?${searchParamsLocal.toString()}`);
       dispatch(addGraphiQLLinks([graphiQLItemStore]));
       navigate(`?${searchParamsLocal.toString()}`, { replace: true });
     } catch (err) {
@@ -174,7 +173,7 @@ function GraphiqlClient() {
               onChange={(e) => {
                 setEndpoint(e.target.value);
                 navigate(
-                  `?${new URLSearchParams({ endpoint: e.target.value }).toString()}`,
+                  `?${new URLSearchParams({ endpoint: encodeToBase64(e.target.value) }).toString()}`,
                   { replace: true },
                 );
               }}
@@ -194,7 +193,11 @@ function GraphiqlClient() {
           </div>
         </div>
 
-        <Form method="post" id="autoSubmitForm">
+        <Form
+          method="post"
+          id="autoSubmitForm"
+          action={`/GraphiQL/${searchParamsLocacl}`}
+        >
           <input type="hidden" name="headers" value={headersState} />
           <input type="hidden" name="query" value={queryState} />
           <input type="hidden" name="endpoint" value={endpointState} />
