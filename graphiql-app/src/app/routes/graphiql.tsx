@@ -85,6 +85,7 @@ function GraphiqlClient() {
 
   const response = actionData?.response || '';
   const status = actionData?.status || null;
+
   const [errorHangle, setErrorHangle] = useState<string | null>(
     actionData?.error || null,
   );
