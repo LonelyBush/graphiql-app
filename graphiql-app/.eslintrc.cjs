@@ -15,6 +15,8 @@ module.exports = {
     'vite.config.ts',
     'vite.config.d.ts',
     'vite.config.js',
+    'remix.config.js',
+    'server.js',
     'build/',
   ],
   parserOptions: {

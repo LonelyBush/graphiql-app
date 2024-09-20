@@ -1,14 +1,14 @@
 import { useEffect, useState, useRef } from 'react';
 import { NavLink } from '@remix-run/react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import ToggleLanguages from '../toggle-languages/toggle-languages';
 import styles from './header.module.scss';
-import { auth, logout } from '../../../utils/firebase-auth/firebase';
+import { logout } from '../../../utils/firebase-auth/firebase';
+import useAuth from '../../../utils/hooks/useAuth-hook';
 
 function Header() {
   const [isSticky, setIsSticky] = useState(false);
   const headerRef = useRef<HTMLDivElement | null>(null);
-  const [user] = useAuthState(auth);
+  const { user } = useAuth();
 
   useEffect(() => {
     const observer = new IntersectionObserver(

@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import { vitePlugin as remix } from '@remix-run/dev';
+import { vercelPreset } from "@vercel/remix/vite";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -16,7 +17,7 @@ export default defineConfig(({ mode }) => {
       'process.env.APP_ID': JSON.stringify(env.APP_ID),
       'process.env.MEASUREMENT_ID': JSON.stringify(env.MEASUREMENT_ID),
     },
-    plugins: mode === 'test' ? [] : [remix({ appDirectory: 'src/app' })],
+    plugins: mode === 'test' ? [] : [remix({ appDirectory: 'src/app', presets: [vercelPreset()] })],
     test: {
       globals: true,
       environment: 'jsdom',
