@@ -1,0 +1,36 @@
+@import './colors.scss';
+@import './fonts.scss';
+html {
+  scroll-behavior: smooth;
+  font-size: 10px;
+}
+
+body {
+  margin: 0 auto;
+  font-family: 'salina trail';
+  font-size: 2.5rem;
+  font-weight: 400;
+  -webkit-font-smoothing: auto;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: $c-blue-500;
+  background-color: $c-white;
+  overflow-x: hidden;
+}
+
+#root {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+@media (max-width: 980px) {
+  body {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 580px) {
+  body {
+    font-size: 1.5rem;
+  }
+}

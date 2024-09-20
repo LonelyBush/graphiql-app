@@ -1,0 +1,46 @@
+@import '../../../styles/colors.scss';
+.cardBlock {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: $c-pink-100;
+  border-radius: 0.2rem;
+  transition: all 0.4s ease-out;
+  box-shadow: 0rem 0.3rem 0.6rem $c-black;
+}
+
+.imgBlock {
+  width: 28rem;
+  height: 30rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-size: 28rem;
+}
+
+.img {
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  width: 28rem;
+  height: 30rem;
+}
+
+.cardInfoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.cardName {
+  font-family: 'oswald';
+  text-align: center;
+  font-weight: 600;
+}
+
+.info {
+  font-weight: 600;
+}

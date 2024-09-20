@@ -1,0 +1,20 @@
+.contentInner {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.description {
+  max-width: 100rem;
+}
+
+.buttonBlock {
+  display: flex;
+  gap: 2rem;
+}
+
+.title {
+  text-align: center;
+}
