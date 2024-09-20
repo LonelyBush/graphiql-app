@@ -4,6 +4,10 @@
 
 This app is a streamlined tool that combines the best features of Postman and GraphiQL into a single, lightweight application. Designed for developers who need a quick and efficient way to test APIs, it supports both REST and GraphQL requests with a simple, intuitive interface. The app offers powerful query capabilities, response visualization, and easy environment management, all in a compact package that minimizes resource usage without sacrificing functionality. Perfect for rapid API testing on the go.
 
+## Deploy
+
+[Vercel](https://graphiql-app-undefineds-rss.vercel.app/) 
+
 ## The technology stack used:
    - TypeScript
    - React
